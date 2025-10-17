@@ -34,8 +34,10 @@ header
     text-decoration: none
 
   .background
-    background: -webkit-linear-gradient(90deg, #3AA17E 10%, #00537E 90%)
-    background: linear-gradient(90deg, #3AA17E 10%, #00537E 90%)
+
+    background: -webkit-linear-gradient(90deg, #8CC152 10%, #7DAE45 90%)
+    background: linear-gradient(90deg, #8CC152 10%, #7DAE45 90%)
+    
 
 a
   &.button-collapse
@@ -97,3 +99,73 @@ main
   nav
     .page-title
       font-size: 20px
+
+
+
+.imagenbarra
+  display: block
+  max-width: 100%
+  height: auto
+  width: 180px
+  object-fit: contain
+
+  @media (max-width: 992px)
+    width: 140px
+
+  @media (max-width: 600px)
+    width: 110px
+
+
+.side-nav .userView
+  display: flex !important
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  padding: 0 !important
+  min-height: 260px
+  position: relative
+
+.side-nav .userView .background
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background: linear-gradient(135deg, #91b951, #91b951) !important
+  z-index: -1
+
+
+  /* Cambiar ancho del menú lateral fijo */
+.side-nav.fixed
+  width: 300px !important
+
+
+nav.top-nav .page-title
+  font-family: 'Lora', serif
+  font-style: italic
+  font-weight: 500
+  color: white
+  font-size: 2.4rem
+  letter-spacing: 0.5px
+  margin: 0
+
+nav.top-nav
+  background: linear-gradient(135deg, #91b951, #91b951)
+  color: white
+  box-shadow: none
+
+
+  /* Alineación uniforme icono-texto */
+.side-nav li a
+  display: flex
+  align-items: center
+
+.side-nav li a i.material-icons
+  margin-right: 12px
+  width: 24px
+  text-align: center
+
+/* Enlace desactivado (Blog) */
+.side-nav li a.muted
+  pointer-events: none
+  opacity: 0.5
