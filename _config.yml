@@ -26,7 +26,7 @@ paginate: 5
 github_profile: "https://github.com/ShawnTeoh"
 user: "Permacultura Aragón"
 user_email: "permaculturaaragon@gmail.com"
-contact_url: "https://goo.gl/tVljbV"
+contact_url: "https://forms.gle/XLspcRAoBTXQtVCe6"
 google_tracking_id: "UA-96359860-1"
 google_site_verification: "UA-96359860-1"
 disqus_shortname: "matjek"
@@ -44,3 +44,8 @@ exclude:
 sass:
   style: compressed
 future: true
+
+collections:
+  disenos:
+    output: true
+    permalink: /disenos/:name/

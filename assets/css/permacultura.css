@@ -1,0 +1,463 @@
+/* === ESTILOS PÁGINA PERMACULTURA === */
+
+section.section {
+  padding: 3rem 1rem;
+   background-color: transparent !important;
+  color: #333;
+  line-height: 1.8;
+}
+
+/* TÍTULOS PRINCIPALES */
+.section h2 {
+  font-family: "Lora", serif;
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #2e7d32; /* verde principal */
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.section h2 i.material-icons {
+  font-size: 2rem;
+  color: #558b2f;
+  margin-right: 8px;
+}
+
+/* SUBTÍTULOS (h3) */
+.section h3 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #33691e;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.section h3 i.material-icons {
+  font-size: 1.4rem;
+  color: #689f38;
+  margin-right: 8px;
+}
+
+/* PÁRRAFOS */
+.section p {
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+/* LISTA DE PRINCIPIOS */
+.section ol,
+.section ol li {
+  list-style: none !important; /* elimina cualquier numeración del navegador */
+}
+
+.section ol {
+  counter-reset: list;
+  margin-top: 2rem;
+  padding-left: 1.5rem;
+  list-style: none;
+}
+
+.section ol li {
+  margin-bottom: 0.8rem;
+  font-size: 1.05rem;
+  position: relative;
+  padding-left: 1.4rem;
+}
+
+.section ol li::before {
+  counter-increment: list;
+  content: counter(list) ". ";
+  position: absolute;
+  left: 0;
+  color: #558b2f;
+  font-weight: bold;
+}
+
+.section ol li::marker {
+  content: "" !important;
+  display: none !important;
+}
+
+
+
+/* DIVISORES SUAVES */
+.divider {
+  margin: 2rem auto;
+  height: 2px;
+  width: 60%;
+  background: linear-gradient(to right, transparent, #81c784, transparent);
+  border-radius: 4px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .section h2 {
+    font-size: 1.8rem;
+  }
+  .section h3 {
+    font-size: 1.3rem;
+  }
+  .section p {
+    font-size: 1rem;
+  }
+}
+/* === Título del banner superior === */
+nav.top-nav .nav-wrapper {
+  display: flex;
+  align-items: center; /* centra verticalmente todo dentro del nav */
+  height: 100%;
+}
+
+nav.top-nav .page-title {
+  font-family: "Lora", serif;
+  font-style: italic;
+  font-weight: 400;
+  color: white;
+  text-align: left;
+  font-size: clamp(1.2rem, 2.8vw, 2.4rem);
+  line-height: 1.2;
+  margin: 0;
+  padding-left: 3.5rem; /* más espacio entre hamburguesa y texto */
+  white-space: normal;
+  display: inline-block;
+}
+
+/* Ajustes en móviles */
+@media (max-width: 600px) {
+  nav.top-nav .page-title {
+    font-size: clamp(1rem, 4vw, 1.8rem);
+    padding-left: 3rem;
+  }
+}
+
+
+
+/* Si el tema usa page-content, también lo limpiamos */
+.page-content, main {
+  background-color: transparent !important;
+}
+
+
+/* Activo en anchors y en li (themes Materialize viejos y nuevos) */
+.side-nav a.active,
+.sidenav a.active,
+.side-nav li.active > a,
+.sidenav li.active > a {
+  background-color: #dcedc8;
+  color: #33691e !important;
+  font-weight: 600;
+  border-left: 4px solid #8bc34a;
+}
+
+.side-nav a.active i,
+.sidenav a.active i,
+.side-nav li.active > a i,
+.sidenav li.active > a i {
+  color: #558b2f !important;
+}
+
+
+
+
+.principios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.principle-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.principle-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.principle-card .card-image {
+  flex: 0 0 80px; /* 👈 tamaño fijo de imagen */
+  padding: 10px;
+}
+
+.principle-card .card-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  display: block;
+}
+
+.principle-card .card-content {
+  flex: 1;
+  padding: 0.8rem 1rem;
+}
+
+.principle-card .card-title {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-weight: 500;
+  color: #33691e;
+  font-size: 1.05rem;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.principle-card p {
+  font-style: italic;
+  font-weight: 300;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #444;
+  text-align: left;
+}
+
+/* 📱 Responsive ajustes */
+@media (max-width: 900px) {
+  .principle-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .principle-card .card-image {
+    flex: none;
+    width: 100%;
+    max-width: 120px;
+    margin: 1rem auto 0;
+  }
+}
+
+
+.eticas-section {
+  margin-top: 2rem;
+}
+
+.eticas-imagen-principal img {
+  max-width: 280px;
+  width: 100%;
+  height: auto;
+  margin: 1.5rem auto 2rem;
+  display: block;
+}
+
+.eticas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.etica-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  max-width: 420px;
+  
+}
+
+.etica-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.etica-card .card-image {
+  flex: 0 0 80px;
+  padding: 10px;
+}
+
+.etica-card .card-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  display: block;
+}
+
+.etica-card .card-content {
+  flex: 1;
+  padding: 1rem;
+  text-align: left;
+}
+
+.etica-card .card-title {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #33691e;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.etica-card p {
+  font-style: italic;
+  font-weight: 300;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #444;
+  text-align: left;
+}
+
+/* 📱 Responsive */
+@media (max-width: 800px) {
+  .etica-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .etica-card .card-image {
+    flex: none;
+    width: 100%;
+    max-width: 120px;
+    margin: 1rem auto 0;
+  }
+}
+
+
+
+
+/* ==================== FOOTER ==================== */
+
+:root {
+  --footer-main: #91b951;   /* verde claro */
+  --footer-dark: #4b5842;   /* verde oscuro */
+}
+
+footer.page-footer {
+  margin: 0;
+  padding: 0;
+  border: none;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* === PARTE SUPERIOR === */
+.footer-top {
+  background-color: var(--footer-main);
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-left: 300px; /* 👈 hueco del menú lateral fijo */
+  box-sizing: border-box;
+}
+
+/* --- COLUMNA IZQUIERDA (LOGO) --- */
+.footer-left {
+  flex: 1 1 25%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.footer-logo {
+  height: 80px;
+  width: auto;
+}
+
+/* --- COLUMNA CENTRAL (ENLACES) --- */
+.footer-center {
+  flex: 1 1 40%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.footer-col a {
+  color: white;
+  text-decoration: none;
+  font-weight: 400;
+  transition: 0.2s;
+}
+
+.footer-col a:hover {
+  font-weight: 700;
+}
+
+/* --- COLUMNA DERECHA (REDES SOCIALES) --- */
+.footer-right {
+  flex: 1 1 25%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-right img {
+  width: 35px;
+  height: 35px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.2s ease;
+}
+
+.footer-right img:hover {
+  transform: scale(1.25);
+}
+
+/* === PARTE INFERIOR === */
+.footer-bottom {
+  background-color: var(--footer-dark);
+  text-align: center;
+  padding: 0.8rem 0;
+  font-size: 0.9rem;
+  color: white;
+  width: 100%;
+}
+
+.footer-bottom a {
+  color: #B2DFDB;
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+
+/* === RESPONSIVO === */
+@media (max-width: 992px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0; /* en móvil el menú desaparece */
+    text-align: center;
+  }
+
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    flex: 0 0 100%;
+    justify-content: center;
+  }
+
+  .footer-center {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .footer-right img {
+    width: 30px;
+  }
+}

@@ -1,0 +1,36 @@
+---
+layout: page
+title: "Diseños"
+permalink: /disenos/
+---
+
+<section class="section">
+  <div class="container">
+    <h2 class="center-align">
+      <i class="material-icons" style="vertical-align:middle;">eco</i>
+      Diseños en Permacultura
+    </h2>
+
+    <div class="row">
+      {% assign disenos = site.disenos | sort: 'order' %}
+      {% for diseno in disenos %}
+        <div class="col s12 m6 l4">
+          <div class="card hoverable">
+            {% if diseno.image %}
+              <div class="card-image">
+                <img src="{{ diseno.image | relative_url }}" alt="{{ diseno.title }}">
+              </div>
+            {% endif %}
+            <div class="card-content">
+              <span class="card-title">{{ diseno.title }}</span>
+              <p>{{ diseno.subtitle }}</p>
+            </div>
+            <div class="card-action">
+              <a href="{{ diseno.url | relative_url }}">Ver más</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
