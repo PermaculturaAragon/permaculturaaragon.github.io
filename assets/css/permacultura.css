@@ -1,8 +1,7 @@
 /* === ESTILOS PÁGINA PERMACULTURA === */
-
 section.section {
   padding: 3rem 1rem;
-   background-color: transparent !important;
+  background-color: transparent !important;
   color: #333;
   line-height: 1.8;
 }
@@ -12,7 +11,7 @@ section.section {
   font-family: "Lora", serif;
   font-size: 2.4rem;
   font-weight: 600;
-  color: #2e7d32; /* verde principal */
+  color: #4b5842;
   margin-top: 3rem;
   margin-bottom: 1.5rem;
   display: flex;
@@ -50,26 +49,19 @@ section.section {
   text-align: justify;
 }
 
-/* LISTA DE PRINCIPIOS */
-.section ol,
-.section ol li {
-  list-style: none !important; /* elimina cualquier numeración del navegador */
-}
-
+/* LISTAS DE PRINCIPIOS */
 .section ol {
   counter-reset: list;
   margin-top: 2rem;
   padding-left: 1.5rem;
   list-style: none;
 }
-
 .section ol li {
   margin-bottom: 0.8rem;
   font-size: 1.05rem;
   position: relative;
   padding-left: 1.4rem;
 }
-
 .section ol li::before {
   counter-increment: list;
   content: counter(list) ". ";
@@ -78,13 +70,6 @@ section.section {
   color: #558b2f;
   font-weight: bold;
 }
-
-.section ol li::marker {
-  content: "" !important;
-  display: none !important;
-}
-
-
 
 /* DIVISORES SUAVES */
 .divider {
@@ -95,56 +80,14 @@ section.section {
   border-radius: 4px;
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE TIPOGRAFÍA */
 @media (max-width: 600px) {
-  .section h2 {
-    font-size: 1.8rem;
-  }
-  .section h3 {
-    font-size: 1.3rem;
-  }
-  .section p {
-    font-size: 1rem;
-  }
-}
-/* === Título del banner superior === */
-nav.top-nav .nav-wrapper {
-  display: flex;
-  align-items: center; /* centra verticalmente todo dentro del nav */
-  height: 100%;
+  .section h2 { font-size: 1.8rem; }
+  .section h3 { font-size: 1.3rem; }
+  .section p  { font-size: 1rem; }
 }
 
-nav.top-nav .page-title {
-  font-family: "Lora", serif;
-  font-style: italic;
-  font-weight: 400;
-  color: white;
-  text-align: left;
-  font-size: clamp(1.2rem, 2.8vw, 2.4rem);
-  line-height: 1.2;
-  margin: 0;
-  padding-left: 3.5rem; /* más espacio entre hamburguesa y texto */
-  white-space: normal;
-  display: inline-block;
-}
-
-/* Ajustes en móviles */
-@media (max-width: 600px) {
-  nav.top-nav .page-title {
-    font-size: clamp(1rem, 4vw, 1.8rem);
-    padding-left: 3rem;
-  }
-}
-
-
-
-/* Si el tema usa page-content, también lo limpiamos */
-.page-content, main {
-  background-color: transparent !important;
-}
-
-
-/* Activo en anchors y en li (themes Materialize viejos y nuevos) */
+/* === LINKS ACTIVOS EN MENÚ === */
 .side-nav a.active,
 .sidenav a.active,
 .side-nav li.active > a,
@@ -154,31 +97,88 @@ nav.top-nav .page-title {
   font-weight: 600;
   border-left: 4px solid #8bc34a;
 }
-
 .side-nav a.active i,
-.sidenav a.active i,
-.side-nav li.active > a i,
-.sidenav li.active > a i {
+.sidenav a.active i {
   color: #558b2f !important;
+}
+
+/* === BOTÓN HAMBURGUESA === */
+.menu-toggle {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 9999;
+  background-color: #4b5842;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.menu-toggle:hover {
+  background-color: #6b7d5a;
+  transform: scale(1.05);
+}
+.menu-toggle i.material-icons {
+  color: #fff;
+  font-size: 28px;
+}
+@media (min-width: 993px) {
+  .menu-toggle { display: none; }
+}
+
+/* === MENÚ LATERAL === */
+#side-nav.side-nav.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100vh;
+  background-color: #e8f5e9;
+  overflow-y: auto;
+  padding-top: 2rem;
+  z-index: 1000;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.15);
+}
+
+/* === MENÚ LATERAL – MÓVIL === */
+@media (max-width: 992px) {
+  #side-nav.side-nav.fixed {
+    transform: translateX(-100%) !important;
+    transition: transform 0.35s ease-in-out !important;
+    position: fixed !important;
+    z-index: 1000 !important;
+  }
+  #side-nav.side-nav.fixed.open {
+    transform: translateX(0) !important;
+  }
 }
 
 
 
-
+/* === PRINCIPIOS DE DISEÑO (estilo horizontal con imagen circular) === */
 .principios-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.5rem;
+  margin-top: 2rem;
 }
 
 .principle-card {
   display: flex;
   align-items: center;
   background: #fff;
-  border-radius: 8px;
+  border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .principle-card:hover {
@@ -187,277 +187,341 @@ nav.top-nav .page-title {
 }
 
 .principle-card .card-image {
-  flex: 0 0 80px; /* 👈 tamaño fijo de imagen */
-  padding: 10px;
+  flex: 0 0 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
 }
 
 .principle-card .card-image img {
-  width: 100%;
-  height: auto;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
   border-radius: 50%;
-  display: block;
 }
 
 .principle-card .card-content {
   flex: 1;
-  padding: 0.8rem 1rem;
+  padding: 1rem 1.2rem;
+  text-align: left;
 }
 
 .principle-card .card-title {
   font-family: 'Lora', serif;
-  font-style: italic;
-  font-weight: 500;
-  color: #33691e;
+  font-weight: 700;
+  color: #2e7d32;
   font-size: 1.05rem;
-  display: block;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.4rem;
 }
 
 .principle-card p {
   font-style: italic;
   font-weight: 300;
   font-size: 0.95rem;
-  line-height: 1.4;
-  color: #444;
-  text-align: left;
+  line-height: 1.5;
+  color: #555;
 }
 
-/* 📱 Responsive ajustes */
-@media (max-width: 900px) {
+/* Responsive: una por fila en móvil */
+@media (max-width: 600px) {
   .principle-card {
     flex-direction: column;
     text-align: center;
   }
+
   .principle-card .card-image {
-    flex: none;
-    width: 100%;
-    max-width: 120px;
-    margin: 1rem auto 0;
+    padding: 0.5rem;
+  }
+
+  .principle-card .card-image img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .principle-card .card-content {
+    padding: 1rem;
   }
 }
 
 
-.eticas-section {
-  margin-top: 2rem;
+/* === LAS 3 ÉTICAS (misma altura, responsivo) === */
+.eticas-container {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 2rem !important;
+  justify-items: center !important;
+  align-items: stretch !important;  /* <- hace que todas crezcan igual */
+  width: 100% !important;
+  margin: 2rem auto !important;
+  grid-auto-rows: 1fr; /* <- fuerza la misma altura en todas */
 }
 
-.eticas-imagen-principal img {
-  max-width: 280px;
-  width: 100%;
-  height: auto;
-  margin: 1.5rem auto 2rem;
-  display: block;
-}
-
-.eticas-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  justify-items: center;
-}
-
-.etica-card {
-  display: flex;
-  align-items: center;
+.etica-box {
   background: #fff;
-  border-radius: 8px;
+  border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  max-width: 420px;
-  
+  text-align: center;
+  padding: 1.5rem 1.2rem;
+  max-width: 340px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* 👈 alinea todo arriba */
+  align-items: center; /* centra horizontalmente */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.etica-card:hover {
+
+.etica-box:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
-.etica-card .card-image {
-  flex: 0 0 80px;
-  padding: 10px;
-}
-
-.etica-card .card-image img {
-  width: 100%;
-  height: auto;
+.etica-box img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
   border-radius: 50%;
+  margin: 1rem auto;
   display: block;
+  flex-shrink: 0;
 }
 
-.etica-card .card-content {
-  flex: 1;
-  padding: 1rem;
-  text-align: left;
-}
-
-.etica-card .card-title {
-  font-family: 'Lora', serif;
+.etica-box h3 {
+  font-family: "Lora", serif;
   font-style: italic;
-  font-weight: 400;
+  font-weight: 700;
+  font-size: 1.15rem;
   color: #33691e;
-  display: block;
-  margin-bottom: 0.3rem;
+  margin: 0.8rem 0 0.6rem 0;
 }
 
-.etica-card p {
-  font-style: italic;
-  font-weight: 300;
-  font-size: 0.95rem;
-  line-height: 1.4;
+.etica-box p {
+  font-size: 1rem;
   color: #444;
-  text-align: left;
+  line-height: 1.6;
+  margin-top: auto;
+  text-align: justify;
 }
 
-/* 📱 Responsive */
-@media (max-width: 800px) {
-  .etica-card {
-    flex-direction: column;
-    text-align: center;
-  }
-  .etica-card .card-image {
-    flex: none;
-    width: 100%;
-    max-width: 120px;
-    margin: 1rem auto 0;
+/* Responsivo */
+@media (max-width: 992px) {
+  .eticas-container {
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 }
-
-
-
-
-/* ==================== FOOTER ==================== */
-
-:root {
-  --footer-main: #91b951;   /* verde claro */
-  --footer-dark: #4b5842;   /* verde oscuro */
+@media (max-width: 600px) {
+  .eticas-container {
+    grid-template-columns: 1fr !important;
+  }
 }
 
-footer.page-footer {
+
+/* === CONTROL TOTAL DEL MAIN === */
+
+/* Limpieza de estilos heredados */
+#main-content {
+  display: block;
+  position: relative;
   margin: 0;
   padding: 0;
-  border: none;
-  color: white;
-  font-family: 'Open Sans', sans-serif;
+  background: transparent;
+  box-shadow: none;
+  color: inherit;
+  min-height: 100vh; /* ocupa el alto visible */
 }
 
-/* === PARTE SUPERIOR === */
-.footer-top {
-  background-color: var(--footer-main);
-  padding: 2rem 0;
+/* Alineación con el menú lateral fijo */
+body #main-content {
+  margin-left: 300px;                   /* coincide con el ancho del menú lateral */
+  width: calc(100% - 300px);            /* ocupa el resto del viewport */
+  padding: 2rem 2rem;                   /* margen interno agradable */
+  transition: margin 0.3s ease;         /* por si haces animación del menú */
+}
+
+/* En pantallas pequeñas, ocupa todo el ancho */
+@media (max-width: 992px) {
+  body #main-content {
+    margin-left: 0;
+    width: 100%;
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* Ajuste fino del primer bloque */
+#main-content > *:first-child {
+  margin-top: 0;
+}
+
+/* Contenedor dentro del main */
+#main-content .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
   width: 100%;
 }
 
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-  padding-left: 300px; /* 👈 hueco del menú lateral fijo */
+/* Transición suave cuando se abre el menú móvil */
+body.nav-open #main-content {
+  margin-left: 0;
+  width: 100%;
+}
+
+
+/* === ELIMINAR LA FRANJA VERDE CLARA SUPERIOR === */
+
+/* Borra cualquier color de fondo heredado arriba */
+body,
+header,
+.side-nav.fixed {
+  background-color: transparent !important;
+  border-top: none !important;
+}
+
+/* Quita el posible espacio invisible */
+body {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+
+/* Si Materialize está metiendo un nav oculto arriba, lo escondemos */
+nav.top-nav {
+  display: none !important;
+}
+
+/* === Quitar hueco blanco superior en la barra lateral === */
+
+/* Elimina márgenes/padding del primer bloque del menú */
+.side-nav.fixed,
+.side-nav.fixed li:first-child,
+.side-nav.fixed .userView {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Si la imagen del logo necesita ajustarse arriba del todo */
+.side-nav.fixed .userView img.imagenbarra {
+  display: block;
+  margin-top: 0 !important;
+}
+
+/* Asegura que la barra empieza en el borde superior de la pantalla */
+.side-nav.fixed {
+  top: 0 !important;
+}
+
+
+/* === IMAGEN A TODO EL ANCHO DEL MAIN === */
+.imagen-ancha {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 0;
+  margin: 0 0 2rem 0; /* sin margen lateral */
+  padding: 0;
+}
+
+/* En pantallas grandes */
+@media (min-width: 992px) {
+  .imagen-ancha {
+    height: 320px;
+  }
+}
+
+#main-content {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+#main-content .container {
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: none !important; /* evita limitar ancho */
+}
+
+/* Imagen a todo el ancho del main */
+.imagen-ancha {
+  display: block;
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* Ajuste para pantallas grandes */
+@media (min-width: 992px) {
+  .imagen-ancha {
+    height: 320px;
+  }
+}
+
+
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#main-content,
+main {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+/* === Imagen alineada al borde derecho del menú lateral === */
+.imagen-ancha {
+  display: block;
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* El contenedor principal deja hueco solo para el menú */
+#main-content {
+  margin-left: 300px !important;
+  padding: 0 !important;
+  width: calc(100% - 300px) !important;
   box-sizing: border-box;
 }
 
-/* --- COLUMNA IZQUIERDA (LOGO) --- */
-.footer-left {
-  flex: 1 1 25%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.footer-logo {
-  height: 80px;
-  width: auto;
-}
-
-/* --- COLUMNA CENTRAL (ENLACES) --- */
-.footer-center {
-  flex: 1 1 40%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  gap: 2rem;
-}
-
-.footer-col {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.footer-col a {
-  color: white;
-  text-decoration: none;
-  font-weight: 400;
-  transition: 0.2s;
-}
-
-.footer-col a:hover {
-  font-weight: 700;
-}
-
-/* --- COLUMNA DERECHA (REDES SOCIALES) --- */
-.footer-right {
-  flex: 1 1 25%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 1rem;
-}
-
-.footer-right img {
-  width: 35px;
-  height: 35px;
-  filter: brightness(0) invert(1);
-  transition: transform 0.2s ease;
-}
-
-.footer-right img:hover {
-  transform: scale(1.25);
-}
-
-/* === PARTE INFERIOR === */
-.footer-bottom {
-  background-color: var(--footer-dark);
-  text-align: center;
-  padding: 0.8rem 0;
-  font-size: 0.9rem;
-  color: white;
-  width: 100%;
-}
-
-.footer-bottom a {
-  color: #B2DFDB;
-  text-decoration: none;
-}
-
-.footer-bottom a:hover {
-  text-decoration: underline;
-}
-
-/* === RESPONSIVO === */
+/* En pantallas pequeñas: ocupa todo el ancho */
 @media (max-width: 992px) {
-  .footer-content {
-    flex-direction: column;
-    align-items: center;
-    padding-left: 0; /* en móvil el menú desaparece */
-    text-align: center;
-  }
-
-  .footer-left,
-  .footer-center,
-  .footer-right {
-    flex: 0 0 100%;
-    justify-content: center;
-  }
-
-  .footer-center {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .footer-right img {
-    width: 30px;
+  #main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
   }
 }
+
+/* === Espaciado armónico para secciones internas === */
+#main-content section {
+  padding: 2.5rem 2rem;           /* aire arriba/abajo y a los lados */
+  margin: 0 auto;                 /* centra el contenido */
+  max-width: 1100px;              /* evita líneas muy largas */
+  box-sizing: border-box;
+  background: transparent;        /* sin fondos extra */
+}
+
+/* Si hay varias secciones, separarlas un poco entre sí */
+#main-content section + section {
+  margin-top: 2rem;
+  border-top: 1px solid #e4e4e4;  /* línea sutil opcional */
+  padding-top: 2.5rem;
+}
+
+/* Ajuste suave para pantallas pequeñas */
+@media (max-width: 768px) {
+  #main-content section {
+    padding: 1.5rem 1rem;
+  }
+}
+
+

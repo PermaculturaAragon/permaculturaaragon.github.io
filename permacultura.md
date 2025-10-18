@@ -1,9 +1,14 @@
 ---
 layout: page
 title: "permacultura"
-css: ["about.css", "animate.css", "morphext.css"]
+css: ["about.css", "animate.css", "morphext.css", "index.css"]
 js: ["morphext.min.js", "about.js"]
 ---
+
+
+
+
+<img src="{{site.baseurl}}/assets/img/adobe1.png" alt="Cabecera" class="imagen-ancha">
 <section class="section">
   <div class="container">
     <h2 class="center-align"><i class="material-icons" style="vertical-align:middle; margin-right:6px;">spa</i>Qué es la Permacultura</h2>
@@ -31,52 +36,41 @@ js: ["morphext.min.js", "about.js"]
 <section class="eticas-section">
 
 
+<section class="section">
+  <h2><i class="material-icons">favorite</i>Las 3 Éticas de la Permacultura</h2>
 
-
-    <section class="eticas-section center-align">
-  <h2 class="center-align" style="margin-top: 2rem;">
-    Las 3 Éticas de la Permacultura
-  </h2>
-
-  <div class="eticas-imagen-principal">
-    <img src="{{site.baseurl}}/assets/principios/eticas.gif" alt="Las 3 Éticas de la Permacultura">
-  </div>
-
-  <div class="eticas-grid">
-    <div class="card etica-card">
-      <div class="card-image">
-        <img src="{{site.baseurl}}/assets/principios/tierra.jpg" alt="Cuidado de la Tierra">
-      </div>
-      <div class="card-content">
-        <span class="card-title">Cuidado de la Tierra</span>
-        <p><em>Reconocer que la <strong>Tierra es un ser vivo</strong>. Proteger suelos, bosques, agua, aire y todos los seres que los habitan. Regenerar en lugar de explotar: plantar árboles, recuperar suelos degradados, reducir el impacto y dejar los lugares mejor de como los encontramos.</em></p>
-      </div>
-    </div>
-
-    <div class="card etica-card">
-      <div class="card-image">
-        <img src="{{site.baseurl}}/assets/principios/gente.jpg" alt="Cuidado de las Personas">
-      </div>
-      <div class="card-content">
-        <span class="card-title">Cuidado de las Personas</span>
-        <p><em>Entender que los humanos también somos parte del ecosistema. Atender necesidades básicas —alimento, refugio, salud, educación, afecto— de forma justa y solidaria. Fomentar la cooperación, el bienestar común y el cuidado mutuo.</em></p>
-      </div>
-    </div>
-
-    <div class="card etica-card">
-      <div class="card-image">
-        <img src="{{site.baseurl}}/assets/principios/reparto.jpg" alt="Reparto Justo">
-      </div>
-      <div class="card-content">
-        <span class="card-title">Reparto Justo</span>
-        <p><em>Compartir recursos, tiempo, conocimiento y abundancia. Poner límites al consumo y al crecimiento para que todos puedan acceder a lo necesario. Devolver el excedente a la Tierra y a las personas.</em></p>
-      </div>
+  <div class="eticas-container">
     
-  </div>
+    <div class="etica-box">
+      <img src="{{site.baseurl}}/assets/principios/tierra.jpg" alt="Cuidado de la Tierra">
+      <h3>Cuidado de la Tierra</h3>
+      <p>
+        Reconocer que la <strong>Tierra es un ser vivo</strong>. Proteger suelos, bosques, agua, aire y todos los seres que los habitan. 
+        Regenerar en lugar de explotar: plantar árboles, recuperar suelos degradados, reducir el impacto y dejar los lugares mejor de como los encontramos.
+      </p>
+    </div>
 
+    <div class="etica-box">
+      <img src="{{site.baseurl}}/assets/principios/gente.jpg" alt="Cuidado de las Personas">
+      <h3>Cuidado de las Personas</h3>
+      <p>
+        Entender que los humanos también somos parte del ecosistema. Atender las <strong>necesidades básicas</strong> —alimento, refugio, salud, educación y afecto— 
+        de forma justa y solidaria. Fomentar la cooperación, el bienestar común y el cuidado mutuo.
+      </p>
+    </div>
+
+    <div class="etica-box">
+      <img src="{{site.baseurl}}/assets/principios/reparto.jpg" alt="Reparto Justo">
+      <h3>Reparto Justo</h3>
+      <p>
+        Compartir recursos, tiempo, conocimiento y abundancia. Poner <strong>límites al consumo y al crecimiento</strong> para que todos puedan acceder a lo necesario. 
+        Devolver el excedente a la Tierra y a las personas.
+      </p>
+    </div>
 
   </div>
 </section>
+
 
 
     <div class="divider"></div>

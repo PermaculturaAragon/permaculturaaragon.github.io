@@ -2,13 +2,3 @@
 layout: page
 ---
 
-<section class="section">
-  <div class="container">
-    <h2>{{ page.title }}</h2>
-    {% if page.image %}
-      <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" style="width:100%; border-radius:8px; margin-bottom:1rem;">
-    {% endif %}
-    <p class="flow-text">{{ page.subtitle }}</p>
-    <div>{{ content }}</div>
-  </div>
-</section>

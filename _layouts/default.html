@@ -1,11 +1,25 @@
 <body>
   {% include header.html %}
 
+  <link rel="icon" href="{{site.baseurl}}/assets/img/favicon.png" type="image/x-icon">
+
   <main id="main-content">
-    <div class="container">
-      {{ content }}
-    </div>
+    {{ content }}
   </main>
 
-  {% include footer.html %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const btn = document.getElementById("menu-toggle");
+    const nav = document.getElementById("side-nav");
+    const icon = btn.querySelector("i");
+
+    if (btn && nav) {
+      btn.addEventListener("click", function () {
+        nav.classList.toggle("open");
+        icon.textContent = nav.classList.contains("open") ? "close" : "menu";
+      });
+    }
+  });
+</script>
+
 </body>
