@@ -22,4 +22,82 @@
   });
 </script>
 
+
+<script>
+/* Encoge el bloque del logo y el logo verde; el verde se desvanece.
+   Usa mínimos configurables por CSS vars y easing para que no se quede tan pequeño. */
+(function () {
+  function init() {
+    const block =
+      document.querySelector('#side-nav .userView') ||
+      document.querySelector('.sidenav .userView') ||
+      document.querySelector('.side-nav .userView');
+    if (!block) return;
+
+    const fg   = block.querySelector('.logo-fg'); // verde (delante)
+    const bg   = block.querySelector('.logo-bg'); // blanco (detrás) opcional
+    const root = document.documentElement;
+
+    // Lee mínimos desde CSS
+    let maxH   = parseInt(getComputedStyle(root).getPropertyValue('--logo-max-h')) || 300;
+    const minH = parseInt(getComputedStyle(root).getPropertyValue('--logo-min-h')) || 230;
+    const minS = parseFloat(getComputedStyle(root).getPropertyValue('--logo-min-scale')) || 0.85;
+
+    // Usa el alto real renderizado como máximo si difiere
+    const realH = block.getBoundingClientRect().height;
+    if (!isNaN(realH) && realH > 0) maxH = realH;
+
+    const mq    = window.matchMedia('(min-width: 993px)');
+    const range = 220;   // píxeles de scroll para llegar al mínimo (sube/baja para ajustar)
+
+    // curva ease-out para que el final sea más suave y no encoja tanto
+    const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+
+    function update() {
+      if (!mq.matches) {
+        block.style.setProperty('min-height', '0px', 'important');
+        block.style.setProperty('height', 'var(--logo-max-h)', 'important');
+        if (fg) { fg.style.transform = 'scale(1)'; fg.style.opacity = '1'; }
+        if (bg) { bg.style.transform = 'scale(1)'; }
+        return;
+      }
+
+      const y     = window.scrollY;
+      const tRaw  = Math.min(y / range, 1);          // 0 → 1 lineal
+      const t     = easeOutCubic(tRaw);              // suavizado
+      const h     = Math.round(maxH - (maxH - minH) * t);
+      const s     = 1 - (1 - minS) * t;              // 1 → minS
+      const o     = 1 - Math.min(tRaw / 0.9, 1);     // opacidad verde: 1 → 0 (se apaga antes del final)
+
+      block.style.setProperty('min-height', '0px', 'important');
+      block.style.setProperty('height', h + 'px', 'important');
+
+      if (fg) { fg.style.transform = `scale(${s})`; fg.style.opacity = o.toFixed(3); }
+      if (bg) { bg.style.transform = `scale(${s})`; }
+    }
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => { update(); ticking = false; });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    window.addEventListener('resize', update);
+    update();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+
+
+
+
 </body>

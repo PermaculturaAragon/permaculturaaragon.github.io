@@ -53,14 +53,22 @@
 
       <!-- Menú lateral -->
       <ul id="side-nav" class="side-nav fixed">
-        <li>
-          <div class="userView">
-            <div class="background"></div>
-            <a href="{{site.baseurl}}" target="_blank">
-              <img class="imagenbarra" src="{{site.baseurl}}/assets/res/logoperma.png" alt="Permacultura Aragón">
-            </a>
-          </div>
-        </li>
+      <li>
+        <div class="userView">
+          <a href="{{ site.baseurl }}">
+            <!-- Fondo blanco (abajo) -->
+            <img class="logo-bg"
+                src="{{ site.baseurl }}/assets/res/logopermabis.png"
+                alt="Permacultura Aragón (blanco)">
+
+            <!-- Logo verde (encima) -->
+            <img class="logo-fg"
+                src="{{ site.baseurl }}/assets/res/logoperma.png"
+                alt="Permacultura Aragón (verde)">
+          </a>
+        </div>
+      </li>
+
 
         <li class="{% if page.url == '/' %}active{% endif %}">
           <a class="waves-effect" href="{{site.baseurl}}/">
@@ -102,7 +110,7 @@
 
         <li class="{% if page.url contains '/amigos' %}active{% endif %}">
           <a class="waves-effect" href="{{site.baseurl}}/amigos">
-            <i class="material-icons">group</i>Amigos
+            <i class="material-icons">group</i>Red de Amigos
           </a>
         </li>
 

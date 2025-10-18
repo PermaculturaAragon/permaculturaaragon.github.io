@@ -6,14 +6,14 @@ section.section {
   line-height: 1.8;
 }
 
-/* TÍTULOS PRINCIPALES */
+
+/* === TÍTULOS === */
 .section h2 {
   font-family: "Lora", serif;
   font-size: 2.4rem;
   font-weight: 600;
   color: #4b5842;
-  margin-top: 3rem;
-  margin-bottom: 1.5rem;
+  margin: 3rem 0 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,7 +26,6 @@ section.section {
   margin-right: 8px;
 }
 
-/* SUBTÍTULOS (h3) */
 .section h3 {
   font-size: 1.6rem;
   font-weight: 500;
@@ -42,26 +41,28 @@ section.section {
   margin-right: 8px;
 }
 
-/* PÁRRAFOS */
 .section p {
   font-size: 1.05rem;
   margin-bottom: 1rem;
   text-align: justify;
 }
 
-/* LISTAS DE PRINCIPIOS */
+
+/* === LISTAS NUMERADAS (sin bullets del navegador) === */
 .section ol {
   counter-reset: list;
   margin-top: 2rem;
   padding-left: 1.5rem;
   list-style: none;
 }
+
 .section ol li {
   margin-bottom: 0.8rem;
   font-size: 1.05rem;
   position: relative;
   padding-left: 1.4rem;
 }
+
 .section ol li::before {
   counter-increment: list;
   content: counter(list) ". ";
@@ -71,7 +72,8 @@ section.section {
   font-weight: bold;
 }
 
-/* DIVISORES SUAVES */
+
+/* === DIVISOR === */
 .divider {
   margin: 2rem auto;
   height: 2px;
@@ -80,12 +82,14 @@ section.section {
   border-radius: 4px;
 }
 
-/* RESPONSIVE TIPOGRAFÍA */
+
+/* === TIPOGRAFÍA RESPONSIVE === */
 @media (max-width: 600px) {
   .section h2 { font-size: 1.8rem; }
   .section h3 { font-size: 1.3rem; }
-  .section p  { font-size: 1rem; }
+  .section p  { font-size: 1rem;  }
 }
+
 
 /* === LINKS ACTIVOS EN MENÚ === */
 .side-nav a.active,
@@ -97,10 +101,12 @@ section.section {
   font-weight: 600;
   border-left: 4px solid #8bc34a;
 }
+
 .side-nav a.active i,
 .sidenav a.active i {
   color: #558b2f !important;
 }
+
 
 /* === BOTÓN HAMBURGUESA === */
 .menu-toggle {
@@ -118,37 +124,41 @@ section.section {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
 .menu-toggle:hover {
   background-color: #6b7d5a;
   transform: scale(1.05);
 }
+
 .menu-toggle i.material-icons {
   color: #fff;
   font-size: 28px;
 }
+
 @media (min-width: 993px) {
   .menu-toggle { display: none; }
 }
 
-/* === MENÚ LATERAL === */
+
+/* === MENÚ LATERAL (base escritorio) === */
 #side-nav.side-nav.fixed {
   position: fixed;
   top: 0;
   left: 0;
   width: 300px;
   height: 100vh;
-  background-color: #e8f5e9;
   overflow-y: auto;
-  padding-top: 2rem;
   z-index: 1000;
-  box-shadow: 2px 0 6px rgba(0,0,0,0.15);
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.15);
+  padding-top: 0;
 }
 
-/* === MENÚ LATERAL – MÓVIL === */
+
+/* === MENÚ LATERAL – MÓVIL (slide-in) === */
 @media (max-width: 992px) {
   #side-nav.side-nav.fixed {
     transform: translateX(-100%) !important;
@@ -156,14 +166,14 @@ section.section {
     position: fixed !important;
     z-index: 1000 !important;
   }
+
   #side-nav.side-nav.fixed.open {
     transform: translateX(0) !important;
   }
 }
 
 
-
-/* === PRINCIPIOS DE DISEÑO (estilo horizontal con imagen circular) === */
+/* === PRINCIPIOS DE DISEÑO (cards horizontales) === */
 .principios-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -176,14 +186,14 @@ section.section {
   align-items: center;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .principle-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .principle-card .card-image {
@@ -223,59 +233,44 @@ section.section {
   color: #555;
 }
 
-/* Responsive: una por fila en móvil */
 @media (max-width: 600px) {
-  .principle-card {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .principle-card .card-image {
-    padding: 0.5rem;
-  }
-
-  .principle-card .card-image img {
-    width: 90px;
-    height: 90px;
-  }
-
-  .principle-card .card-content {
-    padding: 1rem;
-  }
+  .principle-card { flex-direction: column; text-align: center; }
+  .principle-card .card-image { padding: 0.5rem; }
+  .principle-card .card-image img { width: 90px; height: 90px; }
+  .principle-card .card-content { padding: 1rem; }
 }
 
 
-/* === LAS 3 ÉTICAS (misma altura, responsivo) === */
+/* === LAS 3 ÉTICAS === */
 .eticas-container {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;
   gap: 2rem !important;
   justify-items: center !important;
-  align-items: stretch !important;  /* <- hace que todas crezcan igual */
+  align-items: stretch !important;
   width: 100% !important;
   margin: 2rem auto !important;
-  grid-auto-rows: 1fr; /* <- fuerza la misma altura en todas */
+  grid-auto-rows: 1fr;
 }
 
 .etica-box {
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   padding: 1.5rem 1.2rem;
   max-width: 340px;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* 👈 alinea todo arriba */
-  align-items: center; /* centra horizontalmente */
+  justify-content: flex-start;
+  align-items: center;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-
 .etica-box:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .etica-box img {
@@ -294,7 +289,7 @@ section.section {
   font-weight: 700;
   font-size: 1.15rem;
   color: #33691e;
-  margin: 0.8rem 0 0.6rem 0;
+  margin: 0.8rem 0 0.6rem;
 }
 
 .etica-box p {
@@ -305,163 +300,16 @@ section.section {
   text-align: justify;
 }
 
-/* Responsivo */
 @media (max-width: 992px) {
-  .eticas-container {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
+  .eticas-container { grid-template-columns: repeat(2, 1fr) !important; }
 }
+
 @media (max-width: 600px) {
-  .eticas-container {
-    grid-template-columns: 1fr !important;
-  }
+  .eticas-container { grid-template-columns: 1fr !important; }
 }
 
 
-/* === CONTROL TOTAL DEL MAIN === */
-
-/* Limpieza de estilos heredados */
-#main-content {
-  display: block;
-  position: relative;
-  margin: 0;
-  padding: 0;
-  background: transparent;
-  box-shadow: none;
-  color: inherit;
-  min-height: 100vh; /* ocupa el alto visible */
-}
-
-/* Alineación con el menú lateral fijo */
-body #main-content {
-  margin-left: 300px;                   /* coincide con el ancho del menú lateral */
-  width: calc(100% - 300px);            /* ocupa el resto del viewport */
-  padding: 2rem 2rem;                   /* margen interno agradable */
-  transition: margin 0.3s ease;         /* por si haces animación del menú */
-}
-
-/* En pantallas pequeñas, ocupa todo el ancho */
-@media (max-width: 992px) {
-  body #main-content {
-    margin-left: 0;
-    width: 100%;
-    padding: 1.5rem 1rem;
-  }
-}
-
-/* Ajuste fino del primer bloque */
-#main-content > *:first-child {
-  margin-top: 0;
-}
-
-/* Contenedor dentro del main */
-#main-content .container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  width: 100%;
-}
-
-/* Transición suave cuando se abre el menú móvil */
-body.nav-open #main-content {
-  margin-left: 0;
-  width: 100%;
-}
-
-
-/* === ELIMINAR LA FRANJA VERDE CLARA SUPERIOR === */
-
-/* Borra cualquier color de fondo heredado arriba */
-body,
-header,
-.side-nav.fixed {
-  background-color: transparent !important;
-  border-top: none !important;
-}
-
-/* Quita el posible espacio invisible */
-body {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
-
-
-/* Si Materialize está metiendo un nav oculto arriba, lo escondemos */
-nav.top-nav {
-  display: none !important;
-}
-
-/* === Quitar hueco blanco superior en la barra lateral === */
-
-/* Elimina márgenes/padding del primer bloque del menú */
-.side-nav.fixed,
-.side-nav.fixed li:first-child,
-.side-nav.fixed .userView {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
-
-/* Si la imagen del logo necesita ajustarse arriba del todo */
-.side-nav.fixed .userView img.imagenbarra {
-  display: block;
-  margin-top: 0 !important;
-}
-
-/* Asegura que la barra empieza en el borde superior de la pantalla */
-.side-nav.fixed {
-  top: 0 !important;
-}
-
-
-/* === IMAGEN A TODO EL ANCHO DEL MAIN === */
-.imagen-ancha {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 0;
-  margin: 0 0 2rem 0; /* sin margen lateral */
-  padding: 0;
-}
-
-/* En pantallas grandes */
-@media (min-width: 992px) {
-  .imagen-ancha {
-    height: 320px;
-  }
-}
-
-#main-content {
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-}
-
-#main-content .container {
-  padding: 0 !important;
-  margin: 0 !important;
-  max-width: none !important; /* evita limitar ancho */
-}
-
-/* Imagen a todo el ancho del main */
-.imagen-ancha {
-  display: block;
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  margin: 0;
-  padding: 0;
-  border-radius: 0;
-}
-
-/* Ajuste para pantallas grandes */
-@media (min-width: 992px) {
-  .imagen-ancha {
-    height: 320px;
-  }
-}
-
-
+/* === CONTROL DEL MAIN === */
 body {
   margin: 0 !important;
   padding: 0 !important;
@@ -474,26 +322,18 @@ main {
   width: 100% !important;
   box-sizing: border-box;
 }
-/* === Imagen alineada al borde derecho del menú lateral === */
-.imagen-ancha {
-  display: block;
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  margin: 0;
-  padding: 0;
-  border-radius: 0;
-}
 
-/* El contenedor principal deja hueco solo para el menú */
 #main-content {
+  display: block;
+  position: relative;
+  background: transparent;
+  box-shadow: none;
+  color: inherit;
+  min-height: 100vh;
   margin-left: 300px !important;
-  padding: 0 !important;
   width: calc(100% - 300px) !important;
-  box-sizing: border-box;
 }
 
-/* En pantallas pequeñas: ocupa todo el ancho */
 @media (max-width: 992px) {
   #main-content {
     margin-left: 0 !important;
@@ -501,27 +341,144 @@ main {
   }
 }
 
-/* === Espaciado armónico para secciones internas === */
+/* Secciones internas del main */
 #main-content section {
-  padding: 2.5rem 2rem;           /* aire arriba/abajo y a los lados */
-  margin: 0 auto;                 /* centra el contenido */
-  max-width: 1100px;              /* evita líneas muy largas */
+  padding: 2.5rem 2rem;
+  margin: 0 auto;
+  max-width: 1100px;
   box-sizing: border-box;
-  background: transparent;        /* sin fondos extra */
+  background: transparent;
 }
 
-/* Si hay varias secciones, separarlas un poco entre sí */
 #main-content section + section {
   margin-top: 2rem;
-  border-top: 1px solid #e4e4e4;  /* línea sutil opcional */
+  border-top: 1px solid #e4e4e4;
   padding-top: 2.5rem;
 }
 
-/* Ajuste suave para pantallas pequeñas */
 @media (max-width: 768px) {
-  #main-content section {
-    padding: 1.5rem 1rem;
-  }
+  #main-content section { padding: 1.5rem 1rem; }
+}
+
+/* Ocultar posible top-nav heredado de Materialize */
+nav.top-nav {
+  display: none !important;
 }
 
 
+/* === IMAGEN CABECERA A TODO ANCHO DEL MAIN === */
+.imagen-ancha {
+  display: block;
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}
+
+@media (min-width: 992px) {
+  .imagen-ancha { height: 300px; }
+}
+
+
+/* === FONDO BLANCO FIJO PARA EL MENÚ + LOGO === */
+.side-nav,
+.sidenav,
+#side-nav {
+  background-color: #fff !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.side-nav .userView,
+.sidenav .userView {
+  background-color: #fff !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.side-nav .userView img,
+.sidenav .userView img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Menú siempre blanco, SIN sombra */ .side-nav, .sidenav, #side-nav{ background-color:#fff !important; opacity:1 !important; backdrop-filter:none !important; box-shadow:none !important; /* ← quitamos la sombra */ border-right:1px solid #7ab224; /* línea sutil opcional */ }
+
+
+:root{
+  --logo-max-h: 300px;   /* altura inicial */
+  --logo-min-h: 230px;   /* altura mínima -> más grande */
+  --logo-min-scale: 0.9;
+}
+
+/* Contenedor del logo animable */
+.side-nav .userView,
+.sidenav .userView{
+  position: relative;
+  height: var(--logo-max-h);
+  min-height: 0 !important;
+  overflow: hidden;
+  transition: height .2s ease;
+  will-change: height;
+}
+
+/* Ambas imágenes ocupan exactamente el bloque */
+.side-nav .userView .logo-bg,
+.side-nav .userView .logo-fg,
+.sidenav .userView .logo-bg,
+.sidenav .userView .logo-fg{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;             /* mismo encuadre en ambas */
+  display: block;
+  transform-origin: center top;    /* encoge hacia arriba */
+  transition: transform .2s ease, opacity .2s ease;
+  will-change: transform, opacity;
+}
+
+/* Capas: fondo (blanco) abajo, verde arriba */
+.side-nav .userView .logo-bg,
+.sidenav .userView .logo-bg{ z-index: 0; }
+
+.side-nav .userView .logo-fg,
+.sidenav .userView .logo-fg{ z-index: 1; }
+
+/* Valores por defecto (sin scroll) */
+.side-nav .userView .logo-bg,
+.side-nav .userView .logo-fg,
+.sidenav .userView .logo-bg,
+.sidenav .userView .logo-fg{
+  transform: scale(1);
+}
+.side-nav .userView .logo-fg,
+.sidenav .userView .logo-fg{
+  opacity: 1;                       /* el verde visible al inicio */
+}
+
+/* En móvil no animamos (queda pleno) */
+@media (max-width: 992px){
+  .side-nav .userView,
+  .sidenav .userView{ height: var(--logo-max-h) !important; }
+  .side-nav .userView .logo-bg,
+  .side-nav .userView .logo-fg,
+  .sidenav .userView .logo-bg,
+  .sidenav .userView .logo-fg{
+    transform: scale(1);
+    opacity: 1;
+  }
+}
