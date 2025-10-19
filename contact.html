@@ -3,11 +3,86 @@ layout: page
 title: "Contact"
 css: ["contact.css"]
 ---
+
 <img src="{{site.baseurl}}/assets/img/adobe1.png" alt="Cabecera" class="imagen-ancha">
 
+<section class="section">
+  <div class="container">
+    <h2 class="center-align" style="margin-top: 0;">
+      <i class="material-icons" style="vertical-align:middle; margin-right:6px;">mail</i>
+      Contacto
+    </h2>
 
-<div class="col s12">
-  <div class="icontain">
-    <iframe src="{{site.contact_url}}">Loading...</iframe>
+    <form id="contact-form" action="{{ site.formspree_endpoint }}" method="POST" accept-charset="UTF-8" novalidate>
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <input id="name" name="name" type="text" required />
+          <label for="name">Nombre</label>
+        </div>
+
+        <div class="input-field col s12 m6">
+          <input id="email" name="email" type="email" required />
+          <label for="email">Email</label>
+        </div>
+
+        <div class="input-field col s12">
+          <input id="subject" name="subject" type="text" />
+          <label for="subject">Asunto (opcional)</label>
+        </div>
+
+        <div class="input-field col s12">
+          <textarea id="message" name="message" class="materialize-textarea" rows="6" required></textarea>
+          <label for="message">Mensaje</label>
+        </div>
+
+        <!-- Honeypot antispam -->
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hp-field" aria-hidden="true">
+
+        <div class="col s12 form-actions" style="display:flex; align-items:center; gap:.75rem;">
+          <button type="submit" class="btn waves-effect">Enviar</button>
+          <span id="form-status" class="form-status" aria-live="polite"></span>
+        </div>
+      </div>
+    </form>
   </div>
-</div>
+</section>
+
+<script>
+  (function () {
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+    const btn = form.querySelector('button[type="submit"]');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      status.textContent = 'Enviando…';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(form.action, {
+          method: form.method,
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+
+        if (res.ok) {
+          form.reset();
+          status.textContent = '¡Gracias! Te responderemos pronto.';
+        } else {
+          let msg = 'Hubo un error al enviar. Inténtalo de nuevo.';
+          try {
+            const data = await res.json();
+            if (data && data.errors) {
+              msg = data.errors.map(er => er.message).join(', ');
+            }
+          } catch (_) {}
+          status.textContent = msg;
+        }
+      } catch (err) {
+        status.textContent = 'No se pudo enviar. Revisa tu conexión e inténtalo otra vez.';
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  })();
+</script>

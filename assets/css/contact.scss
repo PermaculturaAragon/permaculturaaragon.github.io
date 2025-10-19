@@ -1,0 +1,141 @@
+---
+---
+/* Contenedor para iframes heredados (opcional) */
+.icontain {
+  position: relative;
+  margin-top: 20px;
+  padding-bottom: 110%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+.icontain iframe,
+.icontain object,
+.icontain embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* === CONTACTO (SCSS) === */
+
+/* Paleta y tokens */
+$verde: #4b5842;
+$gris-borde: #e5e7eb;
+$texto: #333;
+$radio: 12px;
+
+/* Cabecera opcional */
+.imagen-ancha {
+  display: block;
+  width: 100%;
+  height: 200px;        // si no quieres recorte, elimina estas 2 líneas
+  object-fit: cover;    // recorta para ocupar todo el ancho
+  margin: 0 0 1.5rem 0;
+}
+
+/* Contenedor del formulario (sin “recuadro gris”) */
+#contact-form {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  margin-top: 0;
+
+  .row { margin-bottom: 0.8rem; }
+
+  .input-field {
+    margin-bottom: 1rem;
+
+    label {
+      color: $verde;
+      font-family: "Lora", serif;
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    /* Campos “limpios” */
+    input,
+    textarea {
+      background: #fff;
+      border: 1px solid $gris-borde;
+      border-radius: $radio;
+      padding: 0.85rem 1rem;
+      color: $texto;
+      box-shadow: none !important;
+      transition: border-color 160ms ease, box-shadow 160ms ease;
+
+      &::placeholder { color: #9aa3af; }
+      &:focus {
+        border-color: lighten($verde, 10%);
+        box-shadow: 0 0 0 3px rgba(75, 88, 66, 0.14); /* halo accesible */
+        outline: none;
+      }
+    }
+
+    /* Altura cómoda del área de texto */
+    textarea {
+      min-height: 160px;
+      line-height: 1.5;
+      resize: vertical;
+    }
+  }
+
+  /* Botón + estado */
+  .form-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+
+    .btn {
+      background-color: $verde;
+      border-radius: 9999px;
+      padding: 0.7rem 1.4rem;
+      text-transform: none;
+      box-shadow: none;
+
+      &:hover { filter: brightness(1.06); }
+      &:disabled { opacity: .6; cursor: not-allowed; }
+    }
+
+    .form-status {
+      font-style: italic;
+      color: $verde;
+      min-height: 1.25em; /* evita “bailes” al mostrar mensajes */
+    }
+  }
+
+  /* Campo honeypot invisible */
+  .hp-field {
+    position: absolute !important;
+    left: -9999px !important;
+    width: 0; height: 0; opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/* Título de la sección (opcional) */
+.section {
+  h2 {
+    margin-top: 0;
+    font-family: "Lora", serif;
+    font-style: italic;
+    color: $verde;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i.material-icons {
+      font-size: 1.2em;
+      margin-right: 6px;
+      color: $verde;
+    }
+  }
+}
+
+/* Ajustes Materialize para etiquetas flotantes cuando hay valor/click */
+.input-field > label:not(.label-icon).active {
+  color: $verde;
+}

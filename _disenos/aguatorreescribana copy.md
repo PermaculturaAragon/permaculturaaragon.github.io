@@ -1,7 +1,7 @@
 ---
-title: Agua en Torre Escribana
-subtitle: Gestión de recrecogida, almacenaje y calidad de las aguas en Torre Escribana
-image: /assets/img/agua.jpg
+title: Encuentro de Permacultura
+subtitle: Diseño en Red de Lobby Macnamara
+image: /assets/img/encuentro.jpg
 layout: diseno
 permalink: /disenos/torre-escribana/
 doc_url: /contact.html   # <- pon aquí tu PDF

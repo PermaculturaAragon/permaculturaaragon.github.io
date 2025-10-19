@@ -44,7 +44,7 @@ section.section {
 .section p {
   font-size: 1.05rem;
   margin-bottom: 1rem;
-  text-align: justify;
+  text-align: left;
 }
 
 
@@ -482,3 +482,60 @@ nav.top-nav {
     opacity: 1;
   }
 }
+
+
+:root{
+  --verde-comun: #2e7d32;    /* verde principal */
+  --verde-comun-osc: #33691e;/* hover */
+}
+
+/* Título de la página de diseño */
+.titulo-diseno{
+  font-family: "Lora", serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  color: var(--verde-comun);
+  text-align: center;
+  margin: 1.2rem 0 0.8rem;
+}
+
+/* Botón verde común */
+.btn-verde{
+  background-color: var(--verde-comun) !important;
+}
+.btn-verde:hover,
+.btn-verde:focus{
+  background-color: var(--verde-comun-osc) !important;
+}
+
+
+/* Corrige solo este título, sin afectar a los demás */
+.section h2.heading-with-icon {
+  display: inline-flex;         /* agrupa icono + texto en un bloque */
+  align-items: center;
+  gap: 8px;                     /* separación uniforme */
+  margin: 0 auto 1rem;          /* centra el bloque */
+  text-align: left;             /* el contenido del bloque no se re-centra línea a línea */
+}
+
+.section h2.heading-with-icon .material-icons {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+
+/* Easing más suave */
+.side-nav .userView,
+.sidenav .userView{
+  transition: height .35s cubic-bezier(.22,.61,.36,1);
+}
+.side-nav .userView .logo-bg,
+.side-nav .userView .logo-fg,
+.sidenav .userView .logo-bg,
+.sidenav .userView .logo-fg{
+  transition: transform .35s cubic-bezier(.22,.61,.36,1),
+              opacity   .35s linear;
+}
+
+
