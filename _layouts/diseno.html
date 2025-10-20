@@ -4,6 +4,8 @@ layout: page
 
 <section class="section">
   <div class="container">
+
+
     {% if page.image %}
       <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" class="imagen-ancha">
     {% endif %}
@@ -16,16 +18,16 @@ layout: page
       </p>
     {% endif %}
 
-    {% if page.doc_url %}
-      <p class="center-align" style="margin: 0 0 2rem;">
-        <a class="btn btn-verde waves-effect waves-light"
-           href="{{ page.doc_url | relative_url }}"
-           >
-          <i class="material-icons left">file_download</i>
-          {{ page.doc_label | default: "Ficha del diseño (PDF)" }}
-        </a>
-      </p>
+    {% if page.title %}
+        {% assign subject = 'Solicitud diseño: ' | append: page.title %}
+<a class="btn waves-effect"
+   href="{{ '/contact/' | relative_url }}?subject={{ subject | uri_escape }}">
+  Contactar por este diseño
+</a>
     {% endif %}
+
+
+
 
     <div class="content">
       {{ content }}

@@ -53,3 +53,10 @@ collections:
   disenos:
     output: true
     permalink: /disenos/:name/
+
+
+
+social:
+  instagram: https://instagram.com/permacultura.aragon
+  facebook:  https://www.facebook.com/permaculturaaragon
+  youtube:   https://www.youtube.com/@permaculturaaragon7075

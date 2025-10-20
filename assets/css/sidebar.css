@@ -1,0 +1,71 @@
+/* Franja verde con iconos en una fila (Materialize 0.99: .side-nav) */
+#side-nav li.social-strip,
+.side-nav li.social-strip{
+  background:#8bc34a !important;     /* franja verde */
+  border-top:1px solid #9fbd86;
+  padding:0 !important;
+  list-style:none;
+  min-height:56px;
+}
+
+/* Contenedor interno en fila */
+#side-nav li.social-strip .social-inner,
+.side-nav li.social-strip .social-inner{
+  display:flex !important;            /* <-- horizontal */
+  justify-content:center;
+  align-items:center;
+  gap:16px;
+  padding:12px 14px;
+}
+
+/* Evitar la regla del tema: .side-nav li > a {display:block;width:100%} */
+#side-nav li.social-strip a,
+.side-nav li.social-strip a{
+  display:inline-flex !important;
+  width:36px !important;
+  height:36px !important;
+  padding:0 !important;
+  background:transparent !important;  /* quita la franja gris de los <a> */
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  transition:transform .15s ease, opacity .15s ease;
+}
+
+#side-nav li.social-strip a:hover,
+.side-nav li.social-strip a:hover{
+  transform:translateY(-3px);
+
+  opacity:.9;
+}
+
+#side-nav li.social-strip img,
+.side-nav li.social-strip img{
+  width:25px; height:25px; display:block;
+}
+
+
+#side-nav{ display:flex; flex-direction:column; min-height:100vh; }
+#side-nav li.social-strip{ margin-top:auto; }
+
+
+
+/* que el UL del menú llegue hasta el suelo y sin relleno inferior */
+html, body { height: 100%; } /* por si acaso */
+#side-nav.side-nav.fixed{
+  top: 0;
+  bottom: 0;
+  height: 100vh !important;      /* ocupa toda la ventana */
+  display: flex;
+  flex-direction: column;
+}
+#side-nav.side-nav,
+.side-nav{
+  margin: 0 !important;
+  padding-bottom: 0 !important;   /* quita el hueco blanco de abajo */
+}
+
+/* la franja de redes pegada al fondo */
+#side-nav li.social-strip{ margin-top: auto; }
+
+

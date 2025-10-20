@@ -1,0 +1,27 @@
+# _data/amigos.yml
+# Campos: name, url, logo (ruta desde /assets…), category (opcional), alt (opcional)
+
+- name: Academia Permacultura Íbera
+  url: https://academiapermaculturaibera.org/
+  logo: /assets/img/amigos/academia.png
+  category: Educación
+  alt: Logo de Permacultura Íbera
+
+- name: WWOOF España
+  url: https://wwoof.es/
+  logo: /assets/img/amigos/wwoof.png
+  category: Voluntariado
+  alt: Logo de WWOOF España
+
+- name: Scouts Aragón
+  url: https://scoutsaragon.org/
+  logo: /assets/img/amigos/scouts-aragon.png
+  category: Juventud
+  alt: Logo de Scouts Aragón
+
+- name: Red de Semillas
+  url: https://redsemillas.info/
+  logo: /assets/img/amigos/red-semillas.png
+  category: Agroecología
+
+# Añade tantos como quieras…

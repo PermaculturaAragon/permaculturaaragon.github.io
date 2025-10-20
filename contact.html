@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Contact"
+title: "Contacto"
 css: ["contact.css"]
 ---
 
@@ -8,42 +8,109 @@ css: ["contact.css"]
 
 <section class="section">
   <div class="container">
-    <h2 class="center-align" style="margin-top: 0;">
-      <i class="material-icons" style="vertical-align:middle; margin-right:6px;">mail</i>
-      Contacto
-    </h2>
+    <div class="row" style="align-items:flex-start;">
 
-    <form id="contact-form" action="{{ site.formspree_endpoint }}" method="POST" accept-charset="UTF-8" novalidate>
-      <div class="row">
-        <div class="input-field col s12 m6">
-          <input id="name" name="name" type="text" required />
-          <label for="name">Nombre</label>
-        </div>
+      <!-- Columna izquierda: texto -->
+      <div class="col s12 l7">
+        <h2 class="center-align" style="margin-top:0;">
+          <i class="material-icons" style="vertical-align:middle; margin-right:6px;">mail</i>
+          Contacta con nosotras
+        </h2>
 
-        <div class="input-field col s12 m6">
-          <input id="email" name="email" type="email" required />
-          <label for="email">Email</label>
-        </div>
+        <p class="flow-text" style="font-size:1.15rem; line-height:1.7; margin-top:1rem;">
+          En <strong>Permacultura Aragón</strong> nos encanta colaborar con proyectos que cuidan la tierra y a las personas.
+          Cuéntanos qué necesitas y vemos cómo ayudarte.
+        </p>
 
-        <div class="input-field col s12">
-          <input id="subject" name="subject" type="text" />
-          <label for="subject">Asunto (opcional)</label>
-        </div>
+        <ul style="margin:1rem 0 2rem 1.2rem; line-height:1.6;">
+          <li>Asesoría y diseño de permacultura.</li>
+          <li>Visitas y talleres en <em>Torre Escribana</em>.</li>
+          <li>Alquiler de baños secos <strong>Xutopot</strong> para eventos y campamentos.</li>
+          <li>Charlas, formación y dinamización.</li>
+        </ul>
 
-        <div class="input-field col s12">
-          <textarea id="message" name="message" class="materialize-textarea" rows="6" required></textarea>
-          <label for="message">Mensaje</label>
-        </div>
-
-        <!-- Honeypot antispam -->
-        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hp-field" aria-hidden="true">
-
-        <div class="col s12 form-actions" style="display:flex; align-items:center; gap:.75rem;">
-          <button type="submit" class="btn waves-effect">Enviar</button>
-          <span id="form-status" class="form-status" aria-live="polite"></span>
-        </div>
+        <p style="color:#4b5842; font-style:italic;">
+          También puedes escribirnos directamente a
+          <a href="mailto:permaculturaaragon@gmail.com">permaculturaaragon@gmail.com</a>.
+        </p>
       </div>
-    </form>
+
+      <!-- Columna derecha: formulario (más estrecho) -->
+      <div class="col s12 l5">
+        <form id="contact-form" action="{{ site.formspree_endpoint }}" method="POST" accept-charset="UTF-8" novalidate>
+          <div class="row" style="margin-bottom:0;">
+
+            <div class="input-field col s12">
+              <input id="name" name="name" type="text" aria-label="Nombre y apellidos"
+                     placeholder="Nombre y apellidos"
+                     required style="padding:.6rem .9rem;">
+            </div>
+
+            <div class="input-field col s12">
+              <input id="email" name="email" type="email" aria-label="Correo electrónico"
+                     placeholder="Correo electrónico"
+                     required style="padding:.6rem .9rem;">
+            </div>
+
+            <div class="input-field col s12">
+              <input id="phone" name="phone" type="tel" aria-label="Teléfono (opcional)"
+                     placeholder="Teléfono (opcional)" style="padding:.6rem .9rem;">
+            </div>
+
+            <div class="input-field col s12">
+              <input id="subject" name="subject" type="text" aria-label="Asunto (opcional)"
+                     placeholder="Asunto (opcional)" style="padding:.6rem .9rem;">
+            </div>
+
+            <div class="input-field col s12">
+              <textarea id="message" name="message" class="materialize-textarea"
+                        aria-label="Mensaje" placeholder="Cuéntanos brevemente tu consulta…"
+                        rows="5" required style="padding:.6rem .9rem;"></textarea>
+            </div>
+
+            <!-- PRIVACIDAD -->
+            <div class="col s12">
+              <div class="privacy-field" style="margin:.5rem 0 0;">
+                <!-- OJO: id ÚNICO, sin duplicados -->
+                <label for="privacy_consent"
+                       class="privacy-checkbox"
+                       style="position:static; display:inline-flex; align-items:center; gap:.5rem; transform:none;">
+                  <input type="checkbox"
+                         id="privacy_consent"
+                         name="privacy_consent"
+                         value="accepted"
+                         required
+                         style="position:static; opacity:1; width:18px; height:18px; margin:0;">
+                  <span>Acepto la <a href="{{ site.baseurl }}/privacidad" target="_blank" rel="noopener">Política de Privacidad</a></span>
+                </label>
+
+                <small style="display:block; margin:.25rem 0 0 26px; color:#666; line-height:1.4;">
+                  Responsable: Permacultura Aragón. Finalidad: responder a tu consulta. Legitimación: consentimiento de la persona interesada.
+                  Destinatarios: no se ceden datos, salvo obligación legal. Derechos: acceso, rectificación y supresión, entre otros, en
+                  <a href="mailto:permaculturaaragon@gmail.com">permaculturaaragon@gmail.com</a>. Más info en la Política de Privacidad.
+                </small>
+
+                <!-- Metadatos -->
+                <input type="hidden" name="privacy_policy_url" value="{{ site.baseurl }}/privacidad">
+                <input type="hidden" name="privacy_policy_version" value="v1.0-2025-10-20">
+              </div>
+            </div>
+
+            <!-- Honeypot antispam -->
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hp-field" aria-hidden="true">
+
+            <div class="col s12 form-actions" style="display:flex; align-items:center; gap:.75rem;">
+              <button type="submit" class="btn waves-effect"
+                      style="background-color:#4b5842; text-transform:none; font-weight:700;">
+                Enviar
+              </button>
+              <span id="form-status" class="form-status" aria-live="polite"></span>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -72,9 +139,7 @@ css: ["contact.css"]
           let msg = 'Hubo un error al enviar. Inténtalo de nuevo.';
           try {
             const data = await res.json();
-            if (data && data.errors) {
-              msg = data.errors.map(er => er.message).join(', ');
-            }
+            if (data && data.errors) msg = data.errors.map(er => er.message).join(', ');
           } catch (_) {}
           status.textContent = msg;
         }
@@ -85,4 +150,33 @@ css: ["contact.css"]
       }
     });
   })();
+</script>
+
+<script>
+  // Desactiva envío si no marcan la privacidad
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+    const consent = document.getElementById('privacy_consent');
+    const submitBtn = form.querySelector('button[type="submit"], input[type="submit"]');
+    if (!consent || !submitBtn) return;
+
+    const toggle = () => { submitBtn.disabled = !consent.checked; };
+    toggle();
+    consent.addEventListener('change', toggle);
+  });
+</script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const params = new URLSearchParams(window.location.search);
+    const subjectInput = document.getElementById('subject');
+    if (subjectInput && params.has('subject')) {
+      subjectInput.value = params.get('subject');
+      // opcional: baja al formulario o enfoca el mensaje
+      // subjectInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // document.getElementById('message')?.focus();
+    }
+  });
 </script>

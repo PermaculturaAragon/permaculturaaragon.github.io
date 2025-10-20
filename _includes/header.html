@@ -12,7 +12,13 @@
       {% endif %}
     </title>
 
+    
+    
+
+    
     <!-- === ESTILOS Y FUENTES === -->
+
+
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
     <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="{{site.baseurl}}/assets/css/main.css">
@@ -43,7 +49,7 @@
     <link rel="apple-touch-icon" href="{{ '/assets/img/favicon.png?v=1' | relative_url }}">
     <link rel="shortcut icon" href="{{ '/assets/img/favicon.png?v=1' | relative_url }}">
 
-    
+    <link rel="stylesheet" href="{{ '/assets/css/sidebar.css' | relative_url }}">
 
     
   </head>
@@ -129,6 +135,28 @@
             <i class="material-icons">email</i>Contacto
           </a>
         </li>
+
+
+
+
+
+
+<li class="social-strip">
+  <div class="social-inner">
+    <a class="social" href="{{ site.social.instagram }}" target="_blank" rel="noopener" aria-label="Instagram">
+      <img src="{{ '/assets/icons/instagram-white.png' | relative_url }}" alt="Instagram" width="20" height="20" loading="lazy">
+    </a>
+    <a class="social" href="{{ site.social.facebook }}" target="_blank" rel="noopener" aria-label="Facebook">
+      <img src="{{ '/assets/icons/facebook-white.png' | relative_url }}" alt="Facebook" width="20" height="20" loading="lazy">
+    </a>
+    <a class="social" href="{{ site.social.youtube }}" target="_blank" rel="noopener" aria-label="YouTube">
+      <img src="{{ '/assets/icons/youtube-white.png' | relative_url }}" alt="YouTube" width="20" height="20" loading="lazy">
+    </a>
+  </div>
+</li>
+
+
+
       </ul>
     </header>
 

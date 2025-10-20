@@ -1,10 +1,86 @@
 ---
 layout: page
-title: "amigos"
-css: ["about.css", "animate.css", "morphext.css"]
-js: ["morphext.min.js", "about.js"]
+title: "Red de amigos"
+css: ["friends.css"]
 ---
+
 <img src="{{site.baseurl}}/assets/img/adobe1.png" alt="Cabecera" class="imagen-ancha">
 
+<section class="section amigos">
+  <div class="container">
+    <h2 class="center-align" style="margin-top: 0;">
+      <i class="material-icons" style="vertical-align:middle; margin-right:6px;">groups</i>
+      Red de Amigas y Colaboradoras
+    </h2>
 
-{% include about.html %}
+    <p class="center-align flow-text" style="max-width: 720px; margin: 0 auto 1.5rem;">
+      Entidades, colectivos y proyectos con los que compartimos mirada y camino. 
+      <br>Haz clic en cada logo para visitar su web.
+    </p>
+
+    <!-- Grid de logos (se genera desde _data/amigos.yml) -->
+    <div class="amigos-grid">
+      {% assign amigos = site.data.amigos %}
+      {% for a in amigos %}
+        <a
+          class="amigo-card"
+          href="{{ a.url }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="{{ a.name }}"
+          {% if a.category %} data-category="{{ a.category | downcase }}"{% endif %}
+        >
+          <div class="amigo-logo-wrap">
+            <img
+              src="{{ a.logo | relative_url }}"
+              alt="{{ a.alt | default: a.name }}"
+              loading="lazy"
+              decoding="async"
+            >
+          </div>
+          <span class="amigo-name">{{ a.name }}</span>
+          {% if a.category %}<span class="amigo-cat">{{ a.category }}</span>{% endif %}
+        </a>
+      {% endfor %}
+    </div>
+
+    <!-- Accesible: lista de texto para lectores de pantalla -->
+    <ul class="sr-only">
+      {% for a in amigos %}
+        <li><a href="{{ a.url }}" target="_blank" rel="noopener noreferrer">{{ a.name }}</a></li>
+      {% endfor %}
+    </ul>
+
+    <!-- CTA centrado dentro de .container -->
+    <div class="amigos-cta center-align" role="complementary" aria-label="Invitación a contactar" style="max-width: 720px; margin: 2rem auto 0;">
+      <h3 style="margin-bottom:.5rem;">¿Te sumas a la red?</h3>
+      <p style="margin:0 0 1rem 0;">
+        ¿Tu proyecto vibra con nuestros valores? Escríbenos: nos encanta tejer redes.
+        Y si nos hemos olvidado de alguien, mil disculpas — avísanos y lo añadimos.
+      </p>
+      <a class="btn amigos-cta-btn" href="{{ site.baseurl }}/contact" aria-label="Ir a la página de contacto">
+        Envíanos un mensaje
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.amigo-logo-wrap img').forEach(img => {
+    img.addEventListener('error', () => {
+      const wrap = img.closest('.amigo-logo-wrap');
+      const name = img.getAttribute('alt') || 'Logo';
+      img.remove();
+      wrap.classList.add('no-logo');
+      wrap.setAttribute('data-name', name);
+    });
+  });
+});
+</script>
