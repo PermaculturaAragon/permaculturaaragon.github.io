@@ -7,5 +7,112 @@ js: ["shrink-logo.js"]
 <link rel="stylesheet" href="{{ '/assets/css/permacultura.css' | relative_url }}">
 
 <div >
+
+  {% assign hero_img = page.hero_image | default: site.hero_image | default: '/assets/img/adobe1.png' %}
+{% assign hero_title = page.hero_title | default: page.title %}
+
+{% unless page.show_hero == false %}
+<header class="hero">
+  <img src="{{ hero_img | relative_url }}" class="imagen-ancha hero-img" alt="Cabecera de {{ hero_title | escape }}">
+  <h1 class="hero-title">{{ hero_title }}</h1>
+</header>
+{% endunless %}
+
+
+
   {{ content }}
+
+
+
 </div>
+
+
+
+
+
+<!-- …tu script del hero “is-ready” ya existente… -->
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var hero = document.querySelector('.hero');
+  if(!hero) return;
+  var img = hero.querySelector('.hero-img');
+  if(!img) return;
+
+  function markReady(){ hero.classList.add('is-ready'); }
+
+  if (img.complete) {
+    if (img.decode) { img.decode().then(markReady).catch(markReady); }
+    else { markReady(); }
+  } else {
+    img.addEventListener('load', function(){
+      if (img.decode) { img.decode().then(markReady).catch(markReady); }
+      else { markReady(); }
+    });
+  }
+});
+</script>
+
+<!-- === Parallax para .slice-parallax === -->
+<script>
+(function(){
+  const els = new Set();
+
+  function measure(el){
+    const img = el.querySelector('img');
+    if(!img) return;
+    // alturas actuales
+    const h = el.clientHeight;
+    const imgH = img.clientHeight;
+    // máximo desplazamiento sin descubrir fondo
+    el.__maxShift = Math.max(0, (imgH - h) / 2);
+  }
+
+  function updateOne(el){
+    const img = el.querySelector('img'); if(!img) return;
+    const r = el.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+
+    // progreso respecto al centro de viewport (-1..+1 aprox)
+    const center = r.top + r.height/2;
+    const progress = (center - vh/2) / vh;
+
+    const speed = parseFloat(el.dataset.speed || '0.25');
+    let shift = progress * speed * r.height;
+
+    // clamp para no “morder” blanco
+    const max = el.__maxShift || 0;
+    if (shift >  max) shift =  max;
+    if (shift < -max) shift = -max;
+
+    img.style.setProperty('--y', `${shift}px`);
+  }
+
+  function rafUpdate(){ els.forEach(updateOne); ticking = false; }
+  let ticking = false;
+  function onScroll(){ if(!ticking){ requestAnimationFrame(rafUpdate); ticking = true; } }
+
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        els.add(e.target);
+        measure(e.target);
+        updateOne(e.target);
+      }else{
+        els.delete(e.target);
+      }
+    });
+  });
+
+  function init(){
+    document.querySelectorAll('.slice-parallax').forEach(el=> io.observe(el));
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', ()=>{ els.forEach(measure); onScroll(); });
+    onScroll();
+  }
+
+  if(document.readyState !== 'loading') init();
+  else document.addEventListener('DOMContentLoaded', init);
+})();
+</script>
+
+

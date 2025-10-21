@@ -1,10 +1,10 @@
 ---
 layout: page
-title: "Diseños"
+title: "portfolio de diseños"
 permalink: /disenos/
+hero_image: /assets/img/diseno1.jpg
 ---
 
-<img src="{{site.baseurl}}/assets/img/adobe1.png" alt="Cabecera" class="imagen-ancha">
 
 <!-- Porfolio de diseños de la diplomatura -->
 <section class="section">
@@ -12,10 +12,7 @@ permalink: /disenos/
     <div class="row">
       <div class="col s12 m10 l8 offset-m1 offset-l2">
 
-        <h2 class="heading-with-icon">
-          <i class="material-icons">work_outline</i>
-          Porfolio de diseños de Ángel Escuín
-        </h2>
+
 
         <p>
           Soy <strong>Ángel Escuín</strong>, <strong>diplomando por la 
@@ -44,8 +41,9 @@ permalink: /disenos/
         </p>
 
         <div class="center-align" style="margin-top: 1rem;">
-          <a class="btn waves-effect waves-light green darken-2"
-             href="{{ site.baseurl }}/contact" title="Solicitar algún diseño en concreto">
+          <!-- Botón unificado (light) -->
+          <a class="btn" href="{{ site.baseurl }}/contact" title="Solicitar algún diseño en concreto">
+            <i class="material-icons icon-left">mail</i>
             Pedir diseño completo
           </a>
         </div>
@@ -55,13 +53,8 @@ permalink: /disenos/
   </div>
 </section>
 
-
-
-
 <section class="section">
   <div class="container">
-
-
     <div class="row">
       {% assign disenos = site.disenos | sort: 'order' %}
       {% for diseno in disenos %}
@@ -77,10 +70,11 @@ permalink: /disenos/
               <p>{{ diseno.subtitle }}</p>
             </div>
             <div class="card-action">
-              <a href="{{ diseno.url | relative_url }}">Ver más</a>
+              <a class="btn" href="{{ diseno.url | relative_url }}">
+                <i class="material-icons icon-left">visibility</i>
+                Ver más
+              </a>
             </div>
-
-
           </div>
         </div>
       {% endfor %}

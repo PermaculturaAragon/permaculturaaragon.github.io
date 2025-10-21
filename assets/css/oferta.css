@@ -48,14 +48,7 @@
 }
 .oferta p{ margin: 0 0 .8rem 0; }
 
-.oferta .oferta-btn{
-  background:#4b5842 !important;
-  color:#fff !important;
-  border-radius:10px;
-  text-transform: none;
-  padding: .55rem 1rem;
-}
-.oferta .oferta-btn:hover{ filter: brightness(1.06); }
+
 
 /* Cómo trabajamos */
 .oferta .howto{

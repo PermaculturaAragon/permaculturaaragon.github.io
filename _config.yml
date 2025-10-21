@@ -83,7 +83,7 @@ defaults:
       image2: ""
       order: 1
 
-
+hero_image: /assets/img/almendro.jpg
 
 
 social:
