@@ -1,0 +1,52 @@
+/* === INICIATIVAS === */
+.iniciativas .iniciativas-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:20px;
+  justify-content:center;   /* centra el conjunto cuando hay pocas tarjetas */
+}
+
+/* Tarjeta */
+.iniciativas .iniciativa-card{
+  display:flex;
+  flex-direction:column;
+  text-decoration:none;
+  color:inherit;
+  background:#fff;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid rgba(0,0,0,.06);
+  box-shadow:0 1px 4px rgba(0,0,0,.06);
+  transition:box-shadow .2s ease;
+  width:100%;
+  max-width:360px;
+}
+.iniciativas .iniciativa-card:hover{ box-shadow:0 8px 22px rgba(0,0,0,.12); }
+
+/* Imagen de cabecera */
+.iniciativas .iniciativa-card .cover{ height:160px; background:#f3f5f3; }
+.iniciativas .iniciativa-card .cover img{
+  width:100%; height:100%; object-fit:cover; display:block;
+}
+
+/* Cuerpo */
+.iniciativas .iniciativa-card .card-body{
+  padding:12px 14px 16px; display:flex; flex-direction:column; gap:6px;
+}
+.iniciativas .logo-wrap{ height:48px; display:flex; align-items:center; justify-content:center; }
+.iniciativas .logo-wrap img{ max-height:42px; max-width:90%; object-fit:contain; }
+
+/* Textos */
+.iniciativas .title{
+  margin:4px 0 0; font-family:'Lora', serif; font-size:1.1rem; line-height:1.25; color:#4b5842;
+}
+.iniciativas .subtitle{ margin:0; font-size:.95rem; color:#333; }
+.iniciativas .desc{
+  margin-top:4px; font-size:.9rem; color:#6a6a6a;
+  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+  min-height:calc(1.25em * 3);
+}
+
+@media (max-width:600px){
+  .iniciativas .iniciativa-card .cover{ height:140px; }
+}

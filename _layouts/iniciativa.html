@@ -1,0 +1,87 @@
+---
+layout: page
+---
+
+<img src="{{site.baseurl}}/assets/img/adobe1.png" alt="Cabecera" class="imagen-ancha">
+
+<section class="section iniciativa">
+  <div class="container">
+
+    <!-- Cabecera ficha -->
+    <div class="row" style="align-items:center; gap:12px;">
+      <div class="col s12 m2 center-align" style="min-width:110px;">
+        {% if page.logo %}
+          <img src="{{ page.logo | relative_url }}" alt="Logo {{ page.title | escape }}"
+               style="max-width:100%; max-height:96px; object-fit:contain;">
+        {% endif %}
+      </div>
+
+      <div class="col s12 m10">
+        <h2 style="margin:0 0 .25rem 0;">
+          <i class="material-icons" style="vertical-align:middle; margin-right:6px;">eco</i>
+          {{ page.title }}
+        </h2>
+
+        {% if page.subtitle %}
+          <p class="flow-text" style="margin:.25rem 0 0 0;">{{ page.subtitle }}</p>
+        {% endif %}
+
+        <div style="margin-top:.5rem;">
+          {% if page.status %}<span class="chip">{{ page.status }}</span>{% endif %}
+          {% if page.year_start %}<span class="chip">Desde {{ page.year_start }}</span>{% endif %}
+        </div>
+
+{%- comment -%} Botón: website > link ; oculta si apunta a esta misma página {%- endcomment -%}
+{%- assign btn_url = page.website | default: page.link -%}
+{%- if btn_url -%}
+  {%- assign self_url = page.url | relative_url -%}
+  {%- assign is_external = btn_url contains '://' -%}
+  {%- assign target_url = is_external | default: false -%}
+  {%- if is_external -%}
+    {%- assign target_url = btn_url -%}
+  {%- else -%}
+    {%- assign target_url = btn_url | relative_url -%}
+  {%- endif -%}
+
+  {%- unless target_url == self_url -%}
+    <p style="margin-top:.75rem;">
+      <a class="btn" href="{{ target_url }}"
+         {%- if is_external -%} target="_blank" rel="noopener noreferrer" {%- endif -%}>
+        {%- if is_external -%}Visitar web{%- else -%}Ver más{%- endif -%}
+      </a>
+    </p>
+  {%- endunless -%}
+{%- endif -%}
+
+      </div>
+    </div>
+
+    {% if page.description %}<p style="margin-top:.5rem;">{{ page.description }}</p>{% endif %}
+
+    <!-- CONTENIDO del .md -->
+    <div class="content" style="margin-top:.5rem;">
+      {{ content }}
+    </div>
+
+    <!-- Galería -->
+    <div class="row" style="margin-top:1rem;">
+      {% if page.image1 %}
+        <div class="col s12 m6">
+          <img src="{{ page.image1 | relative_url }}" alt="Imagen 1 de {{ page.title | escape }}"
+               class="responsive-img" style="border-radius:10px; object-fit:cover;">
+        </div>
+      {% endif %}
+      {% if page.image2 %}
+        <div class="col s12 m6">
+          <img src="{{ page.image2 | relative_url }}" alt="Imagen 2 de {{ page.title | escape }}"
+               class="responsive-img" style="border-radius:10px; object-fit:cover;">
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="center-align" style="margin-top:1rem;">
+      <a class="btn-flat" href="{{ '/iniciativas/' | relative_url }}">← Volver a Iniciativas</a>
+    </div>
+
+  </div>
+</section>

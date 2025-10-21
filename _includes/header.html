@@ -86,23 +86,14 @@
           </a>
         </li>
 
-        <li class="{% if page.url contains '/permacultura' %}active{% endif %}">
-          <a class="waves-effect" href="{{site.baseurl}}/permacultura">
-            <i class="material-icons">spa</i>Qué es la Permacultura
+
+        <li class="{% if page.url contains '/iniciativas' %}active{% endif %}">
+          <a class="waves-effect" href="{{site.baseurl}}/iniciativas">
+            <i class="material-icons">eco</i>Iniciativas
           </a>
         </li>
 
-        <li class="{% if page.url contains '/projects' %}active{% endif %}">
-          <a class="waves-effect" href="{{site.baseurl}}/projects">
-            <i class="material-icons">eco</i>Proyectos en marcha
-          </a>
-        </li>
 
-        <li class="{% if page.url contains '/disenos' %}active{% endif %}">
-          <a class="waves-effect" href="{{site.baseurl}}/disenos">
-            <i class="material-icons">architecture</i>Diseños diplomatura
-          </a>
-        </li>
 
         <li class="{% if page.url contains '/oferta' %}active{% endif %}">
           <a class="waves-effect" href="{{site.baseurl}}/oferta">
@@ -117,6 +108,20 @@
         </li>
 
         <li><div class="divider"></div></li>
+
+                <li class="{% if page.url contains '/disenos' %}active{% endif %}">
+          <a class="waves-effect" href="{{site.baseurl}}/disenos">
+            <i class="material-icons">architecture</i>Diseños diplomatura
+          </a>
+        </li>
+
+
+        
+        <li class="{% if page.url contains '/permacultura' %}active{% endif %}">
+          <a class="waves-effect" href="{{site.baseurl}}/permacultura">
+            <i class="material-icons">spa</i>Qué es la Permacultura
+          </a>
+        </li>
 
         <li class="{% if page.url contains '/amigos' %}active{% endif %}">
           <a class="waves-effect" href="{{site.baseurl}}/amigos">

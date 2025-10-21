@@ -48,7 +48,7 @@
     if (!isNaN(realH) && realH > 0) maxH = realH;
 
     const mq    = window.matchMedia('(min-width: 993px)');
-    const range = 220;   // píxeles de scroll para llegar al mínimo (sube/baja para ajustar)
+    const range = 110;   // píxeles de scroll para llegar al mínimo (sube/baja para ajustar)
 
     // curva ease-out para que el final sea más suave y no encoja tanto
     const easeOutCubic = t => 1 - Math.pow(1 - t, 3);

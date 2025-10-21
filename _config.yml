@@ -49,10 +49,40 @@ sass:
   style: compressed
 future: true
 
+# --- Colecciones ---
 collections:
   disenos:
     output: true
     permalink: /disenos/:name/
+  iniciativas:
+    output: true
+    permalink: /iniciativas/:name/
+
+# Valores por defecto (opcional, pero recomendado)
+defaults:
+  - scope:
+      path: ""
+      type: "disenos"
+    values:
+      layout: diseno
+      subtitle: ""
+      image: ""
+      order: 1
+
+  - scope:
+      path: ""
+      type: "iniciativas"
+    values:
+      layout: iniciativa
+      subtitle: ""
+      logo: ""
+      link: ""
+      website: ""
+      description: ""
+      image1: ""
+      image2: ""
+      order: 1
+
 
 
 
@@ -60,3 +90,4 @@ social:
   instagram: https://instagram.com/permacultura.aragon
   facebook:  https://www.facebook.com/permaculturaaragon
   youtube:   https://www.youtube.com/@permaculturaaragon7075
+

@@ -1,0 +1,46 @@
+---
+layout: page
+title: "Iniciativas"
+css: ["iniciativas.css"]
+---
+
+<img src="{{site.baseurl}}/assets/img/adobe1.png" alt="Cabecera" class="imagen-ancha">
+
+<section class="section iniciativas">
+  <div class="container">
+    <h2 class="center-align" style="margin-top:0;">
+      <i class="material-icons" style="vertical-align:middle; margin-right:6px;">eco</i>
+      Iniciativas
+    </h2>
+
+    <p class="center-align flow-text" style="max-width:760px; margin:0 auto 1.5rem;">
+      Emprendimientos vivos que estamos impulsando desde Permacultura Aragón.
+    </p>
+
+    <div class="iniciativas-grid">
+      {% assign items = site.iniciativas | sort: 'order' %}
+      {% for p in items %}
+        {% assign href = p.link | default: p.url %}
+        <a class="iniciativa-card" href="{{ href | relative_url }}" aria-label="{{ p.title }}">
+          <div class="cover">
+            {% if p.image1 %}
+              <img src="{{ p.image1 | relative_url }}" alt="Imagen de {{ p.title | escape }}">
+            {% endif %}
+          </div>
+
+          <div class="card-body">
+            <div class="logo-wrap">
+              {% if p.logo %}
+                <img src="{{ p.logo | relative_url }}" alt="Logo {{ p.title | escape }}">
+              {% endif %}
+            </div>
+
+            <h3 class="title">{{ p.title }}</h3>
+            {% if p.subtitle %}<p class="subtitle">{{ p.subtitle }}</p>{% endif %}
+            {% if p.description %}<p class="desc">{{ p.description }}</p>{% endif %}
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
