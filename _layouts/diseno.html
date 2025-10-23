@@ -1,33 +1,25 @@
 ---
 layout: page
+show_hero: false
 ---
 
-<section class="section">
+<section class="section diseno">
+  {% if page.image %}
+    <img src="{{ page.image | relative_url }}"
+         alt="{{ page.title }}"
+         class="imagen-ancha">
+  {% endif %}
+
   <div class="container">
-
-
-    {% if page.image %}
-      <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" class="imagen-ancha">
-    {% endif %}
-
-    <h1 class="titulo-diseno">{{ page.title }}</h1>
-
+    <h1 class="diseno-title">{{ page.title }}</h1>
     {% if page.subtitle %}
-      <p class="flow-text center-align" style="margin-bottom:1.2rem;">
-        {{ page.subtitle }}
-      </p>
+      <p class="diseno-subtitle">{{ page.subtitle }}</p>
     {% endif %}
 
-    {% if page.title %}
-        {% assign subject = 'Solicitud diseño: ' | append: page.title %}
-<a class="btn waves-effect"
-   href="{{ '/contact/' | relative_url }}?subject={{ subject | uri_escape }}">
-  Contactar por este diseño
-</a>
-    {% endif %}
-
-
-
+    {% assign subject = 'Solicitud diseño: ' | append: page.title %}
+    <a class="btn" href="{{ '/contact/' | relative_url }}?subject={{ subject | uri_escape }}">
+      Contactar por este diseño
+    </a>
 
     <div class="content">
       {{ content }}

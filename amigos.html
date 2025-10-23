@@ -47,18 +47,31 @@ hero_image: /assets/img/plantulas.jpg
       {% endfor %}
     </ul>
 
-    <!-- CTA centrado dentro de .container -->
-    <div class="amigos-cta center-align" role="complementary" aria-label="Invitación a contactar" style="max-width: 720px; margin: 2rem auto 0;">
-      <h3 style="margin-bottom:.5rem;">¿Te sumas a la red?</h3>
-      <p style="margin:0 0 1rem 0;">
-        ¿Tu proyecto vibra con nuestros valores? Escríbenos: nos encanta tejer redes.
-        Y si nos hemos olvidado de alguien, mil disculpas — avísanos y lo añadimos.
-      </p>
-      <!-- Botón unificado (estilo light) -->
-      <a class="btn" href="{{ site.baseurl }}/contact" aria-label="Ir a la página de contacto">
-        <i class="material-icons icon-left">mail</i>
-        Envíanos un mensaje
-      </a>
+
+  </div>
+</section>
+
+  <!-- Banda parallax con CTA -->
+<section class="full-bleed">
+  <div class="slice-parallax"
+       style="--slice-h: 220px; --overscan: 80%;
+              --overlay: linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.45));
+              --slice-color: #fff;"
+       data-speed="0.55">
+    <img src="{{ site.baseurl }}/assets/img/gallinero2.jpg" alt="Fondo vegetal">
+
+    <div class="slice-content">
+      <div class="wrap">
+        <h2 class="slice-title">¿Te sumas a la red?</h2>
+        <p class="slice-subtitle"> ¿Tu proyecto vibra con nuestros valores? Escríbenos: nos encanta tejer redes.</p>
+        <p class="slice-subtitle"> 
+        Avísanos si nos hemos olvidado de tí y quieres aparecer en esta sección</p>
+        <div class="slice-actions">
+          <a class="btn btn--onimage " href="{{ site.baseurl }}/contact" aria-label="Ir a la página de contacto">
+            Envíanos un mensaje
+          </a>
+        </div>
+      </div>
     </div>
 
   </div>

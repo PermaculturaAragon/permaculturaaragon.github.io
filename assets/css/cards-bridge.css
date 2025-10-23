@@ -1,0 +1,98 @@
+/* ---- PUENTE: que las .card de Diseños se vean como .iniciativa-card ---- */
+
+/* Card base (copiado del estilo de iniciativas) */
+.disenos .card{
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  background: #fff;
+  border-radius: 12px;               /* mismo redondeo que iniciativas */
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,.06); /* fino como iniciativas */
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.disenos .card:hover,
+.disenos .card:focus-within{
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0,0,0,.15);
+}
+
+/* Media 4:3 para igualar alturas y recorte como en iniciativas */
+.disenos .card .card-image{
+  aspect-ratio: 4 / 3;
+  background:#f5f5f5;
+  overflow:hidden;
+}
+.disenos .card .card-image img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+
+/* Cuerpo */
+.disenos .card .card-content{
+  display:flex;
+  flex-direction:column;
+  gap:.5rem;
+  padding: 1rem 1.25rem 0.75rem;
+  flex:1; /* que todas tengan la misma altura */
+}
+
+/* Título y texto (alineado al estilo de iniciativas) */
+.disenos .card .card-title,
+.disenos .card .card-content .card-title{
+  display:block;
+  font-family: "Lora", serif;
+  font-weight:600;
+  font-size:1.1rem;
+  line-height:1.3;
+  color:#222;
+  margin:0 0 .25rem 0;
+}
+.disenos .card .card-content p{
+  margin:.25rem 0 0;
+  color:#555;
+}
+
+/* Pie/CTA sutil (si usas .card-action de Materialize) */
+.disenos .card .card-action{
+  border-top:none;
+  padding: 0 1.25rem 1rem;
+}
+.disenos .card .card-action a{
+  font-weight:600;
+  color:#4b5842; /* verde marca */
+}
+
+/* Logo opcional, igual que en iniciativas */
+.disenos .card .logo{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:42px;
+  margin:.25rem 0 .25rem;
+}
+.disenos .card .logo img{
+  max-height:42px;
+  width:auto;
+}
+
+
+/* El <a> se comporta como card de bloque */
+.disenos .diseno-cardlink{
+  display:flex;
+  flex-direction:column;
+  text-decoration:none;
+  color: inherit;
+}
+
+/* Que el “Ver más →” no intercepte clics (opcional) */
+.disenos .diseno-cardlink .u-card__cta{
+  pointer-events:none;
+}
+
+/* Por si Materialize espera .card en <div>, da igual el tag */
+.disenos .diseno-cardlink.card{ /* vacío: solo asegura coincidencia de selectores */ }
+

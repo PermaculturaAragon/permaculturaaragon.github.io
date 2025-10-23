@@ -1,32 +1,32 @@
-<footer class="page-footer">
-  <div class="footer-top">
-    <div class="container footer-content">
-      <div class="footer-left">
-        <img src="{{site.baseurl}}/assets/res/logoblanco.png" alt="Permacultura Aragón" class="footer-logo" />
-      </div>
+<footer class="mini-footer" role="contentinfo">
+  <div class="mini-footer__inner container">
+    <a class="mini-footer__brand" href="{{site.baseurl}}/">
+      <img src="{{site.baseurl}}/assets/res/logoblanco.png" alt="Permacultura Aragón" width="28" height="28">
+      <span>Permacultura Aragón</span>
+    </a>
 
-      <div class="footer-center">
-        <div class="footer-col">
-          <a href="{{site.baseurl}}/">Torre Escribana</a>
-          <a href="{{site.baseurl}}/">Xutopot</a>
-          <a href="{{site.baseurl}}/">Permática</a>
-        </div>
-        <div class="footer-col">
-          <a href="{{site.baseurl}}/">Diseño</a>
-          <a href="{{site.baseurl}}/">Quiénes somos</a>
-          <a href="{{site.baseurl}}/">Contacta</a>
-        </div>
-      </div>
+    <nav class="mini-footer__nav" aria-label="Enlaces de pie">
+      <a href="{{site.baseurl}}/">Inicio</a>
+      <a href="{{site.baseurl}}/quienes-somos/">Quiénes somos</a>
+      <a href="{{site.baseurl}}/contact/">Contacto</a>
+      <a href="{{site.baseurl}}/privacidad/">Privacidad</a>
+    </nav>
 
-      <div class="footer-right">
-        <a href="{{site.baseurl}}/"><img src="{{site.baseurl}}/assets/icons/youtube-white.png" alt="YouTube"></a>
-        <a href="{{site.baseurl}}/"><img src="{{site.baseurl}}/assets/icons/facebook-white.png" alt="Facebook"></a>
-        <a href="{{site.baseurl}}/"><img src="{{site.baseurl}}/assets/icons/instagram-white.png" alt="Instagram"></a>
-      </div>
+    <div class="mini-footer__social">
+      <a href="{{site.baseurl}}/" aria-label="YouTube">
+        <img src="{{site.baseurl}}/assets/icons/youtube-white.png" alt="">
+      </a>
+      <a href="{{site.baseurl}}/" aria-label="Facebook">
+        <img src="{{site.baseurl}}/assets/icons/facebook-white.png" alt="">
+      </a>
+      <a href="{{site.baseurl}}/" aria-label="Instagram">
+        <img src="{{site.baseurl}}/assets/icons/instagram-white.png" alt="">
+      </a>
     </div>
   </div>
 
-  <div class="footer-bottom">
-    <p>© {{"now" | date: "%Y"}} Permacultura Aragón. Powered by <a href="https://github.com/ShawnTeoh/matjek">MatJek</a>.</p>
+  <div class="mini-footer__legal container">
+    <small>© {{"now" | date: "%Y"}} Permacultura Aragón. Powered by <a href="https://github.com/ShawnTeoh/matjek">MatJek</a>.</small>
   </div>
 </footer>
+

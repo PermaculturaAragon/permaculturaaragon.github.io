@@ -21,7 +21,7 @@
   width:100%;
   max-width:360px;
 }
-.iniciativas .iniciativa-card:hover{ box-shadow:0 8px 22px rgba(0,0,0,.12); }
+.iniciativas .iniciativa-card:hover{ transform: translateY(-2px); box-shadow:0 8px 22px rgba(0,0,0,.12); }
 
 /* Imagen de cabecera */
 .iniciativas .iniciativa-card .cover{ height:160px; background:#f3f5f3; }

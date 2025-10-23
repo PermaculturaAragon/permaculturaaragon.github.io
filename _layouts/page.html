@@ -11,7 +11,7 @@ js: ["shrink-logo.js"]
   {% assign hero_img = page.hero_image | default: site.hero_image | default: '/assets/img/adobe1.png' %}
 {% assign hero_title = page.hero_title | default: page.title %}
 
-{% unless page.show_hero == false %}
+{% unless page.show_hero == false or layout.show_hero == false %}
 <header class="hero">
   <img src="{{ hero_img | relative_url }}" class="imagen-ancha hero-img" alt="Cabecera de {{ hero_title | escape }}">
   <h1 class="hero-title">{{ hero_title }}</h1>

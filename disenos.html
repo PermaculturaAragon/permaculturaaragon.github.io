@@ -3,11 +3,13 @@ layout: page
 title: "portfolio de diseños"
 permalink: /disenos/
 hero_image: /assets/img/diseno1.jpg
+css: ["permacultura.css", "cards-bridge.css"]
+
 ---
 
 
 <!-- Porfolio de diseños de la diplomatura -->
-<section class="section">
+<section class="section" >
   <div class="container">
     <div class="row">
       <div class="col s12 m10 l8 offset-m1 offset-l2">
@@ -53,30 +55,32 @@ hero_image: /assets/img/diseno1.jpg
   </div>
 </section>
 
-<section class="section">
+<section class="section disenos">
   <div class="container">
     <div class="row">
       {% assign disenos = site.disenos | sort: 'order' %}
       {% for diseno in disenos %}
         <div class="col s12 m6 l4">
-          <div class="card hoverable">
-            {% if diseno.image %}
-              <div class="card-image">
-                <img src="{{ diseno.image | relative_url }}" alt="{{ diseno.title }}">
-              </div>
-            {% endif %}
-            <div class="card-content">
-              <span class="card-title">{{ diseno.title }}</span>
-              <p>{{ diseno.subtitle }}</p>
-            </div>
-            <div class="card-action">
-              <a class="btn" href="{{ diseno.url | relative_url }}">
-                <i class="material-icons icon-left">visibility</i>
-                Ver más
-              </a>
-            </div>
-          </div>
-        </div>
+  <a class="card hoverable diseno-cardlink"
+     href="{{ diseno.url | relative_url }}"
+     aria-label="Abrir: {{ diseno.title }}">
+
+    {% if diseno.image %}
+      <div class="card-image">
+        <img src="{{ diseno.image | relative_url }}" alt="{{ diseno.title }}">
+      </div>
+    {% endif %}
+
+    <div class="card-content">
+      <span class="card-title">{{ diseno.title }}</span>
+      <p>{{ diseno.subtitle }}</p>
+    </div>
+
+    <div class="card-action">
+      <span class="u-card__cta">Ver más →</span>
+    </div>
+  </a>
+</div>
       {% endfor %}
     </div>
   </div>
