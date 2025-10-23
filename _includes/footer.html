@@ -1,32 +1,19 @@
-<footer class="mini-footer" role="contentinfo">
-  <div class="mini-footer__inner container">
-    <a class="mini-footer__brand" href="{{site.baseurl}}/">
-      <img src="{{site.baseurl}}/assets/res/logoblanco.png" alt="Permacultura Aragón" width="28" height="28">
-      <span>Permacultura Aragón</span>
+<footer class="site-footer site-footer--compact">
+  <div class="container footer__bar">
+    <a class="footer__brand" href="{{ site.baseurl }}/" aria-label="Inicio">
+      <img src="{{ site.baseurl }}/assets/res/logoblanco.png" alt="Permacultura Aragón" loading="lazy">
     </a>
 
-    <nav class="mini-footer__nav" aria-label="Enlaces de pie">
-      <a href="{{site.baseurl}}/">Inicio</a>
-      <a href="{{site.baseurl}}/quienes-somos/">Quiénes somos</a>
-      <a href="{{site.baseurl}}/contact/">Contacto</a>
-      <a href="{{site.baseurl}}/privacidad/">Privacidad</a>
-    </nav>
-
-    <div class="mini-footer__social">
-      <a href="{{site.baseurl}}/" aria-label="YouTube">
-        <img src="{{site.baseurl}}/assets/icons/youtube-white.png" alt="">
-      </a>
-      <a href="{{site.baseurl}}/" aria-label="Facebook">
-        <img src="{{site.baseurl}}/assets/icons/facebook-white.png" alt="">
-      </a>
-      <a href="{{site.baseurl}}/" aria-label="Instagram">
-        <img src="{{site.baseurl}}/assets/icons/instagram-white.png" alt="">
-      </a>
+    <div class="footer__links" role="navigation" aria-label="Iniciativas">
+      <a href="{{ '/torre-escribana' | relative_url }}">Torre Escribana</a>
+      <span class="sep">·</span>
+      <a href="{{ '/xutopot' | relative_url }}">Xutopot</a>
+      <span class="sep">·</span>
+      <a href="{{ '/permatica' | relative_url }}">Permática</a>
     </div>
-  </div>
 
-  <div class="mini-footer__legal container">
-    <small>© {{"now" | date: "%Y"}} Permacultura Aragón. Powered by <a href="https://github.com/ShawnTeoh/matjek">MatJek</a>.</small>
+    <small class="footer__legal">© 2025 Permacultura Aragón. Powered by Escuín with
+      <a href="https://github.com/matjek">MatJek</a>.
+    </small>
   </div>
 </footer>
-

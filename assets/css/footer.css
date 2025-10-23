@@ -1,0 +1,67 @@
+:root{
+  /* usa el mismo verde en todo el sitio */
+  --brand-green: #8bc34a;
+}
+
+/* Barra compacta a una línea */
+.site-footer.site-footer--compact{
+  background: #8bc34a;
+  color: #fff;
+  padding: 0;                 /* sin relleno extra */
+}
+
+.site-footer .footer__bar{
+  min-height: 60px;           /* = franja redes izquierda */
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  white-space: nowrap;        /* evita cortes feos en desktop */
+}
+
+/* Logo bajito para que la barra no crezca */
+.site-footer .footer__brand img{
+  display: block;
+  height: 22px;               /* ajusta 20–26px según veas */
+  width: auto;
+}
+
+/* Enlaces “iniciativas” en línea */
+.site-footer .footer__links{
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+.site-footer .footer__links .sep{ opacity: .7; }
+.site-footer a{ color: inherit; text-decoration: none; opacity: .95; }
+.site-footer a:hover{ opacity: 1; text-decoration: underline; }
+
+/* Legal a la derecha */
+.site-footer .footer__legal{
+  margin-left: auto;
+  font-size: .9rem;
+  opacity: .9;
+}
+
+/* Defensa por si alguien mete <nav> dentro del footer (evita el rojo de Materialize) */
+.site-footer nav{
+  background: transparent !important;
+  height: auto !important;
+  line-height: normal !important;
+  box-shadow: none !important;
+}
+
+/* Responsive: cuando no quepa, permite saltos limpios */
+@media (max-width: 880px){
+  .site-footer .footer__bar{
+    flex-wrap: wrap;
+    row-gap: .25rem;
+    white-space: normal;
+    padding: 6px 0;           /* mantiene aspecto compacto en 2 líneas */
+  }
+  .site-footer .footer__legal{
+    width: 100%;
+    text-align: right;
+    margin-left: 0;
+    font-size: .85rem;
+  }
+}
