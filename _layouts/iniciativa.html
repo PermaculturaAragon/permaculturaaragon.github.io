@@ -2,7 +2,6 @@
 layout: page
 ---
 
-
 <section class="section iniciativa">
   <div class="container">
 
@@ -30,27 +29,33 @@ layout: page
           {% if page.year_start %}<span class="chip">Desde {{ page.year_start }}</span>{% endif %}
         </div>
 
-{%- comment -%} Botón: website > link ; oculta si apunta a esta misma página {%- endcomment -%}
-{%- assign btn_url = page.website | default: page.link -%}
-{%- if btn_url -%}
-  {%- assign self_url = page.url | relative_url -%}
-  {%- assign is_external = btn_url contains '://' -%}
-  {%- assign target_url = is_external | default: false -%}
-  {%- if is_external -%}
-    {%- assign target_url = btn_url -%}
-  {%- else -%}
-    {%- assign target_url = btn_url | relative_url -%}
-  {%- endif -%}
+        {%- comment -%} Botón: website > link ; oculta si apunta a esta misma página {%- endcomment -%}
+        {%- assign btn_url = page.website | default: page.link -%}
+        {%- if btn_url -%}
+          {%- assign self_url = page.url | relative_url -%}
 
-  {%- unless target_url == self_url -%}
-    <p style="margin-top:.75rem;">
-      <a class="btn" href="{{ target_url }}"
-         {%- if is_external -%} target="_blank" rel="noopener noreferrer" {%- endif -%}>
-        {%- if is_external -%}Visitar web{%- else -%}Ver más{%- endif -%}
-      </a>
-    </p>
-  {%- endunless -%}
-{%- endif -%}
+          {%- comment -%} determinar si es externa {%- endcomment -%}
+          {%- assign is_external = false -%}
+          {%- if btn_url contains '://' -%}
+            {%- assign is_external = true -%}
+          {%- endif -%}
+
+          {%- comment -%} construir URL destino {%- endcomment -%}
+          {%- if is_external -%}
+            {%- assign target_url = btn_url -%}
+          {%- else -%}
+            {%- assign target_url = btn_url | relative_url -%}
+          {%- endif -%}
+
+          {%- unless target_url == self_url -%}
+            <p style="margin-top:.75rem;">
+              <a class="btn" href="{{ target_url }}"
+                 {%- if is_external -%} target="_blank" rel="noopener noreferrer"{%- endif -%}>
+                {%- if is_external -%}Visitar web{%- else -%}Ver más{%- endif -%}
+              </a>
+            </p>
+          {%- endunless -%}
+        {%- endif -%}
 
       </div>
     </div>

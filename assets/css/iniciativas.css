@@ -50,3 +50,93 @@
 @media (max-width:600px){
   .iniciativas .iniciativa-card .cover{ height:140px; }
 }
+
+/* Intro Emprendimientos */
+.iniciativas-intro{
+  margin: 0 0 1rem;
+  text-align: center;
+}
+.iniciativas-intro .wrap{
+  max-width: 920px;
+  margin: 0 auto;
+  padding: .5rem 0 0;
+}
+.iniciativas-intro .kicker{
+  display:inline-block;
+  font-weight:700;
+  letter-spacing:.4px;
+  font-size:.9rem;
+  color: var(--verde-comun, #2e7d32);
+  background: #eaf4e6;
+  border:1px solid #d4e8bc;
+  padding:.25rem .6rem;
+  border-radius:999px;
+  margin-bottom:.6rem;
+}
+.iniciativas-intro .title{
+  font-family:"Lora", serif;
+  font-weight:700;
+  color:#4b5842;
+  font-size:clamp(1.8rem, 3.2vw, 2.4rem);
+  margin:.2rem 0 .4rem;
+}
+.iniciativas-intro .sub{
+  color:#4b5842;
+  font-size:1.08rem;
+  margin: 0 auto 1rem;
+  max-width: 52ch;
+}
+.iniciativas-intro .copy{
+  text-align:left;
+  margin: 0 auto;
+  max-width: 70ch;
+  color:#333;
+  line-height:1.75;
+}
+.iniciativas-intro .copy p{ margin:.6rem 0; }
+.iniciativas-intro .copy .highlight{
+  position:relative;
+  padding:.8rem 1rem;
+  border-left:4px solid var(--verde-comun, #2e7d32);
+  background: linear-gradient(90deg, #f3f9ef 0%, #f8fcf5 100%);
+  border-radius:6px;
+}
+
+
+/* Intro Emprendimientos */
+.iniciativas-intro{ margin:0 0 1rem; text-align:center; }
+.iniciativas-intro .wrap{ max-width:920px; margin:0 auto; padding:.5rem 0 0; }
+.iniciativas-intro .kicker{
+  display:inline-block; font-weight:700; letter-spacing:.4px; font-size:.9rem;
+  color: var(--verde-comun, #2e7d32); background:#eaf4e6; border:1px solid #d4e8bc;
+  padding:.25rem .6rem; border-radius:999px; margin-bottom:.6rem;
+}
+.iniciativas-intro .title{
+  font-family:"Lora", serif; font-weight:700; color:#4b5842;
+  font-size:clamp(1.8rem,3.2vw,2.4rem); margin:.2rem 0 .4rem;
+}
+.iniciativas-intro .sub{ color:#4b5842; font-size:1.08rem; margin:0 auto 1rem; max-width:52ch; }
+.iniciativas-intro .copy{ text-align:left; margin:0 auto; max-width:70ch; color:#333; line-height:1.75; }
+.iniciativas-intro .copy p{ margin:.6rem 0; }
+
+/* énfasis suave (renombrada para evitar conflictos con .highlight globales) */
+.iniciativas-intro .intro-emphasis{
+  padding:.8rem 1rem; border-left:4px solid var(--verde-comun, #2e7d32);
+  background: linear-gradient(90deg,#f3f9ef 0%, #f8fcf5 100%); border-radius:6px;
+}
+
+
+/* énfasis con buen contraste (reemplaza la regla anterior) */
+.iniciativas-intro .intro-emphasis{
+  padding: .95rem 1.05rem;
+  color: #2b3326;                          /* texto oscuro */
+  background: #eaf4e6;                     /* verde claro sólido (sin degradado) */
+  border: 1px solid #cfe3c0;               /* borde suave alrededor */
+  border-left: 6px solid #2e7d32;          /* acento más grueso */
+  border-radius: 8px;
+}
+
+.iniciativas-intro .intro-emphasis strong{
+  color: #1b5e20;                          /* resalta “energía” */
+  font-weight: 800;
+}

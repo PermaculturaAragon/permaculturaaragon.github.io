@@ -1,19 +1,113 @@
 ---
 layout: page
 title: "qué ofrecemos"
-css: ["oferta.css"]
+css: ["oferta.css", "iniciativas.css"]
 hero_image: /assets/img/yo.jpg
 ---
+
+
+<!-- CÓMO DISEÑAMOS (metodología que funciona) -->
+<section class="section metodo">
+  <div class="container">
+    <h2 class="section__title">Cómo diseñamos</h2>
+
+    <div class="iniciativas-intro">
+      <p class="intro-emphasis">
+        Usamos una <strong>metodología probada</strong> y elegimos las herramientas según tu lugar,
+        las personas que lo habitan y los objetivos. Diseñamos para que <em>funcione en la vida real</em>.
+      </p>
+    </div>
+
+    <ul class="metodo-steps" role="list">
+      <li>
+        <span class="num">1</span>
+        <h3>Mirar y escuchar</h3>
+        <p>
+          Observación estacional, entrevistas y <em>mapa base</em>. Leemos <strong>zonas</strong> y <strong>sectores</strong>,
+          clima, suelos, agua y cultura del sitio.
+        </p>
+      </li>
+
+      <li>
+        <span class="num">2</span>
+        <h3>Dar forma al diseño</h3>
+        <p>
+          Con CEAP/OBREDIM combinamos <em>flujos</em>, <em>necesidades↔excedentes</em>,
+          <em>lenguaje de patrones</em> y prototipos rápidos.
+        </p>
+      </li>
+
+      <li>
+        <span class="num">3</span>
+        <h3>Ponerlo en marcha</h3>
+        <p>
+          Fases, calendario, presupuesto y fichas de acción. Empezamos por lo
+          que más impacto tiene con menos coste.
+        </p>
+      </li>
+
+      <li>
+        <span class="num">4</span>
+        <h3>Cuidar el ciclo</h3>
+        <p>
+          Seguimiento, indicadores sencillos y ajustes. Aprender haciendo para que el
+          sistema madure y sea cada vez más <strong>resiliente</strong>.
+        </p>
+      </li>
+    </ul>
+
+    <div class="metodo-tools">
+      <h4>Herramientas que solemos usar</h4>
+      <ul class="chips">
+        <li>Zonas &amp; Sectores</li>
+        <li>Mapa base / GIS simple</li>
+        <li>Flujos de personas y materiales</li>
+        <li>Necesidades ↔ Excedentes</li>
+        <li>Lenguaje de patrones</li>
+        <li>Random assembly</li>
+        <li>PNI / DAFO</li>
+        <li>Plan de agua (curvas de nivel, escorrentía)</li>
+        <li>Diseño de caminos</li>
+        <li>Plan de suelo y compost</li>
+        <li>Huerto: camas, rotaciones</li>
+        <li>Prototipado rápido</li>
+      </ul>
+    </div>
+
+    <div class="center metodo-cta">
+      <a class="btn" href="{{ '/contact' | relative_url }}">¿Lo pensamos para tu lugar, asociación o empresa?</a>
+    </div>
+  </div>
+</section>
+
+
+
+    
+  <!-- Banda parallax con CTA -->
+<section class="full-bleed">
+  <div class="slice-parallax"
+       style="--slice-h: 220px; --overscan: 80%;
+              --overlay: linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.45));
+              --slice-color: #fff;"
+       data-speed="0.55">
+    <img src="{{ site.baseurl }}/assets/img/calendula.jpg" alt="Fondo vegetal">
+
+    <div class="slice-content">
+      <div class="wrap">
+        <h2 class="slice-title">Servicios que ofrecemos</h2>
+        <p class="slice-subtitle">Diseñamos, ejecutamos y acompañamos procesos de permacultura con rigor técnico y foco en resultados. Trabajamos con equipos, centros educativos, administraciones y proyectos comunitarios.</p>
+
+      </div>
+    </div>
+
+  </div>
+</section>
 
 
 <section class="section oferta">
   <div class="container">
 
 
-    <p class="center-align flow-text intro">
-      Diseñamos, ejecutamos y acompañamos procesos de permacultura con rigor técnico y foco en resultados.
-      Trabajamos con equipos, centros educativos, administraciones y proyectos comunitarios.
-    </p>
 
     <!-- 1 · Diseño y Asesoría -->
     <article class="item">
@@ -136,7 +230,6 @@ hero_image: /assets/img/yo.jpg
     </article>
 </section>
 
-    
   <!-- Banda parallax con CTA -->
 <section class="full-bleed">
   <div class="slice-parallax"
@@ -148,11 +241,11 @@ hero_image: /assets/img/yo.jpg
 
     <div class="slice-content">
       <div class="wrap">
-        <h2 class="slice-title">¿List@ para integrar la permacultura?</h2>
-        <p class="slice-subtitle">Cuéntanos tu proyecto y te orientamos sin compromiso.</p>
+        <h2 class="slice-title">¿Quieres ver los diseño en los que hemos trabajado?</h2>
+        <p class="slice-subtitle">Entra en nuestro portafolio de diseño de la diplomatura</p>
         <div class="slice-actions">
-          <a class="btn btn--onimage " href="{{ site.baseurl }}/contact" aria-label="Ir a la página de contacto">
-            Escríbenos
+          <a class="btn btn--onimage " href="{{ site.baseurl }}/disenos" aria-label="Ir a la página de diseños">
+            Portafolio
           </a>
         </div>
       </div>
@@ -163,20 +256,5 @@ hero_image: /assets/img/yo.jpg
 
 
 
-<section class="section oferta">
-
-    <!-- Cómo trabajamos -->
-    <div class="howto">
-      <h3 class="center-align">Cómo trabajamos</h3>
-      <ol>
-        <li><strong>Colectar información</strong> — contexto, objetivos, condicionantes y recursos.</li>
-        <li><strong>Evaluar</strong> — criterios de diseño y priorización de estrategias.</li>
-        <li><strong>Aplicar el diseño</strong> — definición operativa y calendario de acciones.</li>
-        <li><strong>Planificar el seguimiento</strong> — indicadores, mantenimiento y mejora continua.</li>
-      </ol>
-    </div>
-
-  </div>
-</section>
 
  {% include footer.html %}

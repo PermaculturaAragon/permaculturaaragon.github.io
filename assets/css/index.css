@@ -1,20 +1,13 @@
-
-
-
-
 :root{ --ink:#333; --ink-soft:#666; --paper:#fff; --paper-2:#f5f7f4; --faq-bg:#f5faf4; }
-.home-index{color:var(--ink);} 
-.section{padding:4rem 0;} 
-.section--tight{padding:3rem 0;} 
-.container{max-width:1080px;margin:0 auto;padding:0 1rem;} 
+.home-index{color:var(--ink);}
+.section{padding:4rem 0;}
+.section--tight{padding:3rem 0;}
+.container{max-width:1080px;margin:0 auto;padding:0 1rem;}
 .center{text-align:center}
 
 /* Strap bajo el hero */
 .hero-strap .strap-sub{font-size:clamp(1rem,2.2vw,1.25rem);margin:0 auto 1rem;max-width:48ch;color:#4b5842}
 .hero-strap .btn-group{justify-content:center}
-
-/* SEPARACIÓN extra tras parallax */
-.full-bleed + .section{ margin-top: 2.5rem !important; padding-top: 3rem !important; border-top: none !important; }
 
 /* Gates */
 .gates__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
@@ -37,106 +30,113 @@
 .value i{font-size:2rem;color:#2e7d32}
 .value h3{margin:.5rem 0 .25rem}
 
-/* Split teasers */
-.split__inner{display:grid;grid-template-columns:1.1fr .9fr;gap:1.5rem;align-items:center}
+/* Split teasers (unificado con overrides) */
+.split__inner{display:grid;grid-template-columns:1.1fr .9fr;gap:1.5rem;align-items:stretch}
 .split--img-right .split__inner{grid-template-columns:.9fr 1.1fr}
-.split__media img{width:100%;border-radius:18px;display:block}
+.split__media{display:grid}
+.split__media img{width:100%;height:100%;object-fit:cover;border-radius:18px;display:block}
 .split__body h2{color:#2e7d32;margin-top:0}
 
-/* Friends GRID automático desde _data/amigos.yml */
-.friends__grid{list-style:none;display:grid;grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));gap:1.25rem 2rem;margin:1rem 0 1.5rem;padding:0;align-items:center}
+/* Amigos grid desde _data/amigos.yml */
+.friends__grid{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1.25rem 2rem;margin:1rem 0 1.5rem;padding:0;align-items:center}
 .friend a{display:block}
-.friend img{display:block;margin:0 auto;max-height:56px;width:auto;filter:grayscale(100%);opacity:.9;transition:filter .25s, opacity .25s}
+.friend img{display:block;margin:0 auto;max-height:70px;width:auto;filter:grayscale(100%);opacity:.9;transition:filter .25s,opacity .25s}
 .friend img:hover{filter:none;opacity:1}
 
+
+
 /* FAQ banda verde + icono (+) */
-.full-bleed.faq-band{ background: var(--faq-bg); }
-.full-bleed.faq-band .section{ padding: 2.5rem 0; }
-.faq-list{ display:grid; gap: .75rem; }
-.faq-list details{ background: rgba(255,255,255,.6); border: 1.5px solid #cfe3c0; border-radius: 12px; overflow:hidden }
-.faq-list summary{ cursor:pointer; padding:.85rem 1rem; font-weight:700; color:#2e7d32; display:flex; align-items:center; gap:.6rem; list-style:none }
-.faq-list summary::-webkit-details-marker{ display:none }
-.faq-list summary::marker{ content:"" }
-.faq-list summary::before{ content:"+"; display:inline-flex; width:1.25rem; height:1.25rem; align-items:center; justify-content:center; border:1.5px solid #2e7d32; border-radius:4px; font-weight:700; line-height:1; }
-.faq-list details[open] summary::before{ content:"–" }
-.faq-list details > div{ padding: 0 1rem 1rem; color:#444 }
+.full-bleed.faq-band{background:var(--faq-bg)}
+.full-bleed.faq-band .section{padding:2.5rem 0}
+.faq-list{display:grid;gap:.75rem}
+.faq-list details{background:rgba(255,255,255,.6);border:1.5px solid #cfe3c0;border-radius:12px;overflow:hidden}
+.faq-list summary{cursor:pointer;padding:.85rem 1rem;font-weight:700;color:#2e7d32;display:flex;align-items:center;gap:.6rem;list-style:none}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::marker{content:""}
+.faq-list summary::before{content:"+";display:inline-flex;width:1.25rem;height:1.25rem;align-items:center;justify-content:center;border:1.5px solid #2e7d32;border-radius:4px;font-weight:700;line-height:1}
+.faq-list details[open] summary::before{content:"–"}
+.faq-list details>div{padding:0 1rem 1rem;color:#444}
 
 /* FAQ más estrecha y centrada */
-.faq-band .faq--narrow{
-  max-width: clamp(560px, 64vw, 720px);
-  margin: 0 auto;           /* centra dentro del .container */
-}
-
-/* (opcional) si la quieres alineada a la izquierda en desktop, usa este helper */
-/* .faq-band .faq--narrow { margin-left: 0; margin-right: auto; } */
-
-@media (max-width: 640px){
-  .faq-band .faq--narrow{ max-width: 100%; }
-}
-
+.faq-band .faq--narrow{max-width:clamp(560px,64vw,720px);margin:0 auto}
+@media (max-width:640px){.faq-band .faq--narrow{max-width:100%}}
 
 /* Newsletter */
 .newsletter__box{background:var(--paper-2);border-radius:18px;padding:1.25rem}
 .newsletter__form{display:flex;gap:.5rem;flex-wrap:wrap}
 .newsletter__form input[type=email]{flex:1;min-width:220px;padding:.8rem .9rem;border:2px solid #e1e6df;border-radius:999px}
 
+/* H2 con logo a la altura del título */
+.h2-with-logo{display:grid;grid-template-columns:auto 1fr;align-items:stretch;column-gap:.75rem}
+.h2-with-logo .h2-text{display:block}
+.h2-with-logo .h2-logo{height:100%;width:auto;max-height:8rem}
+@media (max-width:600px){.h2-with-logo .h2-logo{max-height:5rem}}
+
+/* Éticas: menos hueco */
+.section.values{padding-bottom:2rem}
+.values .section__title{margin:1.5rem 0 1rem}
+.values .eticas-section{margin-top:.5rem}
+.values .etica-box p{margin-bottom:0}
+
 /* Reveal on scroll */
-.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
 .reveal.is-visible{opacity:1;transform:translateY(0)}
 
 /* Responsive */
-@media (max-width: 960px){
+@media (max-width:960px){
   .gates__grid{grid-template-columns:1fr 1fr}
-  .split__inner{grid-template-columns:1fr;}
+  .split__inner{grid-template-columns:1fr}
 }
-@media (max-width: 600px){
+@media (max-width:600px){
   .gates__grid{grid-template-columns:1fr}
   .values__grid{grid-template-columns:1fr 1fr}
 }
 
-
-/* === Overrides para igualar alturas y logo (añadido) === */
-.split__inner { align-items: stretch; }
-.split__media { display: grid; }
-.split__media img { height: 100%; object-fit: cover; }
-
-/* H2 con logo a la altura del título */
-.h2-with-logo {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: stretch;
-  column-gap: .75rem;
-}
-.h2-with-logo .h2-text { display: block; }
-.h2-with-logo .h2-logo {
-  height: 100%;
-  width: auto;
-  max-height: 8rem;
-}
-@media (max-width: 600px) {
-  .h2-with-logo .h2-logo { max-height: 5rem; }
+/* === Separadores (consolidado, última palabra) === */
+#main-content .section.hero-strap + .section,
+#main-content .full-bleed + .section,
+#main-content .section.values + .section,
+#main-content .section.split + .section,
+#main-content .section.no-divider{
+  border-top:0 !important;
+  padding-top:0 !important;
+  margin-top:2rem !important;
 }
 
 
-/* Éticas: menos hueco y sin divisor inferior */
-.section.values { padding-bottom: 2rem; }                /* antes 3rem global */
-.values .section__title { margin: 1.5rem 0 1rem; }       /* antes 3rem/1.5rem global */
-.values .eticas-section { margin-top: .5rem; }           /* arrima tarjetas al título */
-.values .etica-box p { margin-bottom: 0; }               /* limpia extra al final */
+/* Nota legal bajo la lista de contactos */
+.newsletter__note{
+  display:block;
+  font-size:.85rem;
+  color:#666;
+  margin-top:.4rem;
+}
+.newsletter__note a{ text-decoration: underline; }
 
 
+/* Xutopot: en móvil apila IMAGEN arriba y TEXTO debajo (sin recorte) */
+@media (max-width: 800px){
+  .split--stack-mobile .split__inner{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "media"
+      "body";
+  }
+  .split--stack-mobile .split__media{ grid-area: media; }
+  .split--stack-mobile .split__body{ grid-area: body; }
 
-/* Quitar separador cuando viene de una franja full-bleed (parallax) */
-#main-content .full-bleed + section,
-#main-content .full-bleed + .section {
-  border-top: 0 !important;
-  padding-top: 0 !important;
-  margin-top: 2rem !important; /* respiración sin línea */
+  /* Evita el alto forzado del layout de desktop */
+  .split--stack-mobile .split__media img{
+    height: auto;           /* sobreescribe el height:100% de desktop */
+    object-fit: cover;      /* por si hay imágenes grandes */
+  }
 }
 
-/* Quitar separador entre 'Valores/Éticas' y el siguiente split */
-#main-content .section.values + .section {
-  border-top: 0 !important;
-  padding-top: 0 !important;
-  margin-top: 2rem !important;
+
+/* 6 logos por fila en pantallas anchas */
+@media (min-width: 1024px){
+  .friends__grid{
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem 1.25rem; /* opcional: un pelín más juntas */
+  }
 }

@@ -7,6 +7,19 @@
   category: Educación
   alt: Logo de Permacultura Íbera
 
+- name: Permacultura Principles
+  url:   https://permacultureprinciples.com/
+  logo: /assets/img/amigos/principles.png
+  category: Permacultura
+  alt: Logo de Permacultura Principles
+
+- name: Permaculture Association
+  url:   https://www.permaculture.org.uk/
+  logo: /assets/img/amigos/PAB.png
+  category: Permacultura
+  alt: Logo de Permaculture
+
+
 - name: WWOOF España
   url: https://wwoof.es/
   logo: /assets/img/amigos/wwoof.png
@@ -31,7 +44,13 @@
   category: Permacultura
   alt: Logo de Huertacho
 
-
+- name: Pernatura
+  url:   https://www.instagram.com/pernatura/?hl=es
+  logo: /assets/img/amigos/pernatura.jpg
+  category: Educación
+  alt: Logo de Pernatura
   
+
+
 
 # Añade tantos como quieras…

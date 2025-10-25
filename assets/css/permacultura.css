@@ -179,7 +179,7 @@ nav.top-nav { display: none !important; }
   --logo-max-h: 300px; --logo-min-h: 230px; --logo-min-scale: 0.9;
   --verde-comun: #2e7d32; --verde-comun-osc: #33691e;
   /* Botón único (Light) */
-  --pca-dark: #4b5842; --pca-light: #dcedc8; --pca-light-hover: #d4e8bc; --pca-light-border: #9fbd86;
+  --pca-dark: #4b5842; --pca-light: #dcedc8; --pca-light-hover: #aedb76; --pca-light-border: #9fbd86;
   --btn-radius: 0; --btn-ring: rgba(139,195,74,.40);
 }
 
@@ -477,6 +477,8 @@ a.btn-flat:hover{ text-decoration: underline; }
   }
   .mini-footer__nav { justify-content: center; }
 }
+
+
 
 
 
