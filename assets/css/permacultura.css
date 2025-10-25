@@ -229,7 +229,7 @@ a.btn, button.btn, .btn, input[type="submit"], .btn-verde, .btn-pca{
   -webkit-appearance:none; appearance:none; display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
   padding:.7rem 1.1rem; font-weight:600; font-size:1rem; line-height:1.1;
   color: var(--pca-dark) !important; background: var(--pca-light) !important;
-  border:1px solid var(--pca-light-border) !important; border-radius: var(--btn-radius) !important;
+  /*border:1px solid var(--pca-light-border) !important;*/ border-radius: var(--btn-radius) !important;
   text-decoration:none !important; text-transform:none !important; box-shadow:none !important;
   cursor:pointer; transition: background-color .15s ease, border-color .15s ease;
 }
@@ -477,4 +477,6 @@ a.btn-flat:hover{ text-decoration: underline; }
   }
   .mini-footer__nav { justify-content: center; }
 }
+
+
 

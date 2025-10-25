@@ -13,15 +13,25 @@
   category: Voluntariado
   alt: Logo de WWOOF España
 
-- name: Scouts Aragón
-  url: https://scoutsaragon.org/
-  logo: /assets/img/amigos/scouts-aragon.png
-  category: Juventud
-  alt: Logo de Scouts Aragón
 
 - name: Red de Semillas
-  url: https://redsemillas.info/
-  logo: /assets/img/amigos/red-semillas.png
+  url: https://redsemillasdearagon.org/
+  logo: /assets/img/amigos/semillas.png
   category: Agroecología
+
+- name: Asociación de Permacultura de Cataluña y Aragón
+  url: https://biornepermacultura.org/
+  logo: /assets/img/amigos/biorne.jpg
+  category: Comunidad
+  alt: Logo de Biorne
+
+- name: El Huertacho
+  url:   https://www.instagram.com/elhuertacho/
+  logo: /assets/img/amigos/huertacho.jpg
+  category: Permacultura
+  alt: Logo de Huertacho
+
+
+  
 
 # Añade tantos como quieras…

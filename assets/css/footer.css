@@ -65,3 +65,43 @@
     font-size: .85rem;
   }
 }
+
+
+/* Iniciativas del footer: sin subrayado y con animación agradable */
+.site-footer .footer__links a,
+.site-footer .footer__links a:visited {
+  text-decoration: none;
+}
+
+/* Estado base */
+.site-footer .footer__links a {
+  display: inline-block;          /* necesario para poder moverlo */
+  font-weight: 600;               /* base */
+  opacity: .92;
+  transform: translateY(0);
+  transition: transform .5s cubic-bezier(.22,.61,.36,1),
+              font-weight .5s ease,
+              opacity .2s ease;
+  will-change: transform;
+}
+
+/* Hover / focus: negrita y saltito de 2px */
+.site-footer .footer__links a:hover,
+.site-footer .footer__links a:focus-visible {
+  font-weight: 700;
+  transform: translateY(-2px);    /* prueba -1px si lo quieres más sutil */
+  opacity: 1;
+  text-decoration: none;          /* asegura que no aparezca subrayado */
+}
+
+/* Respeto accesibilidad: sin movimiento si el usuario lo pide */
+@media (prefers-reduced-motion: reduce) {
+  .site-footer .footer__links a {
+    transition: font-weight .2s ease, opacity .2s ease;
+  }
+  .site-footer .footer__links a:hover,
+  .site-footer .footer__links a:focus-visible {
+    transform: none;
+  }
+}
+
