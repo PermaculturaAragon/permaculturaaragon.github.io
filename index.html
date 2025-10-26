@@ -2,8 +2,9 @@
 layout: page
 title: "diseñando a favor de la naturaleza"
 css: ["index.css", "iniciativas.css"]   # ← corregido: faltaban comillas
-js: ["index.js"]
-hero_image: /assets/img/nenufar.png
+show_hero: false
+
+
 ---
 
 <main class="home-index">
@@ -11,7 +12,7 @@ hero_image: /assets/img/nenufar.png
 
 <!-- HERO LIMPIO -->
 <section
-  class="section hero-minimal hero-minimal--bg no-divider"
+  class="section hero-minimal hero-minimal--bg no-divider full-bleed hero-fw" 
   style="--hero-bg: url('{{ '/assets/img/meliloto.jpg' | relative_url }}');">
   <div class="container hero-minimal__inner">
 
@@ -82,7 +83,7 @@ hero_image: /assets/img/nenufar.png
     </div>
   </section>
 
-
+<div class="air-gap" aria-hidden="true"></div>
 
 
   <!-- 5) TORRE ESCRIBANA -->
