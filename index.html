@@ -7,24 +7,42 @@ hero_image: /assets/img/nenufar.png
 ---
 
 <main class="home-index">
+  
 
-  <!-- 1) HERO STRAP -->
-  <section class="section hero-strap">
-    <div class="container center">
-      <p class="strap-sub">
-        Permacultura en Aragón: demostración, diseño y soluciones circulares para eventos.
-      </p>
-      <div class="btn-group">
-        <a class="btn" href="{{ '/iniciativas/torre-escribana/' | relative_url }}">Visítanos en Torre Escribana</a>
-        <a class="btn" href="{{ '/xutopot' | relative_url }}">Quiero baños secos para mi evento</a>
-      </div>
-    </div>
-  </section>
+<!-- HERO LIMPIO -->
+<section
+  class="section hero-minimal hero-minimal--bg no-divider"
+  style="--hero-bg: url('{{ '/assets/img/meliloto.jpg' | relative_url }}');">
+  <div class="container hero-minimal__inner">
+
+
+    <h1 class="hero-minimal__title">
+      Diseñamos lugares que funcionan como un <span class="hl">ecosistema</span>:
+      <span class="hl-alt">bello</span>, <span class="hl-alt">eficiente</span> y <span class="hl-alt">resiliente</span>.
+    </h1>
+
+    <p class="hero-minimal__lead">
+      Soluciones que se tocan: agua que se infiltra, suelos que se regeneran,
+      energía que se ahorra y comunidad que se cuida — en Aragón.
+    </p>
+
+    <ul class="hero-tags" aria-label="Ámbitos de trabajo">
+      <li><a href="#agua">Agua</a></li>
+      <li><a href="#suelo">Suelo</a></li>
+      <li><a href="#energia">Energía</a></li>
+      <li><a href="#alimentos">Alimentos</a></li>
+      <li><a href="#comunidad">Comunidad</a></li>
+    </ul>
+
+    <a class="hero-minimal__scroll" href="#que-mueve">Sigue bajando</a>
+  </div>
+</section>
+
 
     <!-- 4) ÉTICAS -->
   <section class="section values">
     <div class="container">
-      <h2 class="section__title">Qué éticas nos mueven</h2>
+      <h2 class="section__title">Qué <span class="hl">éticas </span> nos mueven</h2>
       <div class="eticas-section">
         <div class="eticas-container">
           <div class="etica-box">
@@ -76,7 +94,7 @@ hero_image: /assets/img/nenufar.png
       <div class="split__body reveal">
         <h2 class="h2-with-logo">
           <img class="h2-logo" src="{{ '/assets/img/iniciativas/torre-escribana/logo-torre.jpg' | relative_url }}" alt="Torre Escribana">
-          <span class="h2-text">Ven, toca, construye</span>
+          <span class="h2-text"><span class="hl">Ven</span>, toca, construye</span>
         </h2>
         <p>Visitas escolares y familiares en Torre Escribana (Montañana-Zaragoza), animales, diversión y experiencias mágicas entre árboles, gnomos y puertas diminutas.</p>
         <a class="btn" target="_blank" rel="noopener" href="https://torre-escribana.com/visitas/">Reservar visita</a>
@@ -92,7 +110,7 @@ hero_image: /assets/img/nenufar.png
         <img src="{{ '/assets/img/techo.jpg' | relative_url }}" alt="Plano y herramientas de diseño">
       </div>
       <div class="split__body reveal">
-        <h2>Diseño con mirada de permacultura</h2>
+        <h2><span class="h2-text"><span class="hl">Diseño</span> con mirada de permacultura</span></h2>
         <p>Planificamos espacios y actividades como un ecosistema: bellos, eficientes y resilientes.</p>
         <a class="btn" href="{{ '/contact' | relative_url }}">Hablemos de tu proyecto</a>
       </div>
@@ -123,7 +141,7 @@ hero_image: /assets/img/nenufar.png
 <section class="section split split--img-right split--stack-mobile">
   <div class="container split__inner">
     <div class="split__body reveal">
-      <h2>XUTOPOT: Baños secos para campamentos y eventos que cuidan el lugar</h2>
+      <h2><span class="h2-text"><span class="hl">XUTOPOT:</span> Baños secos para campamentos y eventos que cuidan el lugar</span></h2>
       <p>Llevamos más de 10 años usando sistemas de WC secos en campamentos. Te ofrecemos dinámicas y juegos, montaje fácil y asesoría. Tu campa limpia, sin químicos y sin dramas.</p>
       <a class="btn" target="_blank" href="https://xutopot.es/alquila.html">Pedir presupuesto Xutopot</a>
     </div>
@@ -167,7 +185,7 @@ hero_image: /assets/img/nenufar.png
       <!-- 2) INICIATIVAS -->
   <section class="section iniciativas">
     <div class="container">
-      <h2 class="section__title">Iniciativas propias</h2>
+      <h2 class="section__title"><span class="hl">Iniciativas</span> propias</h2>
       <div class="iniciativas-grid">
         {% assign items = site.iniciativas | sort: 'order' %}
         {% for p in items %}
@@ -195,7 +213,7 @@ hero_image: /assets/img/nenufar.png
   <section class="section friends no-divider">
     <div class="container">
       <div class="friends__head reveal">
-        <h2>Red de Amigos</h2>
+      <h2>Red de<span class="hl"> Amigos</span></h2>
         <p>Permacultura es cooperación. Nos enraizamos en una comunidad diversa y colaboramos con redes a diferentes niveles, desde lo cercano hasta lo internacional.</p>
       </div>
       <ul class="friends__grid" aria-label="Logos de proyectos amigos">

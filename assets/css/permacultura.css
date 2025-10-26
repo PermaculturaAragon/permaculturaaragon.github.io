@@ -478,7 +478,25 @@ a.btn-flat:hover{ text-decoration: underline; }
   .mini-footer__nav { justify-content: center; }
 }
 
-
+/* subrayados “vivos” sin animación pesada */
+.hl{
+  background: linear-gradient(180deg, rgba(205,224,194,.0) 60%, #d6e9c9 0) no-repeat;
+  padding: 0 .05em;
+}
+.hl-alt{
+  background: linear-gradient(180deg, rgba(205,224,194,.0) 59%, #d6e9c9 0) no-repeat;
+  padding: 0 .08em;
+  border-radius: 2px;
+}
+.section__title .hl{
+  /* subrayado tipo resaltador */
+  background: linear-gradient(180deg, transparent 65%, #dcefd3 0);
+  padding: 0 .08em .06em;     /* un poco de aire dentro */
+  margin: 0 .22em;            /* ← separa del texto de ambos lados */
+  border-radius: .15em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
 
 
 
