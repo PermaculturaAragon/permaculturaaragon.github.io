@@ -1,169 +1,95 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<header>
+  <!-- Botón hamburguesa (visible solo en móvil vía CSS) -->
+  <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">
+    <i class="material-icons" aria-hidden="true">menu</i>
+  </button>
 
-    <title>
-      {% if page.title %}
-        {{ page.title | escape }}
-      {% else %}
-        {{ site.title | escape }}
-      {% endif %}
-    </title>
+  <!-- Menú lateral fijo -->
+  <ul id="side-nav" class="side-nav fixed" aria-label="Navegación lateral">
+    <li>
+      <div class="userView">
+        <a href="{{ site.baseurl }}">
+          <!-- Fondo (blanco) -->
+          <img class="logo-bg"
+               src="{{ site.baseurl }}/assets/res/logopermabis.png"
+               alt="Permacultura Aragón (fondo)">
+          <!-- Logo principal (verde) -->
+          <img class="logo-fg"
+               src="{{ site.baseurl }}/assets/res/logoperma.png"
+               alt="Permacultura Aragón (logo)">
+        </a>
+      </div>
+    </li>
 
-    
-    
+    <li class="{% if page.url == '/' %}active{% endif %}">
+      <a class="waves-effect" href="{{ site.baseurl }}/">
+        <i class="material-icons">home</i>Inicio
+      </a>
+    </li>
 
-    
-    <!-- === ESTILOS Y FUENTES === -->
+    <li class="{% if page.url contains '/iniciativas' %}active{% endif %}">
+      <a class="waves-effect" href="{{ site.baseurl }}/iniciativas">
+        <i class="material-icons">eco</i>Iniciativas
+      </a>
+    </li>
 
-    <link rel="stylesheet" href="{{ '/assets/css/footer.css' | relative_url }}">
+    <li class="{% if page.url contains '/oferta' %}active{% endif %}">
+      <a class="waves-effect" href="{{ site.baseurl }}/oferta">
+        <i class="material-icons">volunteer_activism</i>Qué ofrecemos
+      </a>
+    </li>
 
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
-    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="{{site.baseurl}}/assets/css/main.css">
-    {% for css in layout.css %}
-      {% if css contains "//" %}
-        <link rel="stylesheet" href="{{css}}">
-      {% else %}
-        <link rel="stylesheet" href="{{site.baseurl}}/assets/css/{{css}}">
-      {% endif %}
-    {% endfor %}
-    {% for css in page.css %}
-      {% if css contains "//" %}
-        <link rel="stylesheet" href="{{css}}">
-      {% else %}
-        <link rel="stylesheet" href="{{site.baseurl}}/assets/css/{{css}}">
-      {% endif %}
-    {% endfor %}
+    <li>
+      <a class="waves-effect muted" href="#!" style="pointer-events:none; opacity:.6;">
+        <i class="material-icons">article</i>Blog (próximamente)
+      </a>
+    </li>
 
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="{{site.baseurl}}/feed.xml">
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="{{site.baseurl}}/sitemap.xml">
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap" rel="stylesheet">
+    <li><div class="divider"></div></li>
 
-    {% seo title=false %}
+    <li class="{% if page.url contains '/disenos' %}active{% endif %}">
+      <a class="waves-effect" href="{{ site.baseurl }}/disenos">
+        <i class="material-icons">architecture</i>Diseños diplomatura
+      </a>
+    </li>
 
-    <!-- === ICONOS === -->
-    <link rel="icon" type="image/png" href="{{ '/assets/img/favicon.png?v=1' | relative_url }}">
-    <link rel="apple-touch-icon" href="{{ '/assets/img/favicon.png?v=1' | relative_url }}">
-    <link rel="shortcut icon" href="{{ '/assets/img/favicon.png?v=1' | relative_url }}">
+    <li class="{% if page.url contains '/permacultura' %}active{% endif %}">
+      <a class="waves-effect" href="{{ site.baseurl }}/permacultura">
+        <i class="material-icons">spa</i>Qué es la Permacultura
+      </a>
+    </li>
 
-    <link rel="stylesheet" href="{{ '/assets/css/sidebar.css' | relative_url }}">
+    <li class="{% if page.url contains '/amigos' %}active{% endif %}">
+      <a class="waves-effect" href="{{ site.baseurl }}/amigos">
+        <i class="material-icons">group</i>Red de Amigos
+      </a>
+    </li>
 
-    
-  </head>
+    <li class="{% if page.url contains '/about' %}active{% endif %}">
+      <a class="waves-effect" href="{{ site.baseurl }}/about">
+        <i class="material-icons">favorite</i>Sobre nosotras
+      </a>
+    </li>
 
-  <body>
-    <header>
-      <!-- Botón hamburguesa (solo visible en móvil) -->
-      <button id="menu-toggle" class="menu-toggle">
-        <i class="material-icons">menu</i>
-      </button>
+    <li class="{% if page.url contains '/contact' %}active{% endif %}">
+      <a class="waves-effect" href="{{ site.baseurl }}/contact">
+        <i class="material-icons">email</i>Contacto
+      </a>
+    </li>
 
-      <!-- Menú lateral -->
-      <ul id="side-nav" class="side-nav fixed">
-      <li>
-        <div class="userView">
-          <a href="{{ site.baseurl }}">
-            <!-- Fondo blanco (abajo) -->
-            <img class="logo-bg"
-                src="{{ site.baseurl }}/assets/res/logopermabis.png"
-                alt="Permacultura Aragón (blanco)">
-
-            <!-- Logo verde (encima) -->
-            <img class="logo-fg"
-                src="{{ site.baseurl }}/assets/res/logoperma.png"
-                alt="Permacultura Aragón (verde)">
-          </a>
-        </div>
-      </li>
-
-
-        <li class="{% if page.url == '/' %}active{% endif %}">
-          <a class="waves-effect" href="{{site.baseurl}}/">
-            <i class="material-icons">home</i>Inicio
-          </a>
-        </li>
-
-
-        <li class="{% if page.url contains '/iniciativas' %}active{% endif %}">
-          <a class="waves-effect" href="{{site.baseurl}}/iniciativas">
-            <i class="material-icons">eco</i>Iniciativas
-          </a>
-        </li>
-
-
-
-        <li class="{% if page.url contains '/oferta' %}active{% endif %}">
-          <a class="waves-effect" href="{{site.baseurl}}/oferta">
-            <i class="material-icons">volunteer_activism</i>Qué ofrecemos
-          </a>
-        </li>
-
-        <li>
-          <a class="waves-effect muted" href="#!" style="pointer-events:none; opacity:0.6;">
-            <i class="material-icons">article</i>Blog (próximamente)
-          </a>
-        </li>
-
-        <li><div class="divider"></div></li>
-
-                <li class="{% if page.url contains '/disenos' %}active{% endif %}">
-          <a class="waves-effect" href="{{site.baseurl}}/disenos">
-            <i class="material-icons">architecture</i>Diseños diplomatura
-          </a>
-        </li>
-
-
-        
-        <li class="{% if page.url contains '/permacultura' %}active{% endif %}">
-          <a class="waves-effect" href="{{site.baseurl}}/permacultura">
-            <i class="material-icons">spa</i>Qué es la Permacultura
-          </a>
-        </li>
-
-        <li class="{% if page.url contains '/amigos' %}active{% endif %}">
-          <a class="waves-effect" href="{{site.baseurl}}/amigos">
-            <i class="material-icons">group</i>Red de Amigos
-          </a>
-        </li>
-
-        <li class="{% if page.url contains '/about' %}active{% endif %}">
-          <a class="waves-effect" href="{{site.baseurl}}/about">
-            <i class="material-icons">favorite</i>Sobre nosotras
-          </a>
-        </li>
-
-        <li class="{% if page.url contains '/contact' %}active{% endif %}">
-          <a class="waves-effect" href="{{site.baseurl}}/contact">
-            <i class="material-icons">email</i>Contacto
-          </a>
-        </li>
-
-
-
-
-
-
-<li class="social-strip">
-  <div class="social-inner">
-    <a class="social" href="{{ site.social.instagram }}" target="_blank" rel="noopener" aria-label="Instagram">
-      <img src="{{ '/assets/icons/instagram-white.png' | relative_url }}" alt="Instagram" width="20" height="20" loading="lazy">
-    </a>
-    <a class="social" href="{{ site.social.facebook }}" target="_blank" rel="noopener" aria-label="Facebook">
-      <img src="{{ '/assets/icons/facebook-white.png' | relative_url }}" alt="Facebook" width="20" height="20" loading="lazy">
-    </a>
-    <a class="social" href="{{ site.social.youtube }}" target="_blank" rel="noopener" aria-label="YouTube">
-      <img src="{{ '/assets/icons/youtube-white.png' | relative_url }}" alt="YouTube" width="20" height="20" loading="lazy">
-    </a>
-  </div>
-</li>
-
-
-
-      </ul>
-    </header>
-
-    <main>
+    <!-- Franja social inferior -->
+    <li class="social-strip">
+      <div class="social-inner">
+        <a class="social" href="{{ site.social.instagram }}" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="{{ '/assets/icons/instagram-white.png' | relative_url }}" alt="Instagram" width="20" height="20" loading="lazy">
+        </a>
+        <a class="social" href="{{ site.social.facebook }}" target="_blank" rel="noopener" aria-label="Facebook">
+          <img src="{{ '/assets/icons/facebook-white.png' | relative_url }}" alt="Facebook" width="20" height="20" loading="lazy">
+        </a>
+        <a class="social" href="{{ site.social.youtube }}" target="_blank" rel="noopener" aria-label="YouTube">
+          <img src="{{ '/assets/icons/youtube-white.png' | relative_url }}" alt="YouTube" width="20" height="20" loading="lazy">
+        </a>
+      </div>
+    </li>
+  </ul>
+</header>
