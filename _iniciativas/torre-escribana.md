@@ -8,8 +8,8 @@ description: "Espacio de aprendizaje con suelo vivo, manejo del agua, biodiversi
 image1: /assets/img/iniciativas/torre-escribana/01.jpg
 image2: /assets/img/iniciativas/torre-escribana/02.jpg
 order: 2
-status: "Activo"
-year_start: 2014
+status: "Abierto"
+year_start: 2015
 layout: iniciativa
 ---
 

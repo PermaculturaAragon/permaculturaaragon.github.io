@@ -1,5 +1,6 @@
 ---
 layout: page
+
 ---
 
 <section class="section iniciativa">
@@ -15,10 +16,10 @@ layout: page
       </div>
 
       <div class="col s12 m10">
-        <h2 style="margin:0 0 .25rem 0;">
-          <i class="material-icons" style="vertical-align:middle; margin-right:6px;">eco</i>
-          {{ page.title }}
-        </h2>
+<h2 class="left-align" style="margin:0 0 .25rem 0;">
+  <i class="material-icons" style="margin-right:6px; vertical-align:middle;">eco</i>
+  {{ page.title }}
+</h2>
 
         {% if page.subtitle %}
           <p class="flow-text" style="margin:.25rem 0 0 0;">{{ page.subtitle }}</p>
@@ -89,3 +90,6 @@ layout: page
 
   </div>
 </section>
+
+ {% include footer.html %}
+
