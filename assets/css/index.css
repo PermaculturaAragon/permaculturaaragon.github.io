@@ -11,7 +11,7 @@
   --btn-radius:0; --btn-ring:rgba(139,195,74,.40);
 
   /* Logo sidenav */
-  --logo-max-h:300px; --logo-min-h:230px; --logo-min-scale:0.9;
+  --logo-max-h:265px; --logo-min-h:230px; --logo-min-scale:0.9;
 
   /* Verdes comunes */
   --verde-comun:#2e7d32; --verde-comun-osc:#33691e;
@@ -213,7 +213,7 @@ body{ margin:0 !important; padding:0 !important; }
 #main-content, main{ margin:0 !important; padding:0 !important; width:100% !important; box-sizing:border-box; }
 #main-content{
   display:block; position:relative; background:transparent; box-shadow:none; color:inherit; min-height:100vh;
-  margin-left:300px !important; width:calc(100% - 300px) !important;
+  margin-left:265px !important; width:calc(100% - 265px) !important;
 }
 @media (max-width:992px){ #main-content{ margin-left:0 !important; width:100% !important; } }
 
@@ -272,7 +272,7 @@ body{ margin:0 !important; padding:0 !important; }
 @media (min-width:993px){ .menu-toggle{ display:none; } }
 
 #side-nav.side-nav.fixed{
-  position:fixed; top:0; left:0; width:300px; height:100vh; overflow-y:auto; z-index:1000; box-shadow:2px 0 6px rgba(0,0,0,.15); padding-top:0;
+  position:fixed; top:0; left:0; width:265px; height:100vh; overflow-y:auto; z-index:1000; box-shadow:2px 0 6px rgba(0,0,0,.15); padding-top:0;
 }
 @media (max-width:992px){
   #side-nav.side-nav.fixed{ transform:translateX(-100%) !important; transition:transform .35s ease-in-out !important; position:fixed !important; z-index:1000 !important; }
@@ -323,7 +323,7 @@ a.btn[aria-disabled="true"], .btn[disabled], button.btn:disabled, input[type="su
 /* ===================== HERO CON TÍTULO (imagen) ===================== */
 .hero{ position:relative; margin:0; }
 .hero .hero-img{ display:block; width:100%; height:280px; object-fit:cover; margin:0; padding:0; border-radius:0; }
-@media (min-width:992px){ .hero .hero-img{ height:300px; } }
+@media (min-width:992px){ .hero .hero-img{ height:265px; } }
 .hero::after{ content:""; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,.35) 100%); z-index:1; pointer-events:none; }
 .hero h1.hero-title{
   position:absolute; z-index:2; left:clamp(14px,4vw,30px); bottom:clamp(16px,4vw,25px);
@@ -384,7 +384,7 @@ a.btn[aria-disabled="true"], .btn[disabled], button.btn:disabled, input[type="su
 
 /* Imagen cabecera a todo ancho */
 .imagen-ancha{ display:block; width:100%; height:280px; object-fit:cover; margin:0; padding:0; border-radius:0; }
-@media (min-width:992px){ .imagen-ancha{ height:300px; } }
+@media (min-width:992px){ .imagen-ancha{ height:265px; } }
 
 /* Ocultar top-nav heredado de Materialize */
 nav.top-nav{ display:none !important; }

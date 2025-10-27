@@ -13,7 +13,7 @@
 
     // Lee variables CSS
     const root = document.documentElement;
-    const maxH = parseInt(getComputedStyle(root).getPropertyValue('--logo-max-h')) || 300;
+    const maxH = parseInt(getComputedStyle(root).getPropertyValue('--logo-max-h')) || 265;
     const minH = parseInt(getComputedStyle(root).getPropertyValue('--logo-min-h')) || 150;
 
     // Rango de scroll hasta llegar a la mínima (ajústalo a tu gusto)
