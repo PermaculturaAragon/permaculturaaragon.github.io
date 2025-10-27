@@ -123,20 +123,7 @@
 }
 .metodo-steps p{ margin:0; color:#333; line-height:1.6; }
 
-/* Herramientas */
-.metodo-tools{ margin-top:.5rem; }
-.metodo-tools h4{
-  margin:.2rem 0 .4rem; font-weight:700; color:#2e7d32; font-size:1rem; letter-spacing:.2px;
-}
-.metodo-tools .chips{
-  display:flex; flex-wrap:wrap; gap:.45rem; padding:0; margin:0 0 .5rem;
-}
-.metodo-tools .chips li{
-  list-style:none; font-size:.95rem; padding:.35rem .6rem;
-  background:#f0f6ec; border:1px solid #d4e8bc; border-radius:999px; color:#2b3326;
-}
-.metodo-tools .meta{ color:#444; margin:.2rem 0 0; }
-.metodo-cta{ margin-top:.8rem; }
+
 
 /* Responsive */
 @media (max-width:980px){ .metodo-steps{ grid-template-columns:repeat(2,1fr); } }

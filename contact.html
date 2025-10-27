@@ -8,27 +8,40 @@ css: ["index.css", "contact.css"]
 <section class="section">
   <div class="container">
     <div class="row" style="align-items:flex-start;">
-
+     <h2 class="section__title" style="margin-top: 2rem;">
+    
+         <span class="h2-text">Cuéntanos qué <span class="hl">necesitas</span> y vemos cómo <span class="hl">ayudarte</span></span>
+      </h2> 
       <!-- Columna izquierda: texto -->
       <div class="col s12 l7">
 
-
+ 
         <p class="flow-text" style="font-size:1.15rem; line-height:1.7; margin-top:1rem;">
           En <strong>Permacultura Aragón</strong> nos encanta colaborar con proyectos que cuidan la tierra y a las personas.
-          Cuéntanos qué necesitas y vemos cómo ayudarte.
+       
         </p>
 
-        <ul style="margin:1rem 0 2rem 1.2rem; line-height:1.6;">
-          <li>Asesoría y diseño de permacultura.</li>
-          <li>Visitas y talleres en <em>Torre Escribana</em>.</li>
-          <li>Alquiler de baños secos <strong>Xutopot</strong> para eventos y campamentos.</li>
-          <li>Charlas, formación y dinamización.</li>
-        </ul>
+<div class="metodo-tools">
+  <ul class="chips">
+    <li><button type="button" class="chip-btn">Asesoría & diseño de permacultura</button></li>
+    <li><button type="button" class="chip-btn">Visitas y talleres en Torre Escribana</button></li>
+    <li><button type="button" class="chip-btn">Automatización con Domótica Open Source</button></li>
+    <li><button type="button" class="chip-btn">Alquiler de baños secos Xutopot para eventos y campamentos</button></li>
+    <li><button type="button" class="chip-btn">Charlas, formación y dinamización</button></li>
+  </ul>
+</div>
 
-        <p style="color:#4b5842; font-style:italic;">
+         <p style="color:#4b5842; font-style:italic;">
           También puedes escribirnos directamente a
-          <a href="mailto:permaculturaaragon@gmail.com">permaculturaaragon@gmail.com</a>.
+          <h4><a href="mailto:permaculturaaragon@gmail.com">permaculturaaragon@gmail.com</a>.</h4>
         </p>
+        
+        
+                <small style="display:block; color:#666; line-height:1.4;">
+                  Responsable: Permacultura Aragón. Finalidad: responder a tu consulta. Legitimación: consentimiento de la persona interesada.
+                  Destinatarios: no se ceden datos, salvo obligación legal. Derechos: acceso, rectificación y supresión, entre otros, en
+                  <a href="mailto:permaculturaaragon@gmail.com">permaculturaaragon@gmail.com</a>. Más info en la Política de Privacidad.
+                </small>
       </div>
 
       <!-- Columna derecha: formulario (más estrecho) -->
@@ -80,11 +93,6 @@ css: ["index.css", "contact.css"]
                   <span>Acepto la <a href="{{ site.baseurl }}/privacidad" target="_self" rel="noopener">Política de Privacidad</a></span>
                 </label>
 
-                <small style="display:block; margin:.25rem 0 0 26px; color:#666; line-height:1.4;">
-                  Responsable: Permacultura Aragón. Finalidad: responder a tu consulta. Legitimación: consentimiento de la persona interesada.
-                  Destinatarios: no se ceden datos, salvo obligación legal. Derechos: acceso, rectificación y supresión, entre otros, en
-                  <a href="mailto:permaculturaaragon@gmail.com">permaculturaaragon@gmail.com</a>. Más info en la Política de Privacidad.
-                </small>
 
                 <!-- Metadatos -->
                 <input type="hidden" name="privacy_policy_url" value="{{ site.baseurl }}/privacidad">
@@ -177,4 +185,32 @@ css: ["index.css", "contact.css"]
       // document.getElementById('message')?.focus();
     }
   });
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const subjectInput = document.getElementById('subject');
+  const nameInput    = document.getElementById('name');
+
+  document.querySelectorAll('.metodo-tools .chip-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!subjectInput || !nameInput) return;
+
+      // Texto limpio (sin punto final)
+      const txt = btn.textContent.replace(/\s+/g, ' ').replace(/\.\s*$/, '').trim();
+
+      subjectInput.value = txt;
+
+      // Opcional: personalizar el placeholder del mensaje
+      const msg = document.getElementById('message');
+      if (msg && !msg.value) msg.placeholder = `Cuéntanos brevemente tu consulta sobre: ${txt}…`;
+
+      // Enfocar primer campo
+      nameInput.focus({ preventScroll:false });
+      // Si quieres centrarlo en pantalla:
+      // nameInput.scrollIntoView({ behavior:'smooth', block:'center' });
+    });
+  });
+});
 </script>

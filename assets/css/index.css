@@ -474,3 +474,61 @@ nav.top-nav{ display:none !important; }
 }
 
 
+/* Herramientas */
+.metodo-tools{ margin-top:.5rem; }
+.metodo-tools h4{
+  margin:.2rem 0 .4rem; font-weight:700; color:#2e7d32; font-size:1rem; letter-spacing:.2px;
+}
+.metodo-tools .chips{
+  display:flex; flex-wrap:wrap; gap:.45rem; padding:0; margin:0 0 .5rem;
+}
+.metodo-tools .chips li{
+  list-style:none; font-size:.95rem; padding:.35rem .6rem;
+  background:#f0f6ec; border:1px solid #d4e8bc; border-radius:999px; color:#2b3326;
+}
+.metodo-tools .meta{ color:#444; margin:.2rem 0 0; }
+.metodo-cta{ margin-top:.8rem; }
+
+.metodo-tools .chips{
+  list-style:none;
+  margin:.5rem 0 1rem;
+  padding:0;
+  display:flex; flex-wrap:wrap; gap:.5rem .6rem;
+  border:0 !important;               /* quita la línea */
+  box-shadow:none !important;
+  outline:0;                         /* por si acaso */
+}
+.metodo-tools .chips::before,
+.metodo-tools .chips::after{ display:none !important; } /* algunos temas los usan */
+
+.metodo-tools .chips li{
+  display:inline-block;
+  background:#eef6e8;
+  border:1px solid #d0e4c2;
+  color:#2b3326;
+  padding:.55rem .9rem;
+  border-radius:999px;
+  font-weight:600;
+}
+
+/* Quita línea de ul.chips heredada y define layout */
+.metodo-tools .chips{
+  list-style:none; margin:.5rem 0 1rem; padding:0;
+  display:flex; flex-wrap:wrap; gap:.5rem .6rem;
+  border:0 !important; box-shadow:none !important;
+}
+.metodo-tools .chips li{ padding:0; }
+
+/* Botón pill */
+.metodo-tools .chip-btn{
+  -webkit-appearance:none; appearance:none;
+  display:inline-block; cursor:pointer;
+  padding:.55rem .9rem; border-radius:999px;
+  background:#eef6e8; border:1px solid #d0e4c2;
+  color:#2b3326; font-weight:600; line-height:1.1;
+  transition:transform .12s ease, background .12s ease, box-shadow .12s ease;
+}
+.metodo-tools .chip-btn:hover{ background:#e7f1e0; transform:translateY(-1px); }
+.metodo-tools .chip-btn:active{ transform:translateY(0); }
+.metodo-tools .chip-btn:focus{ outline:0; box-shadow:0 0 0 3px rgba(139,195,74,.35); }
+
