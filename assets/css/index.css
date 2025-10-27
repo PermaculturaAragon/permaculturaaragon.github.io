@@ -459,11 +459,11 @@ nav.top-nav{ display:none !important; }
 
 /* ===================== SUBRAYADOS VIVOS ===================== */
 .hl{
-  background:linear-gradient(180deg, rgba(205,224,194,0) 60%, #d6e9c9 0) no-repeat;
+  background:linear-gradient(180deg, rgba(255, 255, 255, 0.322) 85%, #c8f0adab 0) no-repeat;
   padding:0 .05em;
 }
 .hl-alt{
-  background:linear-gradient(180deg, rgba(205,224,194,0) 59%, #d6e9c9 0) no-repeat;
+  background:linear-gradient(180deg, rgba(205,224,194,0) 30%, #c8f0adab 0) no-repeat;
   padding:0 .08em; border-radius:2px;
 }
 /* Para títulos con resaltado y buen spacing entre palabras */
@@ -472,3 +472,5 @@ nav.top-nav{ display:none !important; }
   padding:0 .08em .06em; margin:0 .22em;
   -webkit-box-decoration-break:clone; box-decoration-break:clone;
 }
+
+
