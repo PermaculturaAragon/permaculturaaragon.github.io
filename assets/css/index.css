@@ -474,61 +474,263 @@ nav.top-nav{ display:none !important; }
 }
 
 
-/* Herramientas */
-.metodo-tools{ margin-top:.5rem; }
+/* ===================== Herramientas ===================== */
+.metodo-tools{
+  --chip-bg:#eef6e8;
+  --chip-bg-hover:#e7f1e0;
+  --chip-border:#d0e4c2;
+  --chip-ink:#2b3326;
+
+  margin-top:.5rem;
+}
 .metodo-tools h4{
-  margin:.2rem 0 .4rem; font-weight:700; color:#2e7d32; font-size:1rem; letter-spacing:.2px;
-}
-.metodo-tools .chips{
-  display:flex; flex-wrap:wrap; gap:.45rem; padding:0; margin:0 0 .5rem;
-}
-.metodo-tools .chips li{
-  list-style:none; font-size:.95rem; padding:.35rem .6rem;
-  background:#f0f6ec; border:1px solid #d4e8bc; border-radius:999px; color:#2b3326;
+  margin:.2rem 0 .4rem;
+  font-weight:700;
+  color:#2e7d32;
+  font-size:1rem;
+  letter-spacing:.2px;
 }
 .metodo-tools .meta{ color:#444; margin:.2rem 0 0; }
 .metodo-cta{ margin-top:.8rem; }
 
+/* Lista de chips */
 .metodo-tools .chips{
   list-style:none;
   margin:.5rem 0 1rem;
   padding:0;
-  display:flex; flex-wrap:wrap; gap:.5rem .6rem;
-  border:0 !important;               /* quita la línea */
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem .6rem;
+  border:0 !important;
   box-shadow:none !important;
-  outline:0;                         /* por si acaso */
 }
 .metodo-tools .chips::before,
-.metodo-tools .chips::after{ display:none !important; } /* algunos temas los usan */
+.metodo-tools .chips::after{
+  content:none !important;
+}
 
-.metodo-tools .chips li{
+/* 1) Chips como <li> (pilas por defecto) */
+.metodo-tools .chips > li{
   display:inline-block;
-  background:#eef6e8;
-  border:1px solid #d0e4c2;
-  color:#2b3326;
   padding:.55rem .9rem;
   border-radius:999px;
+  background:var(--chip-bg);
+  border:1px solid var(--chip-border);
+  color:var(--chip-ink);
   font-weight:600;
+  line-height:1.1;
 }
 
-/* Quita línea de ul.chips heredada y define layout */
-.metodo-tools .chips{
-  list-style:none; margin:.5rem 0 1rem; padding:0;
-  display:flex; flex-wrap:wrap; gap:.5rem .6rem;
-  border:0 !important; box-shadow:none !important;
+/* 2) Si el <li> contiene un botón .chip-btn, resetea el <li> para evitar doble “pill” */
+.metodo-tools .chips > li:has(.chip-btn){
+  padding:0;
+  background:transparent;
+  border:0;
 }
-.metodo-tools .chips li{ padding:0; }
 
 /* Botón pill */
 .metodo-tools .chip-btn{
   -webkit-appearance:none; appearance:none;
   display:inline-block; cursor:pointer;
   padding:.55rem .9rem; border-radius:999px;
-  background:#eef6e8; border:1px solid #d0e4c2;
-  color:#2b3326; font-weight:600; line-height:1.1;
+  background:var(--chip-bg);
+  border:1px solid var(--chip-border);
+  color:var(--chip-ink); font-weight:600; line-height:1.1;
   transition:transform .12s ease, background .12s ease, box-shadow .12s ease;
 }
-.metodo-tools .chip-btn:hover{ background:#e7f1e0; transform:translateY(-1px); }
+.metodo-tools .chip-btn:hover{ background:var(--chip-bg-hover); transform:translateY(-1px); }
 .metodo-tools .chip-btn:active{ transform:translateY(0); }
 .metodo-tools .chip-btn:focus{ outline:0; box-shadow:0 0 0 3px rgba(139,195,74,.35); }
 
+
+/* === Sección Qué Hacemos === */
+.qh{
+  /* Paleta */
+  --dark-bg:#437527;                 /* cards oscuras (1,3,5) */
+  --dark-ink:#ffffff;
+  --dark-sub:rgba(255,255,255,.88);
+
+  --light-bg:var(--paper-2, #f5f7f4);/* cards claras (2,4,6) */
+  --light-ink:#23382c;
+  --light-sub:#4b5842;
+
+  --radius-card:14px;
+  --radius-logo:12px;
+
+  font-family:"Lora", serif;
+}
+
+/* ===== Grid ===== */
+.qh__grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:1rem;
+}
+
+/* 2 columnas (pantallas medianas) */
+@media (max-width:1100px){
+  .qh__grid{ grid-template-columns:repeat(2, minmax(0,1fr)); }
+}
+
+/* 1 columna (móvil) */
+@media (max-width:700px){
+  .qh__grid{ grid-template-columns:1fr; }
+}
+
+/* ===== Tarjeta ===== */
+.qh__card{
+  display:grid;
+  grid-template-rows:auto 1fr;       /* fila superior + texto */
+  gap:.75rem;
+
+  padding:1rem 1.1rem 1.1rem;
+  border-radius:var(--radius-card);
+  text-decoration:none;
+
+  background-color:var(--light-bg);
+  color:var(--light-ink);
+  box-shadow:0 1px 0 rgba(0,0,0,.08) inset;
+
+  transition:transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+}
+.qh__card:hover,
+.qh__card:focus-visible{
+  outline:0;
+  transform:translateY(-1px);
+  box-shadow:0 0 0 5px rgba(139, 195, 74, 0.404), 0 1px 0 rgba(0,0,0,.08) inset;
+}
+
+/* ===== Top: logo + título ===== */
+.qh__top{
+  display:grid;
+  grid-template-columns:84px 1fr;    /* logo | h3 */
+  gap:.85rem;
+  align-items:center;
+}
+@media (max-width:1100px){ .qh__top{ grid-template-columns:72px 1fr; } }
+@media (max-width:700px){  .qh__top{ grid-template-columns:64px 1fr; } }
+
+/* Logo */
+.qh__logo{
+  width:84px; height:84px;
+  border-radius:var(--radius-logo);
+  background:#fff;
+  display:grid; place-items:center;
+  box-shadow:0 1px 0 rgba(0,0,0,.04) inset;
+}
+.qh__logo img{ max-width:86%; max-height:86%; display:block; object-fit:contain; }
+
+/* Título (sin subrayados) */
+.qh__heading{
+  margin:0;
+  font-weight:700;
+  font-size:clamp(1rem,1.6vw,1.35rem);
+  line-height:1.2;
+  color:inherit;            /* hereda del tema */
+  min-width:0;              /* evita desbordes en grid */
+  overflow-wrap:anywhere;   /* partir palabras largas */
+  hyphens:auto;
+}
+
+/* ===== Texto ===== */
+.qh__text{
+  padding-left:.9rem;
+  border-left:3px solid #dbead2;
+}
+.qh__text p{
+  margin:0;
+  font-size:clamp(.95rem,1.3vw,1.05rem);
+  line-height:1.45;
+  color:var(--light-sub);
+}
+
+/* ===== Temas: 1,3,5 oscuras; 2,4,6 claras ===== */
+.qh__grid > .qh__card:nth-child(odd){
+  background-color:var(--dark-bg);
+  color:var(--dark-ink);
+}
+.qh__grid > .qh__card:nth-child(odd) .qh__text{
+  border-left-color:rgba(255,255,255,.35);
+}
+.qh__grid > .qh__card:nth-child(odd) .qh__text p{
+  color:var(--dark-sub);
+}
+
+/* ===== Animación solo en pantallas grandes ===== */
+@media (min-width:1101px){
+  @supports (animation-timeline: --t){
+    .qh{ view-timeline-name: --qh; view-timeline-axis: block; }
+
+    .qh__card{
+      animation: qh-slide 1 linear both;
+      animation-timeline: --qh;
+      animation-range: entry 0% exit 100%;
+      will-change: transform, opacity;
+    }
+    /* Fila 1 (items 1–3): derecha -> izquierda */
+    .qh__card:nth-child(-n+3){ --from: 8vw; --to: -8vw; }
+    /* Fila 2 (items 4–6): izquierda -> derecha */
+    .qh__card:nth-child(n+4) { --from:-8vw; --to:  8vw; }
+
+    @keyframes qh-slide{
+      0%   { transform:translateX(var(--from)); opacity:.75; }
+      50%  { transform:translateX(0);          opacity:1;    }
+      100% { transform:translateX(var(--to));  opacity:.75; }
+    }
+  }
+}
+
+/* Accesibilidad: sin movimiento si el usuario lo pide */
+@media (prefers-reduced-motion: reduce){
+  .qh__card{ animation:none !important; transform:none !important; opacity:1 !important; }
+}
+
+
+/* Que el título herede el color de la tarjeta */
+.qh .qh__heading{ color: inherit; }
+
+/* En las oscuras (1,3,5) fuerza blanco */
+.qh__grid > .qh__card:nth-child(odd) .qh__heading{ color: var(--dark-ink); }
+
+/* 0) que nada se escape del borde redondeado de la card */
+.qh__card{ overflow:hidden; }
+
+/* 1) en móviles pequeños reduce el logo y el padding */
+@media (max-width:520px){
+  .qh__card{ padding:.85rem 1rem; }
+  .qh__top{ grid-template-columns:56px 1fr; gap:.6rem; }
+  .qh__logo{ width:56px; height:56px; border-radius:10px; }
+  .qh__logo img{ max-width:88%; max-height:88%; }
+}
+
+/* 2) en muy pequeñas, apila logo arriba y título debajo */
+@media (max-width:360px){
+  .qh__top{
+    grid-template-columns:1fr;
+    grid-template-rows:auto auto;   /* logo + h3 en dos líneas */
+  }
+  .qh__logo{ justify-self:start; }   /* o center si lo prefieres centrado */
+}
+
+
+/* LOGO responsivo: que baje en los mismos breakpoints del grid */
+@media (max-width:1100px){
+  .qh__top{ grid-template-columns:72px 1fr; }
+  .qh__logo{ width:72px; height:72px; }
+}
+
+@media (max-width:700px){
+  .qh__top{ grid-template-columns:64px 1fr; }
+  .qh__logo{ width:64px; height:64px; }
+}
+
+/* Ya tenías este; lo mantengo para pantallas muy pequeñas */
+@media (max-width:520px){
+  .qh__card{ padding:.85rem 1rem; }
+  .qh__top{ grid-template-columns:56px 1fr; gap:.6rem; }
+  .qh__logo{ width:56px; height:56px; border-radius:10px; }
+  .qh__logo img{ max-width:88%; max-height:88%; }
+}
+
+/* Seguridad extra: que nada se escape del borde redondeado */
+.qh__card{ overflow:hidden; }
