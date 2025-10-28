@@ -4,87 +4,150 @@ title: "portfolio de diseños"
 permalink: /disenos/
 hero_image: /assets/img/diseno1.jpg
 css: ["index.css", "cards-bridge.css"]
-
 ---
 
+<!-- SOBRE MÍ (foto redonda + texto) -->
+<section class="section bio">
+  <div class="u-mw">
+    <div class="bio__grid">
+      <!-- Col 1/3: foto redonda -->
+      <figure class="bio__media">
+        <img
+          src="{{ site.baseurl }}/assets/img/yo2.jpg"
+          alt="Ángel Escuín"
+          class="bio__photo"
+          loading="lazy">
+      </figure>
 
-<!-- Porfolio de diseños de la diplomatura -->
-<section class="section" >
-  <div class="container">
-    <div class="row">
-      <div class="col s12 m10 l8 offset-m1 offset-l2">
-
-
-
+      <!-- Col 2/3: texto -->
+      <div class="bio__body">
+        <h2 class="section__title h2-text">
+          <i class="material-icons" style="margin-right:6px;">person</i>
+          Sobre Ángel <span class="hl">Escuín</span>
+        </h2>
         <p>
-          Soy <strong>Ángel Escuín</strong>, <strong>diplomando por la 
-          <a href="https://academiapermaculturaibera.org/" target="_blank" rel="noopener">Academia de Permacultura Íbera</a></strong>.
-          La diplomatura requiere <strong>10 diseños completos</strong>, cada uno
-          <strong>revisado y aprobado por tutoría</strong>.
-          Esta sección es <strong>mi porfolio</strong>, creado para <strong>inspirar a otras personas</strong>,
-          compartir aprendizajes y mostrar cómo aplico la permacultura en contextos reales.
+          Soy <strong>Ángel Escuín</strong>, fundador entre otros de Permacultura Aragón y trabajo con
+          <strong>diseño de permacultura</strong> aplicado a proyectos reales: fincas, campamentos,
+          educación ambiental y economía circular. Me mueve la regeneración del territorio y el
+          cuidado de las personas a través de procesos participativos.
         </p>
-
-        <h3>Objetivos de este porfolio</h3>
-        <ul class="browser-default">
-          <li><strong>Inspirar</strong>: ofrecer ideas, enfoques y soluciones replicables o adaptables.</li>
-          <li><strong>Mostrar mi forma de trabajar</strong>: desde la observación y el análisis hasta la toma de decisiones y la implementación.</li>
-          <li><strong>Transparencia de criterios</strong>: hacer explícitos los principios y compromisos que guían cada propuesta.</li>
-          <li><strong>Aprendizaje abierto</strong>: facilitar el intercambio, la retroalimentación y la colaboración.</li>
-          <li><strong>Uso profesional</strong>: servir como <strong>dossier</strong> para colaboraciones, convocatorias y propuestas.</li>
-        </ul>
-
-        <h3>Qué encontrarás aquí</h3>
-        <p>
-          Presento <strong>una selección de imágenes</strong> y una breve descripción de cada diseño.
-          Si deseas <strong>recibir el dossier completo</strong> de cualquiera de ellos, <strong>escríbeme a través del formulario de contacto</strong>:
-          te lo envío y <strong>te añado a mi lista de contactos</strong> para futuras actualizaciones
-          (podrás darte de baja cuando quieras).
-        </p>
-
-        <div class="center-align" style="margin-top: 1rem;">
-          <!-- Botón unificado (light) -->
-          <a class="btn" href="{{ site.baseurl }}/contact" title="Solicitar algún diseño en concreto">
-            <i class="material-icons icon-left">mail</i>
-            Pedir diseño completo
-          </a>
-        </div>
-
       </div>
     </div>
   </div>
 </section>
 
+<span class="air-gap"></span>
+
+<!-- QUÉ ES ESTE PORFOLIO (versión sin cards) -->
+<section class="section portfolio">
+  <div class="u-mw">
+
+    <h2 class="heading-with-icon">
+      <i class="material-icons">collections_bookmark</i>
+      Qué <span class="hl">es este porfolio</span>
+    </h2>
+
+    <p>
+      Forma parte de mi <strong>diplomatura</strong> en la
+      <a href="https://academiapermaculturaibera.org/" target="_blank" rel="noopener">Academia de Permacultura Íbera</a>:
+      reúne <strong>10 diseños completos</strong>, cada uno <strong>revisado por tutoría</strong>.
+      Es una muestra ágil para entender <strong>en qué enfoques trabajo</strong> y cómo aterrizan en lo real.
+    </p>
+
+    <!-- Lista “media” con icono + texto (sin cajas) -->
+    <ul class="media-list">
+      <li class="media">
+        <span class="media__icon"><i class="material-icons">emoji_objects</i></span>
+        <div class="media__body">
+          <h3 class="media__title">Inspirar</h3>
+          <p>Ideas y soluciones que puedas replicar o adaptar con tus recursos.</p>
+        </div>
+      </li>
+      <li class="media">
+        <span class="media__icon"><i class="material-icons">timeline</i></span>
+        <div class="media__body">
+          <h3 class="media__title">Cómo trabajo</h3>
+          <p>De la observación y el análisis a la decisión y la implementación.</p>
+        </div>
+      </li>
+      <li class="media">
+        <span class="media__icon"><i class="material-icons">fact_check</i></span>
+        <div class="media__body">
+          <h3 class="media__title">Criterios claros</h3>
+          <p>Principios y compromisos explícitos, sin humo.</p>
+        </div>
+      </li>
+      <li class="media">
+        <span class="media__icon"><i class="material-icons">groups</i></span>
+        <div class="media__body">
+          <h3 class="media__title">Aprendizaje abierto</h3>
+          <p>Intercambio, retroalimentación y colaboración continuas.</p>
+        </div>
+      </li>
+      <li class="media">
+        <span class="media__icon"><i class="material-icons">description</i></span>
+        <div class="media__body">
+          <h3 class="media__title">Uso profesional</h3>
+          <p>Dossier listo para colaboraciones, convocatorias y propuestas.</p>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Mini-acordeón -->
+    <div class="faq-list faq--narrow portfolio-accordion">
+      <details>
+        <summary>¿Qué encontrarás aquí?</summary>
+        <div>
+          <p>
+            Una selección de imágenes y una breve descripción de cada diseño.
+            Si quieres <strong>el dossier completo</strong> de cualquiera, pídemelo y te lo envío.
+            También puedo <strong>añadirte a mi lista</strong> para futuras actualizaciones
+            (te das de baja cuando quieras).
+          </p>
+        </div>
+      </details>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-inline">
+      <a class="btn" href="{{ site.baseurl }}/contact" title="Solicitar algún diseño en concreto">
+        <i class="material-icons icon-left">mail</i>
+        Pide el dossier completo
+      </a>
+    </div>
+
+  </div>
+</section>
+
 <section class="section disenos">
-  <div class="container">
+  <div class="u-mw">
     <div class="row">
       {% assign disenos = site.disenos | sort: 'order' %}
       {% for diseno in disenos %}
-        <div class="col s12 m6 l4">
-  <a class="card hoverable diseno-cardlink"
-     href="{{ diseno.url | relative_url }}"
-     aria-label="Abrir: {{ diseno.title }}">
+      <div class="col s12 m6 l4">
+        <a class="card hoverable diseno-cardlink"
+           href="{{ diseno.url | relative_url }}"
+           aria-label="Abrir: {{ diseno.title }}">
 
-    {% if diseno.image %}
-      <div class="card-image">
-        <img src="{{ diseno.image | relative_url }}" alt="{{ diseno.title }}">
+          {% if diseno.image %}
+          <div class="card-image">
+            <img src="{{ diseno.image | relative_url }}" alt="{{ diseno.title }}">
+          </div>
+          {% endif %}
+
+          <div class="card-content">
+            <span class="card-title">{{ diseno.title }}</span>
+            <p>{{ diseno.subtitle }}</p>
+          </div>
+
+          <div class="card-action">
+            <span class="u-card__cta">Ver más →</span>
+          </div>
+        </a>
       </div>
-    {% endif %}
-
-    <div class="card-content">
-      <span class="card-title">{{ diseno.title }}</span>
-      <p>{{ diseno.subtitle }}</p>
-    </div>
-
-    <div class="card-action">
-      <span class="u-card__cta">Ver más →</span>
-    </div>
-  </a>
-</div>
       {% endfor %}
     </div>
   </div>
 </section>
 
-
- {% include footer.html %}
+{% include footer.html %}

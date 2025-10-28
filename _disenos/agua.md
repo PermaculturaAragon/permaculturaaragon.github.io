@@ -1,7 +1,7 @@
 ---
 title: Agua en Torre Escribana
 subtitle: Gestión de recrecogida, almacenaje y calidad de las aguas en Torre Escribana
-image: /assets/img/agua.jpg
+image: /assets/img/disenos/agua.jpg
 layout: diseno
 permalink: /disenos/agua/
 doc_url: /contact.html   # <- pon aquí tu PDF

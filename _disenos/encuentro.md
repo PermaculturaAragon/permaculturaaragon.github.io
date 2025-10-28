@@ -1,7 +1,7 @@
 ---
 title: Encuentro de Permacultura
 subtitle: Diseño en Red de Lobby Macnamara
-image: /assets/img/encuentro.jpg
+image: /assets/img/disenos/encuentro.jpg
 layout: diseno
 permalink: /disenos/encuentro/
 doc_url: /contact.html   # <- pon aquí tu PDF
