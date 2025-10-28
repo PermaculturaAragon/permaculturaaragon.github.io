@@ -1,28 +1,123 @@
 ---
 layout: page
-show_hero: false
 ---
 
 <section class="section diseno">
-  {% if page.image %}
-    <img src="{{ page.image | relative_url }}"
-         alt="{{ page.title }}"
-         class="imagen-ancha">
-  {% endif %}
+  {%- unless page.hero_image -%}
+    {%- if page.image -%}
+      <img src="{{ page.image | relative_url }}" alt="{{ page.title | escape }}" class="imagen-ancha">
+    {%- endif -%}
+  {%- endunless -%}
 
   <div class="container">
-    <h1 class="diseno-title">{{ page.title }}</h1>
-    {% if page.subtitle %}
-      <p class="diseno-subtitle">{{ page.subtitle }}</p>
-    {% endif %}
+    {%- if page.hero_image -%}
+      <h1 class="sr-only">{{ page.title }}</h1>
+    {%- else -%}
+      <h1 class="diseno-title">{{ page.title }}</h1>
+    {%- endif -%}
 
-    {% assign subject = 'Solicitud diseño: ' | append: page.title %}
-    <a class="btn" href="{{ '/contact/' | relative_url }}?subject={{ subject | uri_escape }}">
-      Contactar por este diseño
-    </a>
+    {%- if page.subtitle -%}
+      <h2>{{ page.subtitle }}</h2>
+    {%- endif -%}
 
-    <div class="content">
-      {{ content }}
+    {%- if page.sistema -%}
+  <div class="metodo-tools">
+    <h4 class="metodo-heading">SISTEMA DE DISEÑO</h4>
+    <ul class="chips">
+      {%- for tool in page.sistema -%}
+        <li>{{ tool }}</li>
+      {%- endfor -%}
+    </ul>
+  </div>
+{%- endif -%}
+
+{%- if page.herramientas and page.herramientas.size > 0 -%}
+  <div class="metodo-tools ">
+    <h4 class="metodo-heading">HERRAMIENTAS UTILIZADAS</h4>
+    <ul class="chips">
+      {%- for tool in page.herramientas -%}
+        <li>{{ tool }}</li>
+      {%- endfor -%}
+    </ul>
+  </div>
+{%- endif -%}
+    </div>
+
+
+
+
+
+<div class="content u-mw">
+  {{ content }}
+</div>
+
+
+
+    {%- if page.images -%}
+      {%- if page.gallery_style == 'carousel' -%}
+        <!-- ===== Carrusel con “peek” ===== -->
+        <div class="carousel-peek {% if page.gallery_ratio == 'portrait' %}is-portrait{% else %}is-landscape{% endif %}" data-carousel tabindex="0">
+          <button class="caro-arrow prev" aria-label="Anterior" data-prev>&lsaquo;</button>
+          <div class="caro-track" data-track>
+            {%- for img in page.images -%}
+              <figure class="caro-slide">
+                <img src="{{ img | relative_url }}"
+                     loading="lazy"
+                     alt="{{ page.title | escape }} – imagen {{ forloop.index }}">
+              </figure>
+            {%- endfor -%}
+          </div>
+          <button class="caro-arrow next" aria-label="Siguiente" data-next>&rsaquo;</button>
+        </div>
+      {%- else -%}
+        <!-- ===== Galería en grid (fallback) ===== -->
+        <div class="diseno-gallery {% if page.gallery_ratio == 'portrait' %}is-portrait{% else %}is-landscape{% endif %}">
+          {%- for img in page.images -%}
+            <figure class="frame">
+              <img src="{{ img | relative_url }}" loading="lazy" alt="{{ page.title | escape }} – imagen {{ forloop.index }}">
+            </figure>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- assign subject = 'Solicitud diseño: ' | append: page.title -%}
+    <div class="center" style="margin-top:1rem;">
+      <a class="btn" href="{{ '/contacto/' | relative_url }}?subject={{ subject | uri_escape }}">
+        Contactar por este diseño
+      </a>
     </div>
   </div>
 </section>
+
+<script>
+/* ===== Carrusel “peek” vanilla ===== */
+document.querySelectorAll('[data-carousel]').forEach(caro=>{
+  const track = caro.querySelector('[data-track]');
+  const slides = [...track.querySelectorAll('.caro-slide')];
+  const prev = caro.querySelector('[data-prev]'), next = caro.querySelector('[data-next]');
+  const go = i => slides[Math.max(0, Math.min(slides.length-1, i))]
+                    .scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+  let current = 0;
+
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if (e.isIntersecting) {
+        const idx = slides.indexOf(e.target);
+        if (idx >= 0) current = idx;
+        slides.forEach((s,i)=> s.classList.toggle('is-active', i===current));
+      }
+    });
+  }, {root: track, threshold: 0.6});
+  slides.forEach(s=> io.observe(s));
+
+  prev.addEventListener('click', ()=> go(current-1));
+  next.addEventListener('click', ()=> go(current+1));
+
+  caro.addEventListener('keydown', e=>{
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(current+1); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); go(current-1); }
+  });
+});
+</script>
+

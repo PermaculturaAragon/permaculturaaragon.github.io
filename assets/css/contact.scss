@@ -215,3 +215,53 @@ input[name="_gotcha"].hp-field {
 #contact-form .privacy-checkbox span a { text-decoration: underline; }
 
 
+/* ---- Fix móvil contacto ---- */
+.contact-page .chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+  padding:0;
+  margin:.5rem 0 1rem;
+  list-style:none;
+}
+.contact-page .chips li{ list-style:none; }
+
+.contact-page .chip-btn{
+  display:inline-block;
+  border:0;
+  padding:.6rem .9rem;
+  border-radius:999px;
+  background:#e8efe8;
+  font-weight:600;
+  line-height:1.2;
+  cursor:pointer;
+}
+
+/* En móvil, que cada chip pueda ocupar toda la fila si lo necesita */
+@media (max-width:600px){
+  .contact-page .chip-btn{
+    width:100%;
+    text-align:left;
+  }
+}
+
+/* Email grande y con corte seguro en móvil */
+.contact-page .email-big{
+  margin:.25rem 0 1rem;
+}
+.contact-page .email-big .break-email{
+  display:inline-block;
+  font-weight:800;
+  font-size:clamp(1.2rem, 6vw, 2rem);
+  line-height:1.2;
+  text-decoration:none;
+  color:#2c3b2f;
+  overflow-wrap:anywhere;    /* permite cortar en cualquier punto */
+  word-break:break-word;     /* fallback */
+}
+
+/* Asegura que la grid de Materialize no se rompa por hijos sueltos */
+.contact-page .row > :not(.col){
+  flex: 0 0 100%;
+  max-width:100%;
+}

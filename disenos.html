@@ -99,7 +99,7 @@ css: ["index.css", "cards-bridge.css"]
         <summary>¿Qué encontrarás aquí?</summary>
         <div>
           <p>
-            Una selección de imágenes y una breve descripción de cada diseño.
+            Una selección de imágenes y una breve descripción de cada diseño, la observación, las estrategias y técnicas elegidas, los principios de diseño aplicados y el sistema utilizado. 
             Si quieres <strong>el dossier completo</strong> de cualquiera, pídemelo y te lo envío.
             También puedo <strong>añadirte a mi lista</strong> para futuras actualizaciones
             (te das de baja cuando quieras).
@@ -131,7 +131,7 @@ css: ["index.css", "cards-bridge.css"]
 
           {% if diseno.image %}
           <div class="card-image">
-            <img src="{{ diseno.image | relative_url }}" alt="{{ diseno.title }}">
+            <img src="{{ diseno.hero_image | relative_url }}" alt="{{ diseno.title }}">
           </div>
           {% endif %}
 

@@ -820,3 +820,263 @@ nav.top-nav{ display:none !important; }
 
 /* Mantén los full-bleed intactos */
 #main-content section.full-bleed{ max-width:none !important; }
+
+
+/* ===================== DISEÑOS (páginas de proyecto) ===================== */
+.diseno .diseno-title{
+  font-family:"Lora",serif;
+  font-weight:700;
+  color:var(--verde-comun);
+  font-size:clamp(1.9rem,3.2vw,2.6rem);
+  line-height:1.15;
+  margin:.9rem 0 .35rem;
+  text-wrap:balance;
+}
+.diseno .diseno-subtitle{
+  color:#4b5842;
+  font-size:clamp(1rem,1.8vw,1.15rem);
+  margin:0 0 1rem;
+}
+.diseno .btn{ margin:.6rem 0 1.4rem; }
+
+/* Galería de láminas A4 (5 imágenes) */
+.diseno-gallery{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:.9rem;
+  margin:1.4rem 0 0;
+}
+@media (max-width:900px){ .diseno-gallery{ grid-template-columns:1fr; } }
+
+/* A4 ratio: usa el modificador en el contenedor */
+.diseno-gallery.is-landscape .frame{ aspect-ratio: 297 / 210; } /* ~1.414 */
+.diseno-gallery.is-portrait  .frame{ aspect-ratio: 210 / 297; } /* ~0.707 */
+
+.diseno-gallery .frame{
+  position:relative;
+  overflow:hidden;
+  border-radius:10px;
+  background:#fff;
+  border:1px solid #e3e7e0;
+  box-shadow:0 6px 16px rgba(0,0,0,.06);
+  display:block;
+}
+.diseno-gallery .frame img{
+  width:100%;
+  height:100%;
+  object-fit:contain;        /* que se vea la lámina completa */
+  display:block;
+  background:#fff;
+}
+
+/* Texto del contenido con anchura cómoda */
+.diseno .content{ max-width:var(--mw-medium); }
+.diseno .content h2{ color:#33691e; } /* subtítulos del markdown, si los hay */
+
+
+/* ===== Carrusel con “peek” (láminas A4) ===== */
+.carousel-peek{
+  --peek: clamp(12px, 4vw, 64px);
+  --gap: clamp(10px, 2vw, 16px);
+  position:relative;
+  margin:1.2rem auto 0;
+  max-width:var(--mw-wide);
+}
+.carousel-peek .caro-track{
+  display:grid;
+  grid-auto-flow:column;
+  grid-auto-columns:calc(100% - var(--peek)*2); /* deja hueco para ver vecinas */
+  gap:var(--gap);
+  overflow-x:auto;
+  padding:0 var(--peek);
+  scroll-snap-type:x mandatory;
+  scroll-padding:var(--peek);
+  -webkit-overflow-scrolling:touch;
+}
+.carousel-peek .caro-slide{
+  scroll-snap-align:center;
+  position:relative;
+  border-radius:12px;
+  background:#fff;
+  border:1px solid #e3e7e0;
+  box-shadow:0 6px 16px rgba(0,0,0,.06);
+  overflow:hidden;
+  transition:transform .35s ease, box-shadow .35s ease, filter .35s ease, opacity .35s ease;
+  aspect-ratio:297/210; /* landscape por defecto */
+}
+.carousel-peek.is-portrait .caro-slide{ aspect-ratio:210/297; }
+
+.carousel-peek .caro-slide img{
+  width:100%; height:100%; object-fit:contain; display:block; background:#fff;
+}
+
+/* énfasis al activo */
+.carousel-peek .caro-slide{ transform:scale(.94); opacity:.85; filter:saturate(.9); }
+.carousel-peek .caro-slide.is-active{ transform:scale(1); opacity:1; filter:none; box-shadow:0 10px 24px rgba(0,0,0,.10); }
+
+/* flechas */
+.carousel-peek .caro-arrow{
+  position:absolute; top:50%; transform:translateY(-50%);
+  background:rgba(255,255,255,.9);
+  border:1px solid #cfd8c3;
+  width:42px; height:42px; border-radius:999px;
+  display:grid; place-items:center;
+  font-size:28px; line-height:1; color:#2b3326;
+  cursor:pointer; z-index:5;
+  transition:background .2s ease, transform .15s ease, box-shadow .2s ease;
+}
+.carousel-peek .caro-arrow:hover{ background:#fff; box-shadow:0 4px 10px rgba(0,0,0,.12); transform:translateY(-50%) scale(1.04); }
+.carousel-peek .caro-arrow.prev{ left:6px; }
+.carousel-peek .caro-arrow.next{ right:6px; }
+
+@media (max-width:680px){
+  .carousel-peek{ --peek:10px; }
+  .carousel-peek .caro-track{ grid-auto-columns:100%; }
+  .carousel-peek .caro-arrow{ display:none; }
+
+}
+
+/* ==== Fade lateral para el carrusel con “peek” ==== */
+.carousel-peek{ --fade: clamp(24px, 8vw, 120px); }
+
+/* 1) Máscara moderna (Chrome/Firefox/Safari) */
+.carousel-peek .caro-track{
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--fade),
+    #000 calc(100% - var(--fade)),
+    transparent 100%
+  );
+          mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--fade),
+    #000 calc(100% - var(--fade)),
+    transparent 100%
+  );
+}
+
+/* 2) Fallback visual con overlays (por si alguna versión pasa de mask) */
+.carousel-peek::before,
+.carousel-peek::after{
+  content:"";
+  position:absolute; top:0; bottom:0; width:var(--fade);
+  pointer-events:none; z-index:4;
+}
+.carousel-peek::before{
+  left:0;
+  background:linear-gradient(to right, var(--paper,#fff) 0%, rgba(255,255,255,0) 100%);
+}
+.carousel-peek::after{
+  right:0;
+  background:linear-gradient(to left, var(--paper,#fff) 0%, rgba(255,255,255,0) 100%);
+}
+
+/* Opcional: ocultar la barrita de scroll horizontal del track */
+.carousel-peek .caro-track{ scrollbar-width:none; }
+.carousel-peek .caro-track::-webkit-scrollbar{ height:0; }
+
+
+/* ==== Contraste fuerte para láminas del carrusel ==== */
+.carousel-peek .caro-slide{
+  /* Borde más visible */
+  border:1.5px solid #c0ccb8;               /* sube/baja el tono para más/menos borde */
+
+  /* Sombra más marcada (ajusta los últimos números .14/.18) */
+  box-shadow:0 10px 26px rgba(0,0,0,.14);
+  background:#fff;
+}
+
+/* “Aro” perimetral que siempre se ve, incluso con fondos blancos */
+.carousel-peek .caro-slide::after{
+  content:""; position:absolute; inset:0; border-radius:12px;
+  box-shadow:inset 0 0 0 2px rgba(43,51,38,.10);  /* sube a .14 o .18 si quieres más */
+  pointer-events:none;
+}
+
+/* Activa aún más la central */
+.carousel-peek .caro-slide.is-active{
+  box-shadow:0 16px 36px rgba(0,0,0,.18),
+             inset 0 0 0 1px rgba(0,0,0,.06);
+}
+
+/* Laterales menos desvanecidos (opcional): hazlas un poco menos transparentes */
+.carousel-peek .caro-slide{ opacity:.92; }      /* antes .85 */
+.carousel-peek .caro-slide.is-active{ opacity:1; }
+
+/* Herramientas usadas (dentro de páginas de diseño) */
+.diseno .diseno-tools{ margin:.6rem 0 1rem; }
+.metodo-heading{
+  margin:.1rem 0 .35rem;
+  font-weight:700;
+  color:#2e7d32;
+  font-size:.95rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  opacity:.95;
+}
+.diseno .diseno-tools .chips{ justify-content:flex-start; }
+
+/* Centrar verticalmente el texto dentro de los chips */
+.metodo-tools .chips{ align-items:center; }           /* por si algún chip tiene otra altura */
+
+.metodo-tools .chips > li,
+.metodo-tools .chip-btn{
+  display:inline-flex;             /* antes inline-block */
+  align-items:center;              /* centra vertical */
+  justify-content:center;
+  line-height:1;                   /* elimina el extra del baseline */
+  padding:.55rem .9rem;            /* mantén tu padding */
+}
+
+/* Si aún lo ves 1px “alto/bajo”, microajuste opcional: */
+/* .metodo-tools .chips > li{ padding-top:.58rem; padding-bottom:.58rem; } */
+
+
+/* Páginas de diseño: títulos a la izquierda */
+
+.diseno .content h3,
+.diseno .content h4{
+  display:block !important;          /* anula el flex centrado global */
+  text-align:left !important;
+  justify-content:flex-start !important;
+  align-items:normal !important;
+  margin:2rem 0 1rem;                /* opcional: margen cómodo */
+
+}
+
+.diseno .content h2{
+  font-size: 1.5rem;
+  display:block !important;          /* anula el flex centrado global */
+  text-align:left !important;
+  justify-content:flex-start !important;
+  align-items:normal !important;
+  margin:2rem 0 1rem;   
+}
+
+/* Por si el H1 del diseño se centra en algún caso */
+.diseno .diseno-title,
+.diseno .diseno-subtitle{
+  text-align:left;
+}
+
+/* Chips de herramientas ya los dejamos a la izquierda,
+   pero por si acaso: */
+.diseno .diseno-tools .chips{ justify-content:flex-start; }
+
+
+/* Mostrar flechas también en pantallas pequeñas y encima del fade */
+.carousel-peek .caro-arrow{ z-index:20; } /* por si acaso, encima del overlay */
+
+@media (max-width:680px){
+  .carousel-peek{ --peek:10px; --fade:38px; } /* un poco de margen y fade menor */
+  .carousel-peek .caro-track{ grid-auto-columns:100%; }
+  .carousel-peek .caro-arrow{
+    display:grid !important;        /* forzar visible */
+    width:36px; height:36px;         /* flecha más compacta */
+    font-size:22px;
+  }
+  .carousel-peek .caro-arrow.prev{ left:4px; }
+  .carousel-peek .caro-arrow.next{ right:4px; }
+}
