@@ -13,14 +13,18 @@ show_hero: false
 <!-- HERO LIMPIO -->
 <section
   class="section hero-minimal hero-minimal--bg no-divider full-bleed is-dark hero-fw " 
-  style="--hero-bg: url('{{ '/assets/img/flor.jpg' | relative_url }}');">
+  style="--hero-bg: url('{{ '/assets/img/aerea2.jpg' | relative_url }}');">
   <div class="container hero-minimal__inner">
 
+<h1 class="hero-minimal__title">
+  <span class="hl-hero-wrap">
+    Diseñamos lugares que funcionan como un ecosistema:
+    <span class="hl-hero-word">bello</span>, 
+    <span class="hl-hero-word">eficiente</span> y 
+    <span class="hl-hero-word">resiliente</span>.
+  </span>
+</h1>
 
-    <h1 class="hero-minimal__title"  >
-      <span class="hl" >Diseñamos lugares que funcionan como un ecosistema:
-      <span class="hl-alt">bello</span>, <span class="hl-alt">eficiente</span> y <span class="hl-alt">resiliente</span>.</span>
-    </h1>
 
       
 
@@ -30,7 +34,11 @@ show_hero: false
 <section class="section qh" id="que-hacemos">
   <div class="container">
     <header class="qh__head center">
-      <h2 class="section__title">A qué dedicamos el <span class="hl">tiempo</span></h2>
+<h2 class="section__title">
+  <span class="h2-text">
+    A qué dedicamos nuestro <span class="hl">tiempo</span>
+  </span>
+</h2>
 
     </header>
 
@@ -44,7 +52,7 @@ show_hero: false
           <h3 class="qh__heading">Diseñamos y asesoramos</h3>
         </div>
         <div class="qh__text">
-          <p>Espacios y dinámicas que generan más energía de la que consumen. Siempre a favor de la naturaleza y tomando como base los principios de la permacultura.</p>
+          <p>Espacios y dinámicas que generan <strong>más energía de la que consumen.</strong> Siempre a favor de la <strong>naturaleza</strong> y tomando como base los principios de la <strong>permacultura.</strong></p>
         </div>
       </a>
 
@@ -118,18 +126,138 @@ show_hero: false
   </div>
 </section>
 
+<!-- === ANTES / DESPUÉS (scroll invertido + drag, ancho más pequeño) === -->
+<section class="section" id="antes-despues">
+  <div class="u-mw u-mw--photo"><!-- ⬅️ contenedor más estrecho -->
+    <h2 class="section__title">
+      <i class="material-icons" style="margin-right:6px;">compare</i>
+      Torre Escribana 2016 / <span class="hl">2024</span>
+    </h2>
 
+    <figure id="cmp01" aria-label="Comparador de imagen antes y después">
+      <!-- Fondo = DESPUÉS -->
+      <img class="after" src="{{ '/assets/img/despues.jpg' | relative_url }}" alt="Después" loading="lazy">
 
+      <!-- Capa superior recortada = ANTES (fija, sin moverse) -->
+      <div class="cmp-reveal">
+        <img class="before" src="{{ '/assets/img/antes.jpg' | relative_url }}" alt="Antes" loading="lazy">
+      </div>
 
+      <!-- Barra + pomo -->
+      <div class="bar" aria-hidden="true"><span class="knob"></span></div>
 
+      <!-- Etiquetas -->
+      <div class="labels" aria-hidden="true">
+        <span class="lab-left">ANTES</span>
+        <span class="lab-right">DESPUÉS</span>
+      </div>
 
+      <!-- Slider invisible para arrastrar manualmente -->
+      <input class="range" type="range" min="8" max="92" value="92" aria-label="Arrastra para comparar">
+    </figure>
+  </div>
+
+  <style>
+    /* === Utilidad de ancho para este bloque (ajusta 980px si quieres) === */
+    :root{ --mw-photo: clamp(560px, 92vw, 600px); }
+    .u-mw--photo{ max-width: var(--mw-photo); }
+
+    /* ================== Estilos del comparador ================== */
+    #cmp01{
+      --split:92%; /* inicio: barra a la derecha (más ANTES) */
+      position:relative;
+      width:100%;                 /* el ancho lo manda u-mw--photo */
+      aspect-ratio:16/9;
+      margin:1.25rem auto 0;
+      overflow:hidden; border-radius:16px;
+      background:#e8ece6; box-shadow:0 10px 28px rgba(0,0,0,.12);
+    }
+    #cmp01 > img, #cmp01 .cmp-reveal > img{
+      position:absolute !important; inset:0;
+      width:100%; height:100%; object-fit:cover;
+      object-position:left center; display:block;
+    }
+    /* ANTES fijo con clip-path (no cambiamos anchura) */
+    #cmp01 .cmp-reveal{
+      position:absolute; inset:0; width:100%; overflow:hidden;
+      clip-path: inset(0 calc(100% - var(--split)) 0 0);
+      -webkit-clip-path: inset(0 calc(100% - var(--split)) 0 0);
+      will-change: clip-path;
+    }
+    /* Barra y pomo */
+    #cmp01 .bar{
+      position:absolute; top:0; bottom:0;
+      left:calc(var(--split)); transform:translateX(-50%);
+      width:2px; background:rgba(255,255,255,.9);
+      box-shadow:0 0 0 1px rgba(0,0,0,.12); pointer-events:none;
+    }
+    #cmp01 .knob{
+      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+      width:48px; height:48px; border-radius:50%; background:#fff;
+      box-shadow:0 6px 18px rgba(0,0,0,.25), inset 0 0 0 6px rgba(0,0,0,.08);
+    }
+    #cmp01 .knob::before, #cmp01 .knob::after{
+      content:""; position:absolute; top:50%;
+      width:0; height:0; border:8px solid transparent; transform:translateY(-50%);
+    }
+    #cmp01 .knob::before{ border-right-color:#777; left:12px; }
+    #cmp01 .knob::after { border-left-color:#777;  right:12px; }
+
+    /* Etiquetas */
+    #cmp01 .labels{ position:absolute; inset:0; pointer-events:none; font-weight:700; letter-spacing:.04em; }
+    #cmp01 .lab-left, #cmp01 .lab-right{
+      position:absolute; top:12px; font-size:.85rem; padding:.3rem .5rem; border-radius:999px;
+      background:rgba(0,0,0,.55); color:#fff;
+    }
+    #cmp01 .lab-left{ left:12px; }  #cmp01 .lab-right{ right:12px; }
+
+    /* Slider invisible */
+    #cmp01 .range{
+      position:absolute; inset:0; opacity:0; cursor:ew-resize;
+      -webkit-appearance:none; appearance:none;
+    }
+  </style>
+
+  <script>
+    (function(){
+      const f = document.getElementById('cmp01');
+      if(!f) return;
+      const r = f.querySelector('.range');
+      let dragging = false;
+
+      const clamp = (v,min,max)=>Math.min(max,Math.max(min,v));
+      function setSplit(p){ f.style.setProperty('--split', p + '%'); }
+
+      // Scroll invertido: de 92% -> 8% (derecha → izquierda)
+      function onScroll(){
+        if(dragging) return;
+        const rect = f.getBoundingClientRect();
+        const vh = window.innerHeight || 800;
+        const start = vh * 0.15;
+        const end   = vh * 0.85 + rect.height;
+        const t = clamp((vh - rect.top - start) / end, 0, 1);
+        const p = 92 - t * (92 - 8);
+        setSplit(p);
+        r.value = Math.round(p);
+      }
+
+      r.addEventListener('pointerdown', ()=> dragging = true);
+      window.addEventListener('pointerup',   ()=> dragging = false);
+      r.addEventListener('input', e => setSplit(e.target.value));
+
+      onScroll();
+      window.addEventListener('scroll', onScroll, {passive:true});
+      window.addEventListener('resize', onScroll);
+    })();
+  </script>
+</section>
 
 
 
     <!-- 4) ÉTICAS -->
   <section class="section values">
     <div class="container">
-      <h2 class="section__title">Las <span class="hl">éticas </span> que nos mueven</h2>
+      <h2 class="section__title"><span class="h2-text">Las <span class="hl">éticas </span> que nos mueven</span></h2>
       <div class="eticas-section">
         <div class="eticas-container">
           <div class="etica-box">
@@ -364,3 +492,5 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').m
   if(track){ track.style.animation='none'; }
 }
 </script>
+
+
