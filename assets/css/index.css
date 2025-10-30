@@ -1117,3 +1117,9 @@ nav.top-nav{ display:none !important; }
 .section__title{ align-items:center; gap:.5rem; justify-content:center; text-align:center; }
 .section__title .h2-text{ display:inline; }
 .heading-with-icon i.material-icons{ font-size:1.8rem; color:#558b2f; transform:translateY(2px); }
+
+
+/* Si las pone el layout entre secciones */
+.section, .section + .section{ border-top:0 !important; }
+
+
