@@ -16,15 +16,11 @@ show_hero: false
   style="--hero-bg: url('{{ '/assets/img/aerea2.jpg' | relative_url }}');">
   <div class="container hero-minimal__inner">
 
-<h1 class="hero-minimal__title">
-  <span class="hl-hero-wrap">
-    Diseñamos lugares que funcionan como un ecosistema:
-    <span class="hl-hero-word">bello</span>, 
-    <span class="hl-hero-word">eficiente</span> y 
-    <span class="hl-hero-word">resiliente</span>.
-  </span>
-</h1>
 
+    <h1 class="hero-minimal__title"  >
+      <span class="hl-alt2" >Diseñamos lugares que funcionan como un ecosistema:
+      <span class="hl-alt">bello</span>, <span class="hl-alt">eficiente</span> y <span class="hl-alt">resiliente</span>.</span>
+    </h1>
 
       
 
@@ -34,11 +30,7 @@ show_hero: false
 <section class="section qh" id="que-hacemos">
   <div class="container">
     <header class="qh__head center">
-<h2 class="section__title">
-  <span class="h2-text">
-    A qué dedicamos nuestro <span class="hl">tiempo</span>
-  </span>
-</h2>
+      <h2>A qué dedicamos nuestro<span class="hl">tiempo</span></h2>
 
     </header>
 
@@ -52,7 +44,7 @@ show_hero: false
           <h3 class="qh__heading">Diseñamos y asesoramos</h3>
         </div>
         <div class="qh__text">
-          <p>Espacios y dinámicas que generan <strong>más energía de la que consumen.</strong> Siempre a favor de la <strong>naturaleza</strong> y tomando como base los principios de la <strong>permacultura.</strong></p>
+          <p>Espacios y dinámicas que generan más energía de la que consumen. Siempre a favor de la naturaleza y tomando como base los principios de la permacultura.</p>
         </div>
       </a>
 
@@ -126,6 +118,8 @@ show_hero: false
   </div>
 </section>
 
+
+
 <!-- === ANTES / DESPUÉS (scroll invertido + drag, ancho más pequeño) === -->
 <section class="section" id="antes-despues">
   <div class="u-mw u-mw--photo"><!-- ⬅️ contenedor más estrecho -->
@@ -153,13 +147,13 @@ show_hero: false
       </div>
 
       <!-- Slider invisible para arrastrar manualmente -->
-      <input class="range" type="range" min="8" max="92" value="92" aria-label="Arrastra para comparar">
+      <input class="range" type="range" min="2" max="97" value="92" step="0.1" aria-label="Comparar antes/después">
     </figure>
   </div>
 
   <style>
     /* === Utilidad de ancho para este bloque (ajusta 980px si quieres) === */
-    :root{ --mw-photo: clamp(560px, 92vw, 600px); }
+    :root{ --mw-photo: clamp(560px, 92vw, 700px); }
     .u-mw--photo{ max-width: var(--mw-photo); }
 
     /* ================== Estilos del comparador ================== */
@@ -220,44 +214,55 @@ show_hero: false
 
   <script>
     (function(){
-      const f = document.getElementById('cmp01');
-      if(!f) return;
-      const r = f.querySelector('.range');
-      let dragging = false;
+  const f = document.getElementById('cmp01');
+  if(!f) return;
+  const r = f.querySelector('.range');
 
-      const clamp = (v,min,max)=>Math.min(max,Math.max(min,v));
-      function setSplit(p){ f.style.setProperty('--split', p + '%'); }
+  // === límites del cursor (ajusta aquí) ===
+  const MIN = 0;   // pon -5 si quieres que el pomo salga un poco del marco
+  const MAX = 100; // pon 105 para “pasarte” del borde derecho
 
-      // Scroll invertido: de 92% -> 8% (derecha → izquierda)
-      function onScroll(){
-        if(dragging) return;
-        const rect = f.getBoundingClientRect();
-        const vh = window.innerHeight || 800;
-        const start = vh * 0.15;
-        const end   = vh * 0.85 + rect.height;
-        const t = clamp((vh - rect.top - start) / end, 0, 1);
-        const p = 92 - t * (92 - 8);
-        setSplit(p);
-        r.value = Math.round(p);
-      }
+  let dragging = false;
+  const clamp = (v,min,max)=>Math.min(max,Math.max(min,v));
 
-      r.addEventListener('pointerdown', ()=> dragging = true);
-      window.addEventListener('pointerup',   ()=> dragging = false);
-      r.addEventListener('input', e => setSplit(e.target.value));
+  function setSplit(p){
+    p = clamp(parseFloat(p), MIN, MAX);        // asegura límites
+    f.style.setProperty('--split', p + '%');
+    r.value = p;
+  }
 
-      onScroll();
-      window.addEventListener('scroll', onScroll, {passive:true});
-      window.addEventListener('resize', onScroll);
-    })();
+  function onScroll(){
+    if(dragging) return;
+    const rect = f.getBoundingClientRect();
+    const vh = window.innerHeight || 800;
+    const start = vh * 0.05;
+    const end   = vh * 0.95 + rect.height;
+    const t = clamp((vh - rect.top - start) / end, 0, 1);
+    const p = MAX - t * (MAX - MIN);           // ← usa MIN/MAX
+    setSplit(p);
+  }
+
+  r.addEventListener('pointerdown', ()=> dragging = true);
+  window.addEventListener('pointerup',   ()=> dragging = false);
+  r.addEventListener('input', e => setSplit(e.target.value));
+
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+})();
+
   </script>
 </section>
+
+
+
 
 
 
     <!-- 4) ÉTICAS -->
   <section class="section values">
     <div class="container">
-      <h2 class="section__title"><span class="h2-text">Las <span class="hl">éticas </span> que nos mueven</span></h2>
+      <h2>Las <span class="hl"> éticas </span> que nos mueven</h2>
       <div class="eticas-section">
         <div class="eticas-container">
           <div class="etica-box">
@@ -492,5 +497,3 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').m
   if(track){ track.style.animation='none'; }
 }
 </script>
-
-
