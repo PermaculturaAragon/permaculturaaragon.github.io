@@ -35,7 +35,7 @@
 .hero-title{
   font-family:"Lora",serif; font-weight:700;
   font-size:clamp(1.8rem,3.8vw,3rem); line-height:1.15;
-  color:#2b3326; margin:0 0 .6rem;
+  color:var(--brand-green); margin:0 0 .6rem;
 }
 /* Rotador simple (solo CSS) */
 .hero-rotator{ display:inline-block; height:1em; overflow:hidden; vertical-align:baseline; }
