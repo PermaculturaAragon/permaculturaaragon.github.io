@@ -3,76 +3,96 @@ layout: page
 ---
 
 <style>
-/* ===== Lámina única ===== */
+/* ====================== LÁMINA ====================== */
 .sheet{
   --ink:#1f2c24;
   --line:#1e2a21;
-  max-width:1100px; margin:1.25rem auto 2rem;
-  background:#fff; box-shadow:0 18px 38px rgba(0,0,0,.12);
-  border:2px solid #0f1a14; border-radius:10px;
+  max-width:1100px;
+  margin:1.25rem auto 2rem;
+  background:#fff;
+  box-shadow:0 18px 38px rgba(0,0,0,.12);
+  border:2px solid #0f1a14;
+  border-radius:10px;
 }
 .sheet__inner{ padding:22px; }
 
-/* ===== Filas de la lámina (sin cajas) ===== */
-/* ===== Filas de la lámina (sin cajas y con línea completa) ===== */
-.row{
-  position: relative;
-  padding: 24px 0 16px;          /* un poco más de aire arriba */
+/* ===== Filas (línea horizontal de lado a lado) ===== */
+.sheet .row{
+  position:relative;
+  padding:24px 0 16px;
+  /* evita el margin negativo de Materialize */
+  margin-left:0 !important;
+  margin-right:0 !important;
 }
-/* la línea horizontal se dibuja con ::before y recorre todo el ancho */
-.row::before{
-  content: "";
-  position: absolute;
-  left: 0;                       /* de borde a borde de la lámina */
-  right: 0;
-  top: 0;
-  height: 1px;
-  background: var(--line);
+.sheet .row::before{
+  content:""; position:absolute; left:0; right:0; top:0;
+  height:1px; background:var(--line);
 }
-.row:first-child::before{ display:none; }
+.sheet .row:first-child::before{ display:none; }
 
-/* etiqueta SIN fondo para que no tape la línea */
+/* Etiqueta flotante (no tapa la línea) */
 .row__label{
-  position: absolute;
-  top: -0.9rem;                  /* la levantamos un poco */
-  left: 0;
-  padding: 0 .4rem 0 0;
-  background: transparent;       /* <- clave: nada de fondo */
-  color: var(--ink);
-  font: 700 .72rem/1 system-ui, sans-serif;
-  text-transform: uppercase;
-  letter-spacing: .02em;
-  z-index: 1;
-  /* si te molesta el texto sobre la línea, activa este “halo” suave: */
-  text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+  position:absolute; top:-0.9rem; left:0;
+  padding:0 .4rem 0 0;
+  background:transparent; color:var(--ink);
+  font:700 .72rem/1 system-ui, sans-serif;
+  text-transform:uppercase; letter-spacing:.02em;
+  z-index:1;
+  text-shadow:0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
 }
 
+/* ====================== CARRUSEL ====================== */
+.carousel-peek{
+  --peek: clamp(12px, 4vw, 64px);
+  --gap: clamp(10px, 2vw, 16px);
+  --fade: clamp(24px, 8vw, 120px);
+  position:relative; margin:1.2rem auto 0; max-width:1100px; padding:0 var(--peek);
+}
+.carousel-peek .caro-track{
+  display:grid; grid-auto-flow:column; grid-auto-columns:calc(100% - var(--peek)*2);
+  gap:var(--gap); overflow-x:auto; scroll-snap-type:x mandatory; scroll-padding:var(--peek);
+  -webkit-overflow-scrolling:touch;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--fade), #000 calc(100% - var(--fade)), transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 var(--fade), #000 calc(100% - var(--fade)), transparent 100%);
+  scrollbar-width:none;
+}
+.carousel-peek .caro-track::-webkit-scrollbar{ height:0; }
 
-/* ===== 1) Galería / Carrusel (sin caja) ===== */
-.carousel-peek{ position:relative; margin:0 auto; padding:0 3.25rem; }
-.caro-track{ display:grid; grid-auto-flow:column; gap:1rem; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; }
-.caro-slide{ scroll-snap-align:center; width:calc(100% - 5rem); max-width:980px; aspect-ratio:16/9; border-radius:16px; overflow:hidden; background:#e8ece6; box-shadow:0 10px 28px rgba(0,0,0,.12); }
-.caro-slide img{ width:100%; height:100%; object-fit:cover; display:block; }
-.caro-arrow{ position:absolute; top:50%; transform:translateY(-50%); width:40px; height:40px; border-radius:999px; border:1px solid rgba(0,0,0,.15); background:#fff; box-shadow:0 4px 16px rgba(0,0,0,.12); display:grid; place-items:center; cursor:pointer; z-index:2; }
-.caro-arrow.prev{ left:.75rem; } .caro-arrow.next{ right:.75rem; }
-.caro-arrow:disabled{ opacity:.4; cursor:not-allowed; }
-.diseno-gallery{ display:grid; gap:.75rem; }
-.diseno-gallery.is-landscape{ grid-template-columns: repeat(2,minmax(0,1fr)); }
-.diseno-gallery.is-portrait{ grid-template-columns: repeat(3,minmax(0,1fr)); }
-.diseno-gallery .frame{ border-radius:12px; overflow:hidden; background:#e8ece6; box-shadow:0 8px 20px rgba(0,0,0,.06); }
-.diseno-gallery .frame img{ width:100%; height:100%; object-fit:cover; display:block; }
+.caro-slide{
+  scroll-snap-align:center; position:relative; border-radius:12px;
+  background:#fff; border:1.5px solid #c0ccb8; box-shadow:0 10px 26px rgba(0,0,0,.14);
+  overflow:hidden; aspect-ratio:297/210; transform:scale(.94); opacity:.92; filter:saturate(.9);
+  transition:transform .35s, box-shadow .35s, filter .35s, opacity .35s;
+}
+.carousel-peek.is-portrait .caro-slide{ aspect-ratio:210/297; }
+.caro-slide img{ width:100%; height:100%; object-fit:contain; display:block; background:#fff; }
+.caro-slide.is-active{ transform:scale(1); opacity:1; filter:none; box-shadow:0 16px 36px rgba(0,0,0,.18), inset 0 0 0 1px rgba(0,0,0,.06); }
 
-/* ===== 2) Matriz 2×2: UNA CRUZ que toca bordes ===== */
+.caro-arrow{
+  position:absolute; top:50%; transform:translateY(-50%);
+  background:rgba(255,255,255,.9); border:1px solid #cfd8c3;
+  width:42px; height:42px; border-radius:999px; display:grid; place-items:center;
+  font-size:28px; line-height:1; color:#2b3326; cursor:pointer; z-index:20;
+  transition:background .2s, transform .15s, box-shadow .2s;
+}
+.caro-arrow:hover{ background:#fff; box-shadow:0 4px 10px rgba(0,0,0,.12); transform:translateY(-50%) scale(1.04); }
+.caro-arrow.prev{ left:6px; } .caro-arrow.next{ right:6px; }
+
+@media (max-width:680px){
+  .carousel-peek{ --peek:10px; --fade:38px; }
+  .carousel-peek .caro-track{ grid-auto-columns:100%; }
+  .carousel-peek .caro-arrow{ display:grid !important; width:36px; height:36px; font-size:22px; }
+}
+
+/* ====================== MATRIZ 2×2 ====================== */
 .matrix{ position:relative; padding:10px 0; }
 .matrix__grid{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:0; }
 .matrix__cell{ padding:12px 14px; }
 .matrix__title{ font:700 .82rem/1.2 system-ui, sans-serif; text-transform:uppercase; letter-spacing:.02em; margin:0 0 .5rem; }
 .matrix__text{ margin:0; line-height:1.6; color:#3a493e; }
-/* La cruz (líneas) */
 .matrix::before, .matrix::after{ content:""; position:absolute; background:var(--line); }
-.matrix::before{ /* horizontal */ left:0; right:0; top:50%; height:1px; transform:translateY(-.5px); }
-.matrix::after{  /* vertical   */ top:0; bottom:0; left:50%; width:1px; transform:translateX(-.5px); }
-/* móvil: una columna, sin cruz; separadores sencillos */
+.matrix::before{ left:0; right:0; top:50%; height:1px; transform:translateY(-.5px); }
+.matrix::after{  top:0; bottom:0; left:50%; width:1px; transform:translateX(-.5px); }
 @media (max-width:820px){
   .matrix__grid{ grid-template-columns:1fr; }
   .matrix::before, .matrix::after{ display:none; }
@@ -80,64 +100,164 @@ layout: page
   .matrix__cell:first-child{ border-top:none; }
 }
 
-
-/* ===== 3) & 4) Listas (Éticas / Principios) ===== */
-.flags{
-  list-style:none; padding:8px 0 0; margin:0;
-  display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:12px;
-}
-@media (max-width:980px){ .flags{ grid-template-columns:repeat(2, minmax(0,1fr)); } }
+/* ============ Flags (Éticas / Principios) ============ */
+.flags{ list-style:none; padding:8px 0 0; margin:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+@media (max-width:980px){ .flags{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media (max-width:620px){ .flags{ grid-template-columns:1fr; } }
-.flag{
-  display:grid; grid-template-columns:64px 1fr; gap:1rem; align-items:start;
-  padding:.9rem; border-radius:12px; background:#f5f7f4; box-shadow:0 1px 0 rgba(0,0,0,.04) inset, 0 8px 20px rgba(0,0,0,.06);
-}
+.flag{ display:grid; grid-template-columns:64px 1fr; gap:1rem; align-items:start; padding:.9rem; border-radius:12px; background:#f5f7f4; box-shadow:0 1px 0 rgba(0,0,0,.04) inset, 0 8px 20px rgba(0,0,0,.06); }
 .flag__media{ display:flex; align-items:center; justify-content:center; }
 .flag__media img{ width:64px; height:64px; border-radius:50%; object-fit:contain; }
 .flag__title{ font-weight:800; line-height:1.2; margin-top:.15rem; color:#23382c; }
 .flag__txt{ margin-top:.25rem; color:#3a493e; font-size:.95rem; line-height:1.45; }
 
-/* ===== 5) Cartela: sin caja externa, sólo líneas de tabla ===== */
-/* ====== CARTELA (solo separadores internos, sin línea a la izquierda) ====== */
+/* ====================== CARTELA ====================== */
+/* Bloque fila con separador superior */
 .tb-row{ border-top:1px solid var(--line); padding-top:12px; }
-.tb{
+
+/* Cabecera (título + subtítulo) */
+/* ===== Cabecera de la ficha: título + subtítulo apilados ===== */
+.tb__head{
+  display:block;                 /* antes era grid 2fr 2fr */
+  border-bottom:1px solid var(--line);
+  margin:0;                      /* mismo alineado que las celdas */
+  padding:0;
+}
+
+/* mismo padding lateral que las celdas (.7rem) */
+.tb__bigtitle{
+  margin:0;
+  padding:.6rem .7rem 0 .7rem;
+  font-weight:800;
+  font-size:clamp(1.15rem, 1.6vw, 1.35rem);
+  line-height:1.2;
+  color:var(--verde-comun, #2e7d32); /* verde de marca si existe */
+}
+
+.tb__subtitle{
+  margin:0;
+  padding:.2rem .7rem .6rem .7rem;   /* mismo ritmo que las demás filas */
+  font-weight:600;
+  color:#2b3326;                     /* tinta normal; ajusta si quieres */
+  opacity:.95;                       /* un pelín más suave que el título */
+}
+
+
+/* Cuerpo de la cartela */
+.tb__grid{
+  position:relative;
   display:grid;
-  grid-template-columns: 2fr 1.2fr 1fr 1fr;
-  color:var(--ink);
+  grid-template-columns: 2fr 1.2fr 1fr 1fr; /* 4 columnas en desktop */
   width:100%;
 }
-.tb > div{
-  padding:.6rem .7rem;
-  border-top:1px solid var(--line);   /* líneas horizontales internas */
-  border-left:1px solid var(--line);  /* separadores verticales internos */
+/* Líneas verticales por porcentaje (2 / 5.2, 3.2 / 5.2, 4.2 / 5.2) */
+.tb__grid::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:
+    linear-gradient(var(--line), var(--line)) 38.4615% 0 / 1px 100% no-repeat,
+    linear-gradient(var(--line), var(--line)) 61.5385% 0 / 1px 100% no-repeat,
+    linear-gradient(var(--line), var(--line)) 80.7692% 0 / 1px 100% no-repeat;
 }
 
-/* la primera fila (título+subtítulo) no necesita la horizontal de arriba */
-.tb > div:nth-child(-n+2){ border-top:none; }
+/* Celdas (solo horizontales; las verticales las pinta ::before) */
+.tb__grid > div{
+  padding:.6rem .7rem;
+  border-top:1px solid var(--line);
+}
 
-/* quitar el borde IZQUIERDO a los bloques que empiezan en la 1ª columna */
-.tb > div:nth-child(1),   /* título grande (col 1 / span 2) */
-.tb > div:nth-child(3),   /* Cliente */
-.tb > div:nth-child(7),   /* Revisión */
-.tb > div:nth-child(9),   /* Sistema de diseño (span 2) */
-.tb > div:nth-child(10)   /* Herramientas (span 4) */
-{ border-left:none; }
-
-/* estilos de texto */
-.tb__bigtitle{ grid-column: 1 / span 2; font-weight:800; font-size:1.05rem; margin:0; }
-.tb__subtitle{ grid-column: 3 / span 2; font-weight:600; opacity:.9; margin:0; }
-.tb__label{ display:block; font:700 .72rem/1.1 system-ui, sans-serif; text-transform:uppercase; letter-spacing:.02em; opacity:.85; }
+/* Tipos de texto */
+.tb__label{
+  display:block;
+  font:700 .72rem/1.1 system-ui, sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.02em; opacity:.85;
+}
 .tb__value{ display:block; margin-top:.25rem; }
+
+/* Spans */
 .tb__span2{ grid-column: span 2; }
 .tb__span4{ grid-column: 1 / -1; }
 
-/* responsive igual que antes */
+/* ===== Responsive cartela ===== */
 @media (max-width:980px){
-  .tb{ grid-template-columns:1fr 1fr; }
-  .tb__bigtitle{ grid-column:1 / -1; }
-  .tb__subtitle{ grid-column:1 / -1; }
+  .tb__head{ grid-template-columns:1fr; }
+  .tb__grid{ grid-template-columns:1fr 1fr; }
+  .tb__grid::before{
+    background: linear-gradient(var(--line), var(--line)) 50% 0 / 1px 100% no-repeat;
+  }
 }
-@media (max-width:620px){ .tb{ grid-template-columns:1fr; } }
+@media (max-width:620px){
+  .tb__grid{ grid-template-columns:1fr; }
+  .tb__grid::before{ background:none; }
+}
+
+/* ====================== GALERÍA ESTÁTICA ====================== */
+.diseno-gallery{ display:grid; gap:.75rem; }
+.diseno-gallery.is-landscape{ grid-template-columns: repeat(2,minmax(0,1fr)); }
+.diseno-gallery.is-portrait{ grid-template-columns: repeat(3,minmax(0,1fr)); }
+.diseno-gallery .frame{ border-radius:12px; overflow:hidden; background:#e8ece6; box-shadow:0 8px 20px rgba(0,0,0,.06); }
+.diseno-gallery .frame img{ width:100%; height:100%; object-fit:cover; display:block; }
+@media (max-width:900px){
+  .diseno-gallery.is-landscape, .diseno-gallery.is-portrait{ grid-template-columns:1fr; }
+}
+
+/* === Ficha: que llegue hasta el final === */
+
+/* 1) quita el padding de la fila y cierra con una línea abajo */
+.section.diseno .tb-row{ padding-bottom:0; }
+.section.diseno .tb-row .tb__grid{ border-bottom:1px solid var(--line); }
+
+/* 2) la fila que ocupa TODAS las columnas (Herramientas)
+      vuelve a dibujar las verticales dentro para que no se “corten” */
+.section.diseno .tb__span4{
+  background:
+    /* mismas posiciones que el grid de 4 cols: 38.4615%, 61.5385%, 80.7692% */
+    linear-gradient(var(--line), var(--line)) 38.4615% 0 / 1px 100% no-repeat,
+    linear-gradient(var(--line), var(--line)) 61.5385% 0 / 1px 100% no-repeat,
+    linear-gradient(var(--line), var(--line)) 80.7692% 0 / 1px 100% no-repeat;
+}
+
+/* en 2 columnas solo una línea central */
+@media (max-width:980px){
+  .section.diseno .tb__span4{
+    background:
+      linear-gradient(var(--line), var(--line)) 50% 0 / 1px 100% no-repeat;
+  }
+}
+
+/* en 1 columna, sin verticales */
+@media (max-width:620px){
+  .section.diseno .tb__span4{ background:none; }
+}
+
+/* --- Ficha: oculta las verticales dentro de la fila full-span --- */
+
+/* Asegura contexto y cierra la tabla por abajo */
+.section.diseno .tb__grid{
+  position: relative;
+  border-bottom:1px solid var(--line);
+}
+.section.diseno .tb__grid::before{ z-index:0; }          /* verticales detrás */
+.section.diseno .tb__grid > div{ position:relative; z-index:1; }
+
+/* Fila que ocupa 1 / -1 (Herramientas) */
+.section.diseno .tb__span4{
+  position: relative;
+  background: none !important;      /* elimina cualquier gradiente antiguo */
+}
+
+/* Máscara blanca que tapa las verticales SOLO en esta fila,
+   dejando 1px libre abajo para que se vea la línea de cierre */
+.section.diseno .tb__span4::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; top:0; bottom:1px;  /* deja ver el borde inferior */
+  background:#fff;                      /* color de la lámina */
+  z-index:1; pointer-events:none;
+}
+
+/* Eleva el contenido por encima de la máscara */
+.section.diseno .tb__span4 > *{ position:relative; z-index:2; }
+
 
 </style>
 
@@ -145,7 +265,7 @@ layout: page
   <div class="sheet">
     <div class="sheet__inner">
 
-      <!-- 1) FOTOS -->
+      <!-- ========== 1) FOTOS ========== -->
       {% if page.images %}
         {% if page.gallery_style == 'carousel' %}
           <div class="row">
@@ -176,7 +296,7 @@ layout: page
         {% endif %}
       {% endif %}
 
-      <!-- 2) SÍNTESIS 2×2 -->
+      <!-- ========== 2) SÍNTESIS 2×2 ========== -->
       {% assign sec_codes  = "obs,estrategias,tecnicas,evaluacion" | split: "," %}
       {% assign sec_titles = "Observación y Análisis,Estrategias,Técnicas,Evaluación y Reflexión" | split: "," %}
       {% assign sec_has = false %}
@@ -200,18 +320,11 @@ layout: page
         </div>
       {% endif %}
 
-      <!-- Variables Éticas/Principios -->
+      <!-- ========== 3) ÉTICAS ========== -->
       {% assign e_codes  = "e1,e2,e3" | split: "," %}
       {% assign e_titles = "Cuidar la Tierra,Cuidar a las Personas,Reparto Justo" | split: "," %}
       {% assign e_icons  = "/assets/principios/tierra.jpg,/assets/principios/gente.jpg,/assets/principios/reparto.jpg" | split: "," %}
-      {% assign p_codes  = "p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12" | split: "," %}
-      {% assign p_titles = "Observar e interactuar,Capturar y almacenar energía,Obtener rendimiento,Autorregulación y feedback,Usar y valorar recursos renovables,No producir residuos,De patrones a detalles,Integrar más que segregar,Soluciones pequeñas y lentas,Valorar la diversidad,Usar bordes y lo marginal,Creativamente usar y responder al cambio" | split: "," %}
-      {% assign p_icons  = "/assets/principios/es_principle_1.png,/assets/principios/es_principle_2.png,/assets/principios/es_principle_3.png,/assets/principios/es_principle_4.png,/assets/principios/es_principle_5.png,/assets/principios/es_principle_6.png,/assets/principios/es_principle_7.png,/assets/principios/es_principle_8.png,/assets/principios/es_principle_9.png,/assets/principios/es_principle_10.png,/assets/principios/es_principle_11.png,/assets/principios/es_principle_12.png" | split: "," %}
-
       {% assign e_count = 0 %}{% for code in e_codes %}{% if page[code] and page[code] != "" %}{% assign e_count = e_count | plus: 1 %}{% endif %}{% endfor %}
-      {% assign p_count = 0 %}{% for code in p_codes %}{% if page[code] and page[code] != "" %}{% assign p_count = p_count | plus: 1 %}{% endif %}{% endfor %}
-
-      <!-- 3) ÉTICAS (sin caja alrededor) -->
       {% if e_count > 0 %}
         <div class="row">
           <span class="row__label">Éticas</span>
@@ -232,7 +345,11 @@ layout: page
         </div>
       {% endif %}
 
-      <!-- 4) PRINCIPIOS (sin caja alrededor) -->
+      <!-- ========== 4) PRINCIPIOS ========== -->
+      {% assign p_codes  = "p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12" | split: "," %}
+      {% assign p_titles = "Observar e interactuar,Capturar y almacenar energía,Obtener rendimiento,Autorregulación y feedback,Usar y valorar recursos renovables,No producir residuos,De patrones a detalles,Integrar más que segregar,Soluciones pequeñas y lentas,Valorar la diversidad,Usar bordes y lo marginal,Creativamente usar y responder al cambio" | split: "," %}
+      {% assign p_icons  = "/assets/principios/es_principle_1.png,/assets/principios/es_principle_2.png,/assets/principios/es_principle_3.png,/assets/principios/es_principle_4.png,/assets/principios/es_principle_5.png,/assets/principios/es_principle_6.png,/assets/principios/es_principle_7.png,/assets/principios/es_principle_8.png,/assets/principios/es_principle_9.png,/assets/principios/es_principle_10.png,/assets/principios/es_principle_11.png,/assets/principios/es_principle_12.png" | split: "," %}
+      {% assign p_count = 0 %}{% for code in p_codes %}{% if page[code] and page[code] != "" %}{% assign p_count = p_count | plus: 1 %}{% endif %}{% endfor %}
       {% if p_count > 0 %}
         <div class="row">
           <span class="row__label">Principios</span>
@@ -253,29 +370,32 @@ layout: page
         </div>
       {% endif %}
 
-      <!-- 5) CARTELA (línea de fila + líneas internas de tabla) -->
+      <!-- ========== 5) CARTELA ========== -->
       <div class="row tb-row">
         <span class="row__label">Ficha</span>
+
         <div class="tb">
-          <div class="tb__bigtitle">{{ page.title }}</div>
-          <div class="tb__subtitle">{% if page.subtitle %}{{ page.subtitle }}{% endif %}</div>
-
-          <div><span class="tb__label">Cliente</span><span class="tb__value">{{ page.cliente | default: site.title }}</span></div>
-          <div><span class="tb__label">Ubicación</span><span class="tb__value">{{ page.ubicacion | default: "—" }}</span></div>
-          <div><span class="tb__label">Fecha</span><span class="tb__value">{{ page.fecha | default: page.date | date: "%Y-%m-%d" }}</span></div>
-          <div><span class="tb__label">Escala</span><span class="tb__value">{{ page.escala | default: "N/A" }}</span></div>
-
-          <div><span class="tb__label">Revisión</span><span class="tb__value">{{ page.rev | default: "1.0" }}</span></div>
-          <div><span class="tb__label">Autoría</span><span class="tb__value">{{ page.autor | default: site.author.name | default: "Permacultura Aragón" }}</span></div>
-
-          <div class="tb__span2">
-            <span class="tb__label">Sistema de diseño</span>
-            <span class="tb__value">{% if page.sistema and page.sistema != "" %}{% if page.sistema.first %}{{ page.sistema | join: ", " }}{% else %}{{ page.sistema }}{% endif %}{% else %}—{% endif %}</span>
+          <!-- Cabecera -->
+          <div class="tb__head">
+            <h3 class="tb__bigtitle">{{ page.title }}</h3>
+            <p class="tb__subtitle">{% if page.subtitle %}{{ page.subtitle }}{% endif %}</p>
           </div>
 
-          <div class="tb__span4">
-            <span class="tb__label">Herramientas utilizadas</span>
-            <span class="tb__value">{% if page.herramientas and page.herramientas.size > 0 %}{{ page.herramientas | join: ", " }}{% else %}—{% endif %}</span>
+          <!-- Cuerpo -->
+          <div class="tb__grid">
+            <div><span class="tb__label">Cliente</span><span class="tb__value">{{ page.cliente | default: site.title }}</span></div>
+            <div><span class="tb__label">Ubicación</span><span class="tb__value">{{ page.ubicacion | default: "—" }}</span></div>
+            <div><span class="tb__label">Fecha</span><span class="tb__value">{{ page.fecha | default: page.date | date: "%Y-%m-%d" }}</span></div>
+            <div><span class="tb__label">Escala</span><span class="tb__value">{{ page.escala | default: "N/A" }}</span></div>
+
+            <div><span class="tb__label">Revisión</span><span class="tb__value">{{ page.rev | default: "1.0" }}</span></div>
+            <div><span class="tb__label">Autoría</span><span class="tb__value">{{ page.autor | default: site.author.name | default: "Permacultura Aragón" }}</span></div>
+            <div><span class="tb__label">Sistema de diseño</span><span class="tb__value">{% if page.sistema and page.sistema != "" %}{% if page.sistema.first %}{{ page.sistema | join: ", " }}{% else %}{{ page.sistema }}{% endif %}{% else %}—{% endif %}</span></div>
+
+            <div class="tb__span4">
+              <span class="tb__label">Herramientas utilizadas</span>
+              <span class="tb__value">{% if page.herramientas and page.herramientas.size > 0 %}{{ page.herramientas | join: ", " }}{% else %}—{% endif %}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -290,19 +410,30 @@ layout: page
 </section>
 
 <script>
-/* Carrusel “peek” con flechas desactivables */
+/* Carrusel “peek” con seguimiento del activo y teclas ← → */
 document.querySelectorAll('[data-carousel]').forEach(caro=>{
   const track = caro.querySelector('[data-track]'); if(!track) return;
   const slides = Array.from(track.querySelectorAll('.caro-slide'));
   const prev = caro.querySelector('[data-prev]'); const next = caro.querySelector('[data-next]');
   let current = 0;
-  const update = ()=>{ if(prev) prev.disabled = current<=0; if(next) next.disabled = current>=slides.length-1; };
-  const go = i => { current = Math.max(0, Math.min(slides.length-1, i)); slides[current].scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'}); update(); };
-  const io = new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting){ const i=slides.indexOf(e.target); if(i>=0){ current=i; update(); } } }); },{root:track,threshold:.6});
+  const setActive = i => slides.forEach((s,idx)=> s.classList.toggle('is-active', idx===i));
+  const update = ()=>{
+    if(prev) prev.disabled = current<=0;
+    if(next) next.disabled = current>=slides.length-1;
+    setActive(current);
+  };
+  const go = i => { current = Math.max(0, Math.min(slides.length-1, i));
+    slides[current].scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'}); update(); };
+  const io = new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting){ const i=slides.indexOf(e.target); if(i>=0){ current=i; update(); } } });
+  },{root:track,threshold:.6});
   slides.forEach(s=> io.observe(s));
   prev && prev.addEventListener('click', ()=>go(current-1));
   next && next.addEventListener('click', ()=>go(current+1));
-  caro.addEventListener('keydown', e=>{ if(e.key==='ArrowRight'){ e.preventDefault(); go(current+1);} if(e.key==='ArrowLeft'){ e.preventDefault(); go(current-1);} });
+  caro.addEventListener('keydown', e=>{
+    if(e.key==='ArrowRight'){ e.preventDefault(); go(current+1); }
+    if(e.key==='ArrowLeft'){ e.preventDefault(); go(current-1); }
+  });
   update();
 });
 </script>

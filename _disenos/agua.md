@@ -28,27 +28,27 @@ autor: "Angel Escuín - Permacultura Aragón"
 
 
 # Éticas (solo las que uses, deja "" para las demás)
-e1: "co pero co pero co"
-e2: "sdfg"
-e3: "lalalalalalalalalalal lalalalalal alalallalala"
+e1: "Reteniendo la máxima cantidad de agua posible para riego de vegetación"
+e2: "Satisfaciendo la necesidad de agua de varias familias de forma sostenible"
+e3: ""
 
 # Principios (solo los usados con su explicación)
-p1: "sdfg"
-p2: ""
-p3: "bla bla bla"
-p4: "mira tu por donde mira tu que bien"
-p5: "ole ole ole oleole ole ole oleole ole ole oleole ole ole ole"
-p6: "sdfg"
-p7: "sdfgsdf"
-p8: "sdfgsf"
-p9: "sdfg"
-p10: ""
-p11: ""
+p1: "Analizando las diferentes calidades de las fuentes de agua disponibles"
+p2: "Almacenamos agua en un nuevo aljibe en el momento que nos encontramos en abundancia"
+p3: "Reducimos costes de trarla en camión"
+p4: ""
+p5: "Recogemos el agua de lluvia y la mejoramos con un filtro de primeras aguas"
+p6: ""
+p7: ""
+p8: "Cada aljibe tiene la posibilidad de alimentar al siguiente"
+p9: "El filtro lento de arena, la lluvia, la acequia"
+p10: "Diferentes calidades de agua nos permiten usos diferentes"
+p11: "El tejado nos sirve para captar agua y la acequia es un borde que usamos cada vez que un vecino riega"
 p12: "sdfgsdf"
 
 # (Opcional) Bloque “a golpe de vista”
-obs: "Partimos de un inventario hídrico del entorno inmediato (cubiertas, patios y escorrentías). Se midieron superficies, pendientes, rugosidades y patrones de uso para estimar la captación efectiva anual. Identificamos puntos de pérdida y oportunidades de mini-retenciones que reducen la erosión y favorecen la infiltración."
-estrategias: "Se prioriza la lluvia en cubierta con bajantes separadas y primeras aguas desviadas. Incorporamos rejillas filtrantes y un by-pass de mantenimiento. En el terreno se proponen zanjas de infiltración y microcuencas asociadas a arbolado, equilibrando almacenamiento con recarga del suelo vivo."
+obs: "Autosuficiencia hídrica para el hogar.Salud y seguridad: disponer de agua potable fiable en casa. Reducir dependencia y costes del camión cisterna y del combustible asociado. Aumentar autonomía de riego y evitar “sed” del huerto mediante mayor almacenamiento y gestión por calidades. Resiliencia: cada función cubierta por varios elementos (acequia, lluvia, cisterna de emergencia)."
+estrategias: "Diferenciar 3 calidades de agua (potable, higiene, cruda) y asignarles usos y volúmenes diarios. Multiplicar orígenes (acequia + lluvia + cisterna como respaldo).Ampliar el almacenamiento de agua. Captación de lluvia por fases. Tratamiento in situ y apropiado del agua de acequia (decantación → filtración lenta → cloración)"
 tecnicas: "El sistema combina depósitos modulares de fácil limpieza con una red por gravedad para usos no potables (huerto, limpieza, riego puntual). Se reservan llaves de corte claras, purgas accesibles y una anilla de flexibilidad para incorporar bombeo solar en fases posteriores."
 evaluacion: "Se distinguen tres calidades: riego, usos generales y potable (si se homologara). Para ello se ordenan prefiltros, mallas, decantación y un pulido final según uso. El plan de mantenimiento es estacional: limpieza de canalones, revisión de juntas, prueba de válvulas y registro de consumos."
 
