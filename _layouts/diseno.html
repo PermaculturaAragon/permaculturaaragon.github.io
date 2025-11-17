@@ -425,7 +425,8 @@ body.is-lightbox-open{ overflow:hidden; }
 
   {% assign subject = 'Solicitud diseño: ' | append: page.title %}
   <div class="center" style="margin-top:1rem;">
-    <a class="btn" href="{{ '/contact/' | absolute_url }}?subject={{ subject | escape }}">Contactar por este diseño</a>
+    <a class="btn" href="{{ site.baseurl }}/contact?subject={{ subject | escape }}">Contactar por este diseño</a>
+  
 
   </div>
 </section>
