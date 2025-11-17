@@ -86,7 +86,7 @@ layout: page
   position:absolute; top:50%; transform:translateY(-50%);
   background:rgba(255,255,255,.9); border:1px solid #cfd8c3;
   width:42px; height:42px; border-radius:999px; display:grid; place-items:center;
-  font-size:28px; line-height:1; color:#2b3326; cursor:pointer; z-index:20;
+  font-size:28px; line-height:1; cursor:pointer; z-index:20;
   transition:background .2s, transform .15s, box-shadow .2s, opacity .2s, visibility .2s;
 }
 .caro-arrow:hover{ background:#fff; box-shadow:0 4px 10px rgba(0,0,0,.12); transform:translateY(-50%) scale(1.04); }
@@ -106,12 +106,21 @@ layout: page
 .matrix__cell{ padding:12px 14px; }
 .matrix__title{ font:700 .82rem/1.2 system-ui, sans-serif; text-transform:uppercase; letter-spacing:.02em; margin:0 0 .5rem; }
 .matrix__text{ margin:.15rem 0 0; line-height:1.6; color:#3a493e; }
-.matrix::before, .matrix::after{ content:""; position:absolute; background:var(--line); }
-.matrix::before{ left:0; right:0; top:50%; height:1px; transform:translateY(-.5px); }
-.matrix::after{  top:0; bottom:0; left:50%; width:1px; transform:translateX(-.5px); }
+
+/* Línea vertical central */
+.matrix::after{
+  content:""; position:absolute; top:0; bottom:0; left:50%;
+  width:1px; background:var(--line); transform:translateX(-.5px);
+}
+
+/* Línea horizontal solo bajo la primera fila (celdas 3 y 4) */
+.matrix__cell:nth-child(n+3){
+  border-top:1px solid var(--line);
+}
+
 @media (max-width:820px){
   .matrix__grid{ grid-template-columns:1fr; }
-  .matrix::before, .matrix::after{ display:none; }
+  .matrix::after{ display:none; }
   .matrix__cell{ border-top:1px solid var(--line); }
   .matrix__cell:first-child{ border-top:none; }
 }
@@ -278,6 +287,95 @@ body.is-lightbox-open{ overflow:hidden; }
         {% endif %}
       {% endif %}
 
+      <!-- ========== 5) CARTELA ========== -->
+      <div class="row tb-row">
+        <span class="row__label">Ficha</span>
+
+        <div class="tb">
+          <div class="tb__head">
+            <h3 class="tb__bigtitle">{{ page.title }}</h3>
+            <p class="tb__subtitle">{% if page.subtitle %}{{ page.subtitle }}{% endif %}</p>
+          </div>
+
+          <div class="tb__grid">
+            <div><span class="tb__label">Cliente</span><span class="tb__value">{{ page.cliente | default: site.title }}</span></div>
+            <div><span class="tb__label">Ubicación</span><span class="tb__value">{{ page.ubicacion | default: "—" }}</span></div>
+            <div><span class="tb__label">Fecha</span><span class="tb__value">{{ page.fecha | default: page.date | date: "%Y-%m-%d" }}</span></div>
+            <div><span class="tb__label">Escala</span><span class="tb__value">{{ page.escala | default: "N/A" }}</span></div>
+
+            <div><span class="tb__label">Revisión</span><span class="tb__value">{{ page.rev | default: "1.0" }}</span></div>
+            <div><span class="tb__label">Autoría</span><span class="tb__value">{{ page.autor | default: site.author.name | default: "Permacultura Aragón" }}</span></div>
+            <div><span class="tb__label">Sistema de diseño</span>
+              <span class="tb__value">
+                {% if page.sistema and page.sistema != "" %}
+                  {% if page.sistema.first %}{{ page.sistema | join: ", " }}{% else %}{{ page.sistema }}{% endif %}
+                {% else %}—{% endif %}
+              </span>
+            </div>
+
+            <!-- Herramientas: igual que antes, en línea -->
+            <div class="tb__span4">
+              <span class="tb__label">Herramientas utilizadas</span>
+              <span class="tb__value">
+                {% if page.herramientas and page.herramientas.size > 0 %}
+                  {{ page.herramientas | join: ", " }}
+                {% else %}—{% endif %}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== 3) ÉTICAS ========== -->
+      {% assign e_codes  = "e1,e2,e3" | split: "," %}
+      {% assign e_titles = "Cuidar la Tierra,Cuidar a las Personas,Reparto Justo" | split: "," %}
+      {% assign e_icons  = "/assets/principios/tierra.jpg,/assets/principios/gente.jpg,/assets/principios/reparto.jpg" | split: "," %}
+      {% assign e_count = 0 %}{% for code in e_codes %}{% if page[code] and page[code] != "" %}{% assign e_count = e_count | plus: 1 %}{% endif %}{% endfor %}
+      {% if e_count > 0 %}
+        <div class="row">
+          <span class="row__label">Éticas</span>
+          <ul class="flags">
+            {% for code in e_codes %}
+              {% assign i = forloop.index0 %}{% assign txt = page[code] %}
+              {% if txt and txt != "" %}
+                <li class="flag">
+                  <figure class="flag__media"><img src="{{ e_icons[i] | relative_url }}" alt="{{ e_titles[i] }}" loading="lazy"></figure>
+                  <div class="flag__body">
+                    <div class="flag__title">{{ e_titles[i] }}</div>
+                    <div class="flag__txt">{{ txt }}</div>
+                  </div>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+
+      <!-- ========== 4) PRINCIPIOS ========== -->
+      {% assign p_codes  = "p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12" | split: "," %}
+      {% assign p_titles = "Observar e interactuar,Capturar y almacenar energía,Obtener rendimiento,Autorregulación y feedback,Usar y valorar recursos renovables,No producir residuos,De patrones a detalles,Integrar más que segregar,Soluciones pequeñas y lentas,Valorar la diversidad,Usar bordes y lo marginal,Creativamente usar y responder al cambio" | split: "," %}
+      {% assign p_icons  = "/assets/principios/es_principle_1.png,/assets/principios/es_principle_2.png,/assets/principios/es_principle_3.png,/assets/principios/es_principle_4.png,/assets/principios/es_principle_5.png,/assets/principios/es_principle_6.png,/assets/principios/es_principle_7.png,/assets/principios/es_principle_8.png,/assets/principios/es_principle_9.png,/assets/principios/es_principle_10.png,/assets/principios/es_principle_11.png,/assets/principios/es_principle_12.png" | split: "," %}
+      {% assign p_count = 0 %}{% for code in p_codes %}{% if page[code] and page[code] != "" %}{% assign p_count = p_count | plus: 1 %}{% endif %}{% endfor %}
+      {% if p_count > 0 %}
+        <div class="row">
+          <span class="row__label">Principios</span>
+          <ul class="flags">
+            {% for code in p_codes %}
+              {% assign i = forloop.index0 %}{% assign txt = page[code] %}
+              {% if txt and txt != "" %}
+                <li class="flag">
+                  <figure class="flag__media"><img src="{{ p_icons[i] | relative_url }}" alt="{{ p_titles[i] }}" loading="lazy"></figure>
+                  <div class="flag__body">
+                    <div class="flag__title">{{ p_titles[i] }}</div>
+                    <div class="flag__txt">{{ txt }}</div>
+                  </div>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+
       <!-- ========== 2) SÍNTESIS 2×2 (listas o párrafos) ========== -->
       {%- assign sec_specs = "Objetivos|objetivos|obs,Estrategias|estrategias,Técnicas|tecnicas,Evaluación y Reflexión|evaluacion" | split: "," -%}
       {%- assign sec_has = false -%}
@@ -331,103 +429,12 @@ body.is-lightbox-open{ overflow:hidden; }
         </div>
       {% endif %}
 
-      <!-- ========== 3) ÉTICAS ========== -->
-      {% assign e_codes  = "e1,e2,e3" | split: "," %}
-      {% assign e_titles = "Cuidar la Tierra,Cuidar a las Personas,Reparto Justo" | split: "," %}
-      {% assign e_icons  = "/assets/principios/tierra.jpg,/assets/principios/gente.jpg,/assets/principios/reparto.jpg" | split: "," %}
-      {% assign e_count = 0 %}{% for code in e_codes %}{% if page[code] and page[code] != "" %}{% assign e_count = e_count | plus: 1 %}{% endif %}{% endfor %}
-      {% if e_count > 0 %}
-        <div class="row">
-          <span class="row__label">Éticas</span>
-          <ul class="flags">
-            {% for code in e_codes %}
-              {% assign i = forloop.index0 %}{% assign txt = page[code] %}
-              {% if txt and txt != "" %}
-                <li class="flag">
-                  <figure class="flag__media"><img src="{{ e_icons[i] | relative_url }}" alt="{{ e_titles[i] }}" loading="lazy"></figure>
-                  <div class="flag__body">
-                    <div class="flag__title">{{ e_titles[i] }}</div>
-                    <div class="flag__txt">{{ txt }}</div>
-                  </div>
-                </li>
-              {% endif %}
-            {% endfor %}
-          </ul>
-        </div>
-      {% endif %}
-
-      <!-- ========== 4) PRINCIPIOS ========== -->
-      {% assign p_codes  = "p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12" | split: "," %}
-      {% assign p_titles = "Observar e interactuar,Capturar y almacenar energía,Obtener rendimiento,Autorregulación y feedback,Usar y valorar recursos renovables,No producir residuos,De patrones a detalles,Integrar más que segregar,Soluciones pequeñas y lentas,Valorar la diversidad,Usar bordes y lo marginal,Creativamente usar y responder al cambio" | split: "," %}
-      {% assign p_icons  = "/assets/principios/es_principle_1.png,/assets/principios/es_principle_2.png,/assets/principios/es_principle_3.png,/assets/principios/es_principle_4.png,/assets/principios/es_principle_5.png,/assets/principios/es_principle_6.png,/assets/principios/es_principle_7.png,/assets/principios/es_principle_8.png,/assets/principios/es_principle_9.png,/assets/principios/es_principle_10.png,/assets/principios/es_principle_11.png,/assets/principios/es_principle_12.png" | split: "," %}
-      {% assign p_count = 0 %}{% for code in p_codes %}{% if page[code] and page[code] != "" %}{% assign p_count = p_count | plus: 1 %}{% endif %}{% endfor %}
-      {% if p_count > 0 %}
-        <div class="row">
-          <span class="row__label">Principios</span>
-          <ul class="flags">
-            {% for code in p_codes %}
-              {% assign i = forloop.index0 %}{% assign txt = page[code] %}
-              {% if txt and txt != "" %}
-                <li class="flag">
-                  <figure class="flag__media"><img src="{{ p_icons[i] | relative_url }}" alt="{{ p_titles[i] }}" loading="lazy"></figure>
-                  <div class="flag__body">
-                    <div class="flag__title">{{ p_titles[i] }}</div>
-                    <div class="flag__txt">{{ txt }}</div>
-                  </div>
-                </li>
-              {% endif %}
-            {% endfor %}
-          </ul>
-        </div>
-      {% endif %}
-
-      <!-- ========== 5) CARTELA ========== -->
-      <div class="row tb-row">
-        <span class="row__label">Ficha</span>
-
-        <div class="tb">
-          <div class="tb__head">
-            <h3 class="tb__bigtitle">{{ page.title }}</h3>
-            <p class="tb__subtitle">{% if page.subtitle %}{{ page.subtitle }}{% endif %}</p>
-          </div>
-
-          <div class="tb__grid">
-            <div><span class="tb__label">Cliente</span><span class="tb__value">{{ page.cliente | default: site.title }}</span></div>
-            <div><span class="tb__label">Ubicación</span><span class="tb__value">{{ page.ubicacion | default: "—" }}</span></div>
-            <div><span class="tb__label">Fecha</span><span class="tb__value">{{ page.fecha | default: page.date | date: "%Y-%m-%d" }}</span></div>
-            <div><span class="tb__label">Escala</span><span class="tb__value">{{ page.escala | default: "N/A" }}</span></div>
-
-            <div><span class="tb__label">Revisión</span><span class="tb__value">{{ page.rev | default: "1.0" }}</span></div>
-            <div><span class="tb__label">Autoría</span><span class="tb__value">{{ page.autor | default: site.author.name | default: "Permacultura Aragón" }}</span></div>
-            <div><span class="tb__label">Sistema de diseño</span>
-              <span class="tb__value">
-                {% if page.sistema and page.sistema != "" %}
-                  {% if page.sistema.first %}{{ page.sistema | join: ", " }}{% else %}{{ page.sistema }}{% endif %}
-                {% else %}—{% endif %}
-              </span>
-            </div>
-
-            <!-- Herramientas: igual que antes, en línea -->
-            <div class="tb__span4">
-              <span class="tb__label">Herramientas utilizadas</span>
-              <span class="tb__value">
-                {% if page.herramientas and page.herramientas.size > 0 %}
-                  {{ page.herramientas | join: ", " }}
-                {% else %}—{% endif %}
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 
   {% assign subject = 'Solicitud diseño: ' | append: page.title %}
   <div class="center" style="margin-top:1rem;">
     <a class="btn" href="{{ site.baseurl }}/contact?subject={{ subject | escape }}">Contactar por este diseño</a>
-  
-
   </div>
 </section>
 
@@ -496,7 +503,6 @@ document.querySelectorAll('[data-carousel]').forEach(caro=>{
   const close = ()=>{
     lb.classList.remove('is-open'); lb.setAttribute('aria-hidden','true');
     document.body.classList.remove('is-lightbox-open');
-    // esperar la transición antes de limpiar src si quieres
   };
   btnClose.addEventListener('click', close);
   lb.addEventListener('click', e=>{ if(e.target === lb) close(); });
